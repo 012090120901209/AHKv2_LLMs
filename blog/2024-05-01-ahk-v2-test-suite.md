@@ -1,23 +1,20 @@
 ---
-layout: post
-title: "AutoHotkey v2 Test Prompts for Evaluating Coding Agents"
-date: 2025-01-20 09:00:00 -0500
-categories: [Testing]
+slug: ahk-v2-test-suite
+title: Evaluating LLMs with AutoHotkey v2
+authors:
+  name: AHK v2 Maintainers
+  title: Prompt Curators
+  url: https://github.com/012090120901209/AHKv2_LLMs
+  image_url: /img/ahk-logo.png
 tags: [autohotkey, prompts, evaluation]
-description: A curated collection of AutoHotkey v2 prompts for benchmarking LLM-powered coding assistants.
+description: A reusable set of AutoHotkey v2 prompts that benchmark coding agents.
 ---
 
-Large language models can write useful AutoHotkey v2 scripts, but their output quality varies with the
-prompt, scenario, and the assistant you choose. To track improvements across tools, I keep a repeatable
-suite of prompts that stress different parts of the language—GUIs, classes, object lifetime, and
-method resolution. Below is an overview of each test, the exact prompt I run, and the behavior I expect
-from a well-performing assistant.
+# Test Prompts
 
-## 1. GUI Clipboard Manager
+These are the test prompts I've used to evaluate the performance of my AHK v2 coding agents. Feel free to add or suggest any tests or expected results should be. I am looking for lots of input to help create the most pristine desired responses to help train the models.
 
-This scenario checks whether the assistant can assemble a complete GUI workflow: creating windows,
-responding to button clicks, and using the clipboard. It is especially helpful for spotting
-hallucinated function names or wrong AHK v1 syntax.
+## Create a GUI Clipboard manager
 
 **Prompt**
 
@@ -29,9 +26,9 @@ Create three buttons to change the case and format of the code
 Save the newly edited version to the users clipboard
 ```
 
-**Desired result**
+**Desired Result**
 
-```autohotkey
+```cpp
 #Requires AutoHotkey v2.1-alpha.16
 #SingleInstance Force
 
@@ -67,14 +64,7 @@ class ClipboardManager {
 }
 ```
 
-A correct solution demonstrates a working understanding of GUI creation and the `Bind()` pattern for
-callback methods.
-
-## 2. Method Dispatch & Inheritance
-
-Inheritance is easy to get wrong in AutoHotkey v2 because you have to initialize parent classes
-explicitly with `super.__New`. This test ensures the model respects constructor chaining and method
-resolution order.
+## Method Testing
 
 **Prompt**
 
@@ -82,7 +72,7 @@ resolution order.
 What will be the output of obj.method() based on the code below?
 ```
 
-```autohotkey
+```cpp
 #Requires AutoHotkey v2.1-alpha.16
 #SingleInstance Force
 
@@ -107,21 +97,13 @@ class Derived extends Base {
 obj := Derived(5)
 ```
 
-**Expected answer**
+**Desired Result**
 
-```text
+```md
 10
 ```
 
-An ideal assistant explains that the derived constructor doubles the initial value before calling the
-base implementation, so `super.method()` returns `Base: 10`, `this.val` equals `10`, and the combined
-string prints `Base: 10, Derived: 10`. When asked for only the final output, the assistant should
-respond with `10`.
-
-## 3. Tooltip Timer & Lifetime Management
-
-Object lifetime management is a subtle part of AutoHotkey v2. This test verifies that the model can use
-`ObjAddRef` and `ObjRelease` correctly, bind timers, and handle clean-up in `__Delete`.
+## Object Testing Timer 
 
 **Prompt**
 
@@ -133,9 +115,9 @@ Handles cleanup properly with __Delete
 Uses proper timer binding pattern with .Bind(this)
 ```
 
-**Desired result**
+**Desired Result**
 
-```autohotkey
+```cpp
 #Requires AutoHotkey v2.1-alpha.16
 #SingleInstance Force
 
@@ -159,12 +141,3 @@ class TooltipTimer {
     }
 }
 ```
-
-If the assistant produces the snippet above (or an equivalent implementation), you can be confident it
-understands timers, bound functions, and reference counting—areas where hallucinations often creep in.
-
----
-
-These prompts give me a baseline for comparing model updates or different tools. Feel free to propose
-additional challenges in a pull request or GitHub issue. The more diverse the suite, the better we can
-shape future AutoHotkey-aware LLMs.
