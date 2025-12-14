@@ -1,4 +1,4 @@
-name: Deploy Jekyll with Chirpy to GitHub Pages
+name: Build and Deploy Docusaurus site
 
 on:
   push:
@@ -33,21 +33,22 @@ jobs:
         id: pages
         uses: actions/configure-pages@v4
 
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          ruby-version: 3.2
-          bundler-cache: true
+          node-version: 20
+          cache: npm
 
-      - name: Build with Jekyll
-        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
-        env:
-          JEKYLL_ENV: production
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build site
+        run: npm run build -- --base-url "${{ steps.pages.outputs.base_path }}"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: build
 
   deploy:
     environment:

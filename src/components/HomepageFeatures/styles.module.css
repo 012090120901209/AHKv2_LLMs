@@ -1,0 +1,7 @@
+.features {
+  padding: 4rem 0;
+}
+
+.features h3 {
+  color: var(--ifm-color-primary);
+}

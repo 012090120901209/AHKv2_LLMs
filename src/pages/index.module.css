@@ -1,0 +1,14 @@
+.heroBanner {
+  padding: 4rem 0;
+}
+
+.superTitle {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.9rem;
+  color: var(--ifm-color-white);
+}
+
+.buttons :global(.button) {
+  margin-right: 0.5rem;
+}
