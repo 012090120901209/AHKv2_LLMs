@@ -1,18 +1,19 @@
 /* style.css - Clean Dark Theme */
 :root {
-  --bg-primary: #0d1117;
-  --bg-secondary: #161b22;
-  --bg-card: #1c2128;
-  --bg-elevated: #21262d;
-  --border: #30363d;
-  --border-muted: #21262d;
-  --text-primary: #e6edf3;
-  --text-secondary: #8b949e;
-  --text-muted: #6e7681;
-  --accent: #58a6ff;
-  --accent-hover: #79c0ff;
-  --accent-green: #3fb950;
-  --accent-purple: #a371f7;
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-card: #161616;
+  --bg-elevated: #1a1a1a;
+  --border: #2a2a2a;
+  --border-muted: #1e1e1e;
+  --text-primary: #f0f0f0;
+  --text-secondary: #a0a0a0;
+  --text-muted: #666666;
+  --accent: #ff9f43;
+  --accent-hover: #ffb366;
+  --accent-green: #2ed573;
+  --accent-purple: #a55eea;
+  --accent-red: #ff6b6b;
   --radius-sm: 6px;
   --radius-md: 8px;
   --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;

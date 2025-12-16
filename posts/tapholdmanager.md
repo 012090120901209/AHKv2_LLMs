@@ -13,7 +13,7 @@ TapHoldManager lets you define multiple actions for a single key:
 
 ## Basic Setup
 
-```autohotkey
+```cpp
 #Requires AutoHotkey v2.0
 #Include TapHoldManager.ahk
 
@@ -34,7 +34,7 @@ KeyHandler(isHold, taps, state) {
 
 ## Understanding the Callback Parameters
 
-```autohotkey
+```cpp
 MyHandler(isHold, taps, state) {
     ; isHold: true = hold action, false = tap action
     ; taps:   number of taps (1 = single, 2 = double, etc.)
@@ -44,7 +44,7 @@ MyHandler(isHold, taps, state) {
 
 ## Configuration Options
 
-```autohotkey
+```cpp
 thm := TapHoldManager(
     150,    ; tapTime - max time for a tap (ms)
     150,    ; holdTime - min time to trigger hold (ms)
@@ -60,7 +60,7 @@ thm := TapHoldManager(
 
 Single tap for play/pause, hold for stop:
 
-```autohotkey
+```cpp
 thm := TapHoldManager()
 thm.Add("F8", MediaControl)
 
@@ -76,7 +76,7 @@ MediaControl(isHold, taps, state) {
 
 Different actions based on tap count:
 
-```autohotkey
+```cpp
 thm := TapHoldManager(, , 3)
 thm.Add("Escape", EscapeHandler)
 
@@ -100,7 +100,7 @@ EscapeHandler(isHold, taps, state) {
 
 CapsLock as a window management key:
 
-```autohotkey
+```cpp
 thm := TapHoldManager(200, 300, 2)
 thm.Add("CapsLock", WindowManager)
 
@@ -124,7 +124,7 @@ WindowManager(isHold, taps, state) {
 
 ## Advanced: Tap-and-Hold Combinations
 
-```autohotkey
+```cpp
 thm := TapHoldManager(150, 200, 3)
 thm.Add("Space", SpaceCombo)
 
@@ -155,7 +155,7 @@ SpaceCombo(isHold, taps, state) {
 
 Override global settings for specific keys:
 
-```autohotkey
+```cpp
 thm := TapHoldManager(150, 150, 3)
 
 ; F1 with custom hold time of 500ms
@@ -167,7 +167,7 @@ thm.Add("F2", F2Handler, 300, 400)
 
 ## Integration with Classes
 
-```autohotkey
+```cpp
 class HotkeyManager {
     __New() {
         this.thm := TapHoldManager()
@@ -202,7 +202,7 @@ manager := HotkeyManager()
 
 ### Immediate vs Delayed Actions
 
-```autohotkey
+```cpp
 Handler(isHold, taps, state) {
     if isHold {
         if state = 1
@@ -215,7 +215,7 @@ Handler(isHold, taps, state) {
 
 ### Preventing Native Key Action
 
-```autohotkey
+```cpp
 ; By default, native key action is blocked
 thm.Add("CapsLock", Handler)
 

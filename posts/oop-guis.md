@@ -15,7 +15,7 @@ Benefits of OOP-based GUI development:
 
 Start with a base class that handles common GUI operations:
 
-```autohotkey
+```cpp
 class BaseGui {
     __New(title := "Application", options := "") {
         this.gui := Gui(options, title)
@@ -50,7 +50,7 @@ class BaseGui {
 
 Here's a practical example using OOP principles:
 
-```autohotkey
+```cpp
 class SettingsDialog extends BaseGui {
     static DefaultSettings := Map(
         "theme", "dark",
@@ -98,7 +98,7 @@ class SettingsDialog extends BaseGui {
 
 For complex applications, break your GUI into reusable components:
 
-```autohotkey
+```cpp
 class SearchBar {
     __New(gui, options := "") {
         this.gui := gui
@@ -126,7 +126,7 @@ class SearchBar {
 
 Keep your GUI state organized with dedicated state classes:
 
-```autohotkey
+```cpp
 class FormState {
     __New() {
         this._data := Map()
@@ -160,7 +160,7 @@ class FormState {
 
 Clean event handling with an EventEmitter pattern:
 
-```autohotkey
+```cpp
 class EventEmitter {
     __New() {
         this._handlers := Map()
