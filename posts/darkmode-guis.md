@@ -10,7 +10,7 @@ These techniques work on Windows 10 1809+ and Windows 11. Some APIs are undocume
 
 Create a utility class to handle dark mode operations:
 
-```autohotkey
+```cpp
 class DarkMode {
     static DWMWA_USE_IMMERSIVE_DARK_MODE := 20
 
@@ -51,7 +51,7 @@ class DarkMode {
 
 Wrap the dark mode functionality into a reusable GUI base class:
 
-```autohotkey
+```cpp
 class DarkGui {
     static Colors := Map(
         "background", "0x1e1e1e",
@@ -107,7 +107,7 @@ class DarkGui {
 
 ## Using the Dark GUI Class
 
-```autohotkey
+```cpp
 class FileSearchApp extends DarkGui {
     __New() {
         super.__New("Dark File Search", "+Resize")
@@ -146,7 +146,7 @@ app.Show()
 
 React to system theme changes in real-time:
 
-```autohotkey
+```cpp
 class ThemeAwareApp extends DarkGui {
     static WM_SETTINGCHANGE := 0x001A
 

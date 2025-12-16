@@ -12,7 +12,7 @@ LLMs excel at recognizing and reproducing common patterns. They understand that 
 
 LLMs are remarkably good at generating well-structured class definitions:
 
-```autohotkey
+```cpp
 class ConfigManager {
     static Instance := ""
 
@@ -43,7 +43,7 @@ class ConfigManager {
 
 LLMs have strong representations of classic patterns like Singleton, Factory, Observer, and Builder:
 
-```autohotkey
+```cpp
 class Logger {
     static _instance := ""
 
@@ -64,7 +64,7 @@ class Logger {
 
 Modern LLMs understand AHK v2's getter/setter syntax well:
 
-```autohotkey
+```cpp
 class Rectangle {
     __New(width, height) {
         this._width := width
@@ -94,7 +94,7 @@ LLMs trained primarily on JavaScript, Python, and C# may confuse patterns:
 
 One area where LLMs frequently make mistakes is preserving `this` context in callbacks:
 
-```autohotkey
+```cpp
 ; WRONG - LLM might generate this
 class MyGui {
     __New() {
