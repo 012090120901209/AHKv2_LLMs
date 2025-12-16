@@ -1,10 +1,50 @@
 [
   {
+    "slug": "oop-in-llms",
+    "title": "Object-Oriented Programming in LLMs",
+    "date": "2025-12-15",
+    "description": "How large language models understand and generate OOP code, patterns they excel at, and leveraging their capabilities for better AHK v2 class design.",
+    "tags": ["OOP", "LLMs", "Classes"],
+    "path": "posts/oop-in-llms.md"
+  },
+  {
+    "slug": "oop-guis",
+    "title": "Building OOP GUIs in AutoHotkey v2",
+    "date": "2025-12-14",
+    "description": "A comprehensive guide to creating maintainable, reusable GUI applications using object-oriented principles and component architecture.",
+    "tags": ["GUI", "OOP", "Components"],
+    "path": "posts/oop-guis.md"
+  },
+  {
+    "slug": "darkmode-guis",
+    "title": "Creating Dark Mode GUIs in AHK v2",
+    "date": "2025-12-13",
+    "description": "Step-by-step tutorial on implementing native dark mode theming using DllCall and Windows API integration.",
+    "tags": ["GUI", "Dark Mode", "Windows API"],
+    "path": "posts/darkmode-guis.md"
+  },
+  {
+    "slug": "tapholdmanager",
+    "title": "Customizing TapHoldManager.ahk",
+    "date": "2025-12-12",
+    "description": "Master the TapHoldManager library for creating sophisticated key combinations with tap, hold, multi-tap, and tap-and-hold behaviors.",
+    "tags": ["Hotkeys", "Libraries", "Advanced"],
+    "path": "posts/tapholdmanager.md"
+  },
+  {
+    "slug": "prompt-engineering-ahk",
+    "title": "Prompt Engineering for AHK v2 Code Generation",
+    "date": "2025-12-11",
+    "description": "Craft effective prompts to get high-quality AutoHotkey v2 code from LLMs with templates, anti-patterns, and validation techniques.",
+    "tags": ["Prompts", "LLMs", "Best Practices"],
+    "path": "posts/prompt-engineering-ahk.md"
+  },
+  {
     "slug": "example-post",
     "title": "Using AutoHotkey v2 with Coding Agents and LLMs",
     "date": "2025-11-17",
     "description": "A lightweight workflow for combining AutoHotkey v2 scripts with GitHub Copilot, ChatGPT, and other coding agents.",
-    "tags": ["AutoHotkey v2", "LLMs", "Automation", "Workflows"],
-    "path": "/AHKv2_LLMs/posts/example-post.md"
+    "tags": ["AutoHotkey v2", "LLMs", "Workflows"],
+    "path": "posts/example-post.md"
   }
 ]
