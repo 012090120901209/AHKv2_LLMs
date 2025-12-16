@@ -4,121 +4,161 @@
   <meta charset="UTF-8">
   <title>Post - AHKv2 &amp; LLMs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/AHKv2_LLMs/style.css">
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/marked@11.1.0/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
   <style>
-    body {
-      background: radial-gradient(circle at 20% 20%, rgba(52, 195, 161, 0.12), transparent 30%),
-                  radial-gradient(circle at 80% 0%, rgba(39, 115, 255, 0.12), transparent 30%),
-                  var(--bg-main);
-    }
-    .article-shell {
-      max-width: 980px;
+    .article-container {
+      max-width: 800px;
       margin: 0 auto;
-      padding: 32px 24px 64px;
+      padding: 24px;
     }
-    .crumbs {
+
+    .back-link {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       font-size: 14px;
-      color: var(--text-muted);
-      text-decoration: none;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
     }
-    .crumbs:hover { color: #46d4b2; }
+
+    .back-link:hover { color: var(--accent); }
+
     .article-header {
-      background: linear-gradient(135deg, rgba(52, 195, 161, 0.12), rgba(10, 16, 18, 0.6));
-      border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      padding: 20px 22px;
-      box-shadow: var(--shadow-subtle);
-      margin: 16px 0 24px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-bottom: 20px;
     }
+
+    .article-date {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
     .article-title {
       margin: 0 0 12px;
-      font-size: 32px;
-      line-height: 1.2;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.3;
     }
-    .article-meta {
+
+    .article-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      color: var(--text-muted);
-      font-size: 14px;
+      gap: 6px;
     }
-    .pill-inline { margin-left: auto; }
+
     .article-body {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: 16px;
-      box-shadow: var(--shadow-soft);
-      padding: 26px 28px 46px;
-      line-height: 1.75;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      line-height: 1.8;
     }
+
     .article-body h1,
     .article-body h2,
     .article-body h3 {
-      margin-top: 1.4em;
-      margin-bottom: 0.6em;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
       line-height: 1.3;
+      color: var(--text-primary);
     }
+
+    .article-body h2 {
+      font-size: 22px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-muted);
+    }
+
+    .article-body h3 { font-size: 18px; }
+
     .article-body p { margin: 0 0 1em; }
-    .article-body ul,
-    .article-body ol { margin: 0 0 1em 1.4em; }
+
+    .article-body ul, .article-body ol {
+      margin: 0 0 1em 1.5em;
+    }
+
     .article-body li { margin: 0.4em 0; }
-    .loading { text-align: center; color: var(--text-muted); padding: 60px 20px; }
+
+    .article-body strong { color: var(--text-primary); }
+
+    .article-body a { border-bottom: 1px solid transparent; }
+    .article-body a:hover { border-bottom-color: var(--accent); }
+
+    .loading {
+      text-align: center;
+      color: var(--text-muted);
+      padding: 40px;
+    }
   </style>
 </head>
 <body>
-  <div class="article-shell">
-    <a class="crumbs" href="/AHKv2_LLMs/index.html">← Back to Home</a>
-    <header class="article-header" id="article-header">
-      <p class="pill pill-ghost" id="article-date">Loading date…</p>
-      <h1 class="article-title" id="article-title">Loading…</h1>
-      <div class="article-meta">
-        <div class="pill-row" id="article-tags"></div>
-        <span class="pill pill-soft pill-inline">Rendered from markdown</span>
-      </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">AHK</span>
+        <span class="logo-text">v2 &amp; LLMs</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#posts" class="nav-link">Posts</a>
+        <a href="https://www.autohotkey.com/docs/v2/" target="_blank" class="nav-link">AHK Docs</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="article-container">
+    <a class="back-link" href="index.html">&larr; Back to all posts</a>
+
+    <header class="article-header">
+      <div class="article-date" id="article-date">Loading...</div>
+      <h1 class="article-title" id="article-title">Loading...</h1>
+      <div class="article-tags" id="article-tags"></div>
     </header>
-    <article id="content" class="article-body loading" aria-live="polite">Loading post...</article>
-  </div>
+
+    <article id="content" class="article-body loading">Loading post...</article>
+  </main>
+
+  <footer class="site-footer">
+    <span>&copy; 2025 AHKv2 &amp; LLMs</span>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="https://github.com/AutoHotkey" target="_blank">GitHub</a>
+    </div>
+  </footer>
 
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get('slug');
-    const legacyPath = urlParams.get('post');
 
     async function fetchManifest() {
-      const response = await fetch('/AHKv2_LLMs/posts/posts.json');
+      const response = await fetch('posts/posts.json');
       if (!response.ok) throw new Error('Manifest missing');
       return response.json();
     }
 
     function applyMetadata(meta) {
-      const titleEl = document.getElementById('article-title');
-      const dateEl = document.getElementById('article-date');
-      const tagsEl = document.getElementById('article-tags');
-
       if (meta?.title) {
-        titleEl.textContent = meta.title;
+        document.getElementById('article-title').textContent = meta.title;
         document.title = meta.title + ' - AHKv2 & LLMs';
       }
 
       if (meta?.date) {
-        const date = new Date(meta.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
-        dateEl.textContent = `Published ${date}`;
-        dateEl.setAttribute('datetime', meta.date);
-      } else {
-        dateEl.textContent = 'Date unknown';
+        const date = new Date(meta.date).toLocaleDateString(undefined, {
+          year: 'numeric', month: 'long', day: 'numeric'
+        });
+        document.getElementById('article-date').textContent = date;
       }
 
       if (meta?.tags?.length) {
-        tagsEl.innerHTML = meta.tags.map(tag => `<span class="pill pill-soft">${tag}</span>`).join('');
-      } else {
-        tagsEl.innerHTML = '<span class="pill pill-soft">AHK</span>';
+        document.getElementById('article-tags').innerHTML =
+          meta.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
       }
     }
 
@@ -127,7 +167,6 @@
         const response = await fetch(path);
         if (!response.ok) throw new Error('Post not found');
         const markdown = await response.text();
-        const contentWithoutMetadata = markdown.replace(/\[\/\/\]: # \(.*\)\n?/g, '');
 
         marked.setOptions({
           highlight: function(code, lang) {
@@ -140,20 +179,16 @@
           gfm: true
         });
 
-        const html = marked.parse(contentWithoutMetadata);
+        const html = marked.parse(markdown);
         document.getElementById('content').classList.remove('loading');
         document.getElementById('content').innerHTML = html;
         if (meta) applyMetadata(meta);
       } catch (error) {
-        document.getElementById('content').innerHTML = `<p>Error loading post: ${error.message}</p>`;
+        document.getElementById('content').innerHTML = `<p>Error: ${error.message}</p>`;
       }
     }
 
     async function init() {
-      if (legacyPath && !slug) {
-        return renderPost(legacyPath);
-      }
-
       if (!slug) {
         document.getElementById('content').innerHTML = '<p>No post specified.</p>';
         return;
@@ -162,10 +197,10 @@
       try {
         const manifest = await fetchManifest();
         const meta = manifest.find(entry => entry.slug === slug);
-        if (!meta) throw new Error('Post missing from manifest');
+        if (!meta) throw new Error('Post not found');
         renderPost(meta.path, meta);
       } catch (error) {
-        document.getElementById('content').innerHTML = `<p>Error loading post metadata: ${error.message}</p>`;
+        document.getElementById('content').innerHTML = `<p>Error: ${error.message}</p>`;
       }
     }
 
