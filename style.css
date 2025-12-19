@@ -452,3 +452,113 @@ pre code {
   font-size: 13px;
   line-height: 1.5;
 }
+
+/* CPP Theme Colors for Syntax Highlighting */
+/* Keywords: class, if, else, return, etc. */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-type {
+  color: #c586c0;
+  font-weight: 500;
+}
+
+/* Strings */
+.hljs-string,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+  color: #ce9178;
+}
+
+/* Numbers */
+.hljs-number,
+.hljs-literal {
+  color: #b5cea8;
+}
+
+/* Comments */
+.hljs-comment,
+.hljs-quote {
+  color: #6a9955;
+  font-style: italic;
+}
+
+/* Function names */
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #dcdcaa;
+}
+
+/* Variables and parameters */
+.hljs-variable,
+.hljs-params,
+.hljs-attr {
+  color: #9cdcfe;
+}
+
+/* Class names and types */
+.hljs-class .hljs-title,
+.hljs-type {
+  color: #4ec9b0;
+}
+
+/* Operators and punctuation */
+.hljs-symbol,
+.hljs-bullet {
+  color: #d4d4d4;
+}
+
+/* Meta and preprocessor */
+.hljs-meta,
+.hljs-meta .hljs-keyword {
+  color: #569cd6;
+}
+
+/* Attributes */
+.hljs-attribute {
+  color: #9cdcfe;
+}
+
+/* Deletion and addition (diff) */
+.hljs-deletion {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+}
+
+.hljs-addition {
+  color: #2ed573;
+  background: rgba(46, 213, 115, 0.1);
+}
+
+/* Emphasis and strong */
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+/* Code block header for language indicator */
+pre[class*="language-"]::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2px 8px;
+  font-size: 11px;
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  border-radius: 0 var(--radius-md) 0 var(--radius-sm);
+}
+
+/* Repos feed meta footer */
+.repos-meta-footer {
+  padding: 12px;
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-muted);
+  margin-top: 8px;
+}

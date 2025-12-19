@@ -33,6 +33,10 @@ _site
 node_modules
 package-lock.json
 
+# Environment variables
+.env
+.env.local
+
 # Misc
 _sass/vendors
 assets/js/dist
