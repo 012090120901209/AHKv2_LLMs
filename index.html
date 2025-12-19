@@ -104,7 +104,7 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       const feed = new ReposFeed('repos-feed-container', { limit: 25 });
-      feed.fetchRepos();
+      feed.init(); // Uses cached data with API fallback
       loadPosts();
     });
   </script>

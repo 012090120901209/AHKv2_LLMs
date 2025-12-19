@@ -1,10 +1,63 @@
 // repos-feed.js - Fetch and display latest AHK v2 repositories from GitHub
+// Supports both live API fetching and cached local data
 
 class ReposFeed {
   constructor(containerId, options = {}) {
     this.container = document.getElementById(containerId);
     this.limit = options.limit || 10;
     this.loading = false;
+    this.useCache = options.useCache !== false; // Default to using cache
+    this.cachePath = options.cachePath || 'data/ahk-scripts-feed.json';
+    this.fallbackToApi = options.fallbackToApi !== false; // Fallback to API if cache fails
+  }
+
+  /**
+   * Initialize the feed - try cache first, then API
+   */
+  async init() {
+    if (this.useCache) {
+      try {
+        await this.fetchFromCache();
+        return;
+      } catch (error) {
+        console.warn('Cache load failed, falling back to API:', error.message);
+        if (this.fallbackToApi) {
+          await this.fetchRepos();
+        }
+      }
+    } else {
+      await this.fetchRepos();
+    }
+  }
+
+  /**
+   * Fetch repositories from local cache file
+   */
+  async fetchFromCache() {
+    try {
+      this.loading = true;
+      this.showLoading();
+
+      const response = await fetch(this.cachePath);
+
+      if (!response.ok) {
+        throw new Error(`Cache file not found: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (!data.repositories || data.repositories.length === 0) {
+        throw new Error('Cache file is empty');
+      }
+
+      // Limit to configured amount
+      const repos = data.repositories.slice(0, this.limit);
+      this.displayRepos(repos, data.metadata);
+    } catch (error) {
+      throw error;
+    } finally {
+      this.loading = false;
+    }
   }
 
   /**
@@ -43,12 +96,12 @@ class ReposFeed {
       }
 
       const data = await response.json();
-      
+
       if (!data.items || data.items.length === 0) {
         this.container.innerHTML = '<p class="repos-empty">No repositories found. Check back later for updates!</p>';
         return;
       }
-      
+
       this.displayRepos(data.items);
     } catch (error) {
       // Check if it's a network error (CORS, blocked, etc.)
@@ -66,7 +119,7 @@ class ReposFeed {
   /**
    * Display repositories in the container
    */
-  displayRepos(repos) {
+  displayRepos(repos, metadata = null) {
     if (!this.container) {
       console.error('Container element not found');
       return;
@@ -78,7 +131,16 @@ class ReposFeed {
     }
 
     const reposList = repos.map(repo => this.createRepoCard(repo)).join('');
-    this.container.innerHTML = `<ul class="repos-list">${reposList}</ul>`;
+
+    // Add metadata footer if available
+    let metaFooter = '';
+    if (metadata && metadata.updated_at) {
+      const updateDate = new Date(metadata.updated_at);
+      const formattedDate = this.formatDate(updateDate);
+      metaFooter = `<div class="repos-meta-footer">Last updated: ${formattedDate}</div>`;
+    }
+
+    this.container.innerHTML = `<ul class="repos-list">${reposList}</ul>${metaFooter}`;
   }
 
   /**
@@ -88,8 +150,8 @@ class ReposFeed {
     const updatedDate = new Date(repo.updated_at);
     const formattedDate = this.formatDate(updatedDate);
     const stars = this.formatNumber(repo.stargazers_count);
-    const description = repo.description 
-      ? `<p class="repo-description">${this.escapeHtml(repo.description)}</p>` 
+    const description = repo.description
+      ? `<p class="repo-description">${this.escapeHtml(repo.description)}</p>`
       : '';
 
     return `
@@ -176,6 +238,15 @@ class ReposFeed {
         </div>
       `;
     }
+  }
+
+  /**
+   * Force refresh from API (bypasses cache)
+   */
+  async refresh() {
+    this.useCache = false;
+    await this.fetchRepos();
+    this.useCache = true; // Restore cache preference
   }
 }
 

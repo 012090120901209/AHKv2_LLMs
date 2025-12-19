@@ -1,0 +1,57 @@
+# Update AHK v2 Scripts Feed
+# This workflow fetches and caches the latest AHK v2 repositories from GitHub
+name: Update AHK v2 Feed
+
+on:
+  # Run on schedule (every 6 hours)
+  schedule:
+    - cron: '0 */6 * * *'
+  # Allow manual trigger
+  workflow_dispatch:
+  # Also run on push to main when scripts are changed
+  push:
+    branches: ["main"]
+    paths:
+      - 'scripts/update-feed.js'
+      - '.github/workflows/update-feed.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-feed:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run feed update script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FEED_LIMIT: 100
+        run: node scripts/update-feed.js
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet data/ahk-scripts-feed.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/ahk-scripts-feed.json
+          git commit -m "chore: Update AHK v2 scripts feed [automated]"
+          git push
