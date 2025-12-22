@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2025-12-22T06:30:20.655Z",
+  "lastUpdated": "2025-12-22T12:37:15.335Z",
   "totalScripts": 77,
   "categories": [
     "GUI",
@@ -426,7 +426,7 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2025-11-24T04:52:52Z",
-      "lastModified": "2025-12-22T06:21:00Z",
+      "lastModified": "2025-12-22T11:37:31Z",
       "source": "github",
       "url": "https://github.com/haraldchan/Svaner",
       "stars": 2,
