@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2025-12-23T18:26:46.361Z",
-  "totalScripts": 79,
+  "lastUpdated": "2025-12-24T01:21:11.739Z",
+  "totalScripts": 81,
   "categories": [
     "GUI",
     "Hotkeys",
@@ -866,13 +866,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2025-09-07T01:51:51Z",
-      "lastModified": "2025-12-07T21:18:11Z",
+      "lastModified": "2025-12-24T00:12:03Z",
       "source": "github",
       "url": "https://github.com/holy-tao/AhkWin32Projection",
       "stars": 28,
       "forks": 3,
       "owner": "holy-tao",
-      "code": "```cpp\n; ============================================\n; Repository: holy-tao/AhkWin32Projection\n; ============================================\n; URL: https://github.com/holy-tao/AhkWin32Projection\n; Stars: 28 | Forks: 3\n; Last Updated: 12/7/2025\n; License: MIT License\n;\n; Description:\n; Win32 API bindings for 64-bit AutoHotkey V2\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/holy-tao/AhkWin32Projection.git\n;\n; Option 2: Download ZIP\n;   https://github.com/holy-tao/AhkWin32Projection/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <AhkWin32Projection>\n\n; Example initialization\nclass Ahkwin32projectionExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"AhkWin32Projection loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := Ahkwin32projectionExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: holy-tao/AhkWin32Projection\n; ============================================\n; URL: https://github.com/holy-tao/AhkWin32Projection\n; Stars: 28 | Forks: 3\n; Last Updated: 12/24/2025\n; License: MIT License\n;\n; Description:\n; Win32 API bindings for 64-bit AutoHotkey V2\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/holy-tao/AhkWin32Projection.git\n;\n; Option 2: Download ZIP\n;   https://github.com/holy-tao/AhkWin32Projection/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <AhkWin32Projection>\n\n; Example initialization\nclass Ahkwin32projectionExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"AhkWin32Projection loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := Ahkwin32projectionExample()\n```"
     },
     {
       "id": "github-1005082612",
@@ -1539,6 +1539,48 @@
       "forks": 0,
       "owner": "Insolvenzberater",
       "code": "```cpp\n; ============================================\n; Repository: Insolvenzberater/bloons_td6_autohotkey_spammer\n; ============================================\n; URL: https://github.com/Insolvenzberater/bloons_td6_autohotkey_spammer\n; Stars: 0 | Forks: 0\n; Last Updated: 12/23/2025\n; License: Not specified\n;\n; Description:\n; A specialized AutoHotkey v2 utility for Bloons TD 6. Selectively automate tower abilities with a real-time, transparent multi-monitor overlay and context-aware input.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/Insolvenzberater/bloons_td6_autohotkey_spammer.git\n;\n; Option 2: Download ZIP\n;   https://github.com/Insolvenzberater/bloons_td6_autohotkey_spammer/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <bloons_td6_autohotkey_spammer>\n\n; Example initialization\nclass BloonsTd6AutohotkeySpammerExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"bloons_td6_autohotkey_spammer loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := BloonsTd6AutohotkeySpammerExample()\n```"
+    },
+    {
+      "id": "github-887506318",
+      "title": "ahk-dumper",
+      "category": "GitHub Repository",
+      "description": "AutoHotkey V2 variable dumping for debugging and development.",
+      "tags": [
+        "github",
+        "repository",
+        "ahk",
+        "ahkv2",
+        "autohotkey",
+        "autohotkey-v2"
+      ],
+      "difficulty": "varies",
+      "dateAdded": "2024-11-12T21:05:44Z",
+      "lastModified": "2025-12-23T22:27:09Z",
+      "source": "github",
+      "url": "https://github.com/tonybweb/ahk-dumper",
+      "stars": 8,
+      "forks": 1,
+      "owner": "tonybweb",
+      "code": "```cpp\n; ============================================\n; Repository: tonybweb/ahk-dumper\n; ============================================\n; URL: https://github.com/tonybweb/ahk-dumper\n; Stars: 8 | Forks: 1\n; Last Updated: 12/23/2025\n; License: MIT License\n;\n; Description:\n; AutoHotkey V2 variable dumping for debugging and development.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/tonybweb/ahk-dumper.git\n;\n; Option 2: Download ZIP\n;   https://github.com/tonybweb/ahk-dumper/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <ahk-dumper>\n\n; Example initialization\nclass AhkDumperExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"ahk-dumper loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AhkDumperExample()\n```"
+    },
+    {
+      "id": "github-1121940260",
+      "title": "ahk-macro-recorder",
+      "category": "GitHub Repository",
+      "description": "An AutoHotkey v2 macro recorder with humanized playback and GUI",
+      "tags": [
+        "github",
+        "repository"
+      ],
+      "difficulty": "varies",
+      "dateAdded": "2025-12-23T20:23:33Z",
+      "lastModified": "2025-12-23T21:33:08Z",
+      "source": "github",
+      "url": "https://github.com/NoOne20104/ahk-macro-recorder",
+      "stars": 1,
+      "forks": 0,
+      "owner": "NoOne20104",
+      "code": "```cpp\n; ============================================\n; Repository: NoOne20104/ahk-macro-recorder\n; ============================================\n; URL: https://github.com/NoOne20104/ahk-macro-recorder\n; Stars: 1 | Forks: 0\n; Last Updated: 12/23/2025\n; License: MIT License\n;\n; Description:\n; An AutoHotkey v2 macro recorder with humanized playback and GUI\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/NoOne20104/ahk-macro-recorder.git\n;\n; Option 2: Download ZIP\n;   https://github.com/NoOne20104/ahk-macro-recorder/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <ahk-macro-recorder>\n\n; Example initialization\nclass AhkMacroRecorderExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"ahk-macro-recorder loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AhkMacroRecorderExample()\n```"
     }
   ]
 }
