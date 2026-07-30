@@ -44,7 +44,7 @@
 
   <main id="main-content" class="home-main">
     <section class="lab-hero win11-hero" aria-labelledby="hero-title" data-win-desktop>
-      <div class="win11-wallpaper" aria-hidden="true"><img class="win11-wallpaper-image" src="public/windows11-dark-reference.png" alt=""></div>
+      <div class="win11-wallpaper" aria-hidden="true"><picture><source srcset="public/windows11-dark-reference.webp" type="image/webp"><img class="win11-wallpaper-image" src="public/windows11-dark-reference.png" alt="" fetchpriority="high" decoding="async"></picture></div>
       <div class="desktop-status"><span><i aria-hidden="true"></i>AHK v2.1 interpreter online</span><time data-desktop-date></time></div>
 
       <section class="win-window win-studio win-showcase is-focused" data-window="studio" aria-label="AHK v2 Automation Studio">
@@ -84,7 +84,7 @@
 
       <aside class="win-window win-board is-hidden" data-window="board" aria-labelledby="board-preview-title" aria-hidden="true">
         <div class="win-titlebar" data-drag-handle>
-          <div class="win-title"><span class="board-app-icon"><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></span><span>AHK-Eval Monitor</span></div>
+          <div class="win-title"><span class="board-app-icon"><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></span><span>Benchmark Monitor</span></div>
           <div class="win-controls" aria-label="Window controls">
             <button type="button" data-window-action="minimize" aria-label="Minimize"><img src="public/fluent-icons/subtract_16_regular.svg" alt=""></button>
             <button type="button" data-window-action="maximize" aria-label="Maximize"><img src="public/fluent-icons/square_16_regular.svg" alt=""></button>
@@ -93,13 +93,18 @@
         </div>
         <div class="win-board-body">
           <div class="board-topline">
-            <div><span class="panel-kicker">AHK-Eval / cold</span><h2 id="board-preview-title">Current leaders</h2></div>
+            <div><span class="panel-kicker" data-board-kicker>AHK-Eval / cold</span><h2 id="board-preview-title">Current leaders</h2></div>
             <span class="board-date" data-board-date>Loading board…</span>
+          </div>
+          <div class="board-tabs" role="tablist" aria-label="Benchmark boards">
+            <button type="button" role="tab" class="board-tab is-active" aria-selected="true" data-board-tab="eval">AHK-Eval</button>
+            <button type="button" role="tab" class="board-tab" aria-selected="false" data-board-tab="clipboard">Clipboard GUI</button>
           </div>
           <div id="leader-preview" class="leader-preview" aria-live="polite">
             <div class="leader-skeleton"></div><div class="leader-skeleton"></div><div class="leader-skeleton"></div><div class="leader-skeleton"></div><div class="leader-skeleton"></div>
           </div>
-          <a class="panel-link" href="leaderboard.html">Open the full benchmark</a>
+          <div id="clip-preview" class="leader-preview" aria-live="polite" hidden></div>
+          <a class="panel-link" href="leaderboard.html" data-board-link>Open the full benchmark</a>
         </div>
       </aside>
 
@@ -178,8 +183,8 @@
           <div class="program-head"><span>01 / Logic</span><b>36 × 181</b></div>
           <h3>AHK-Eval</h3>
           <p>HumanEval-style functions across strings, arrays, regex, maps, dates, and pure logic. Every answer meets hidden cases it never saw.</p>
-          <div class="program-meter" aria-hidden="true"><i style="width:97.2%"></i></div>
-          <span class="program-note">Best cold run: 35/36 · 177/181 cases</span>
+          <div class="program-meter" aria-hidden="true"><i style="width:97.2%" data-eval-meter></i></div>
+          <span class="program-note" data-eval-note>Best cold run: 35/36 · 177/181 cases</span>
         </a>
 
         <a class="program-card" href="post.html?slug=llm-clipboard-benchmark">
@@ -201,9 +206,9 @@
     </section>
 
     <section class="insight-band" aria-label="Current benchmark insight">
-      <p><span>FIELD NOTE / 2026-07</span> Price and correctness are not moving in lockstep.</p>
-      <strong>GPT-5.6 Luna Pro reaches 34/36 at $6/M output — the same task score as the $30/M Sol tier.</strong>
-      <a href="post.html?slug=gpt-5.6-ahk-eval">Read the sweep <span aria-hidden="true">→</span></a>
+      <p><span data-insight-date>FIELD NOTE / 2026-07</span> <span data-insight-summary>23/24 cold on a suite built to be beaten by agents — and the one miss is a method-call resolution bug.</span></p>
+      <strong data-insight-title>Kimi K3 Nearly Beats the Agent Benchmark Cold</strong>
+      <a data-insight-link href="post.html?slug=kimi-k3-ahk-eval">Read the post <span aria-hidden="true">→</span></a>
     </section>
 
     <section id="articles" class="articles-section" aria-labelledby="articles-title">
@@ -295,8 +300,8 @@
           <article class="home-post-card${index === 0 ? ' post-featured' : ''}">
             <a href="post.html?slug=${encodeURIComponent(post.slug)}">
               <div class="home-post-meta"><span>${label}</span><time datetime="${escapeHtml(post.date)}">${formatDate(post.date)}</time></div>
-              <h3>${escapeHtml(post.title)}</h3>
-              <p>${escapeHtml(post.description)}</p>
+              <h3>${escapeHtml(post.preview_title || post.title)}</h3>
+              <p>${escapeHtml(post.preview || post.description)}</p>
               <div class="home-post-foot"><span>${(post.tags || []).slice(0, 2).map(escapeHtml).join(' · ')}</span><b aria-hidden="true">↗</b></div>
             </a>
           </article>`;
@@ -316,8 +321,18 @@
           <span class="leader-track" aria-hidden="true"><i style="width:${(row.solved / board.tasks) * 100}%"></i></span>
           <strong>${row.solved}<small>/${board.tasks}</small></strong>
         </a>`).join('');
-      document.querySelectorAll('[data-board-date]').forEach((node) => node.textContent = `Updated ${formatDate(board.generated)}`);
       document.querySelectorAll('[data-board-count]').forEach((node) => node.textContent = board.rows.length);
+      boardTabState.evalLabel = `Updated ${formatDate(board.generated)}`;
+      const clipboardTabActive = document.querySelector('[data-board-tab="clipboard"]')?.classList.contains('is-active') === true;
+      if (!clipboardTabActive) document.querySelectorAll('[data-board-date]').forEach((node) => node.textContent = boardTabState.evalLabel);
+
+      const best = [...board.rows].sort((a, b) => a.rank - b.rank)[0];
+      if (best) {
+        const note = document.querySelector('[data-eval-note]');
+        const meter = document.querySelector('[data-eval-meter]');
+        if (note) note.textContent = `Best cold run: ${best.solved}/${board.tasks} · ${best.cases}/${best.case_tot} cases`;
+        if (meter) meter.style.width = `${((best.solved / board.tasks) * 100).toFixed(1)}%`;
+      }
     }
 
     async function hydrateHome() {
@@ -333,7 +348,8 @@
         renderBoard(board);
         renderPosts();
 
-        const featured = allPosts.find((post) => post.tags?.includes('Benchmark')) || allPosts[0];
+        const benchmarkPosts = allPosts.filter((post) => post.tags?.includes('Benchmark'));
+        const featured = benchmarkPosts[0] || allPosts[0];
         if (featured) {
           document.getElementById('featured-link').href = `post.html?slug=${encodeURIComponent(featured.slug)}`;
           document.getElementById('featured-date').dateTime = featured.date;
@@ -343,12 +359,84 @@
           const topic = (featured.tags || []).filter((tag) => tag !== 'LLMs' && tag !== 'Benchmark').slice(0, 3).join(' · ');
           if (topic) document.querySelector('.dispatch-topic').textContent = topic;
         }
+
+        // Insight band: second-latest benchmark post, so it stays fresh without curation
+        const insight = benchmarkPosts[1];
+        if (insight) {
+          const setText = (selector, text) => { const node = document.querySelector(selector); if (node) node.textContent = text; };
+          setText('[data-insight-title]', insight.preview_title || insight.title);
+          setText('[data-insight-summary]', insight.preview || insight.description);
+          setText('[data-insight-date]', `FIELD NOTE / ${insight.date.slice(0, 7)}`);
+          const insightLink = document.querySelector('[data-insight-link]');
+          if (insightLink) insightLink.href = `post.html?slug=${encodeURIComponent(insight.slug)}`;
+        }
       } catch (error) {
         console.error(error);
         document.getElementById('leader-preview').innerHTML = '<p class="data-error">The live board could not be loaded.</p>';
         document.getElementById('post-grid').innerHTML = '<p class="data-error">The research archive could not be loaded.</p>';
         document.getElementById('article-count').textContent = 'Archive temporarily unavailable';
       }
+    }
+
+    // Benchmark Monitor tabs: AHK-Eval uses the bundled board.json;
+    // the 700KB clipboard models.json is fetched lazily on first tab activation.
+    const boardTabState = { clipboardLoaded: false, clipCount: 0, evalLabel: '' };
+    const boardKicker = document.querySelector('[data-board-kicker]');
+    const boardLink = document.querySelector('[data-board-link]');
+    const boardDateNode = document.querySelector('[data-board-date]');
+
+    function renderClipboardBoard(models) {
+      const coded = models.filter((m) => m.bytes > 0 && m.rank != null).sort((a, b) => a.rank - b.rank);
+      boardTabState.clipCount = coded.length;
+      document.getElementById('clip-preview').innerHTML = coded.slice(0, 5).map((row, index) => `
+        <a class="leader-row" href="model.html?id=${encodeURIComponent(row.id)}" aria-label="Rank ${index + 1}: ${escapeHtml(row.display)}, code score ${row.score} of 100">
+          <span class="leader-rank">${String(index + 1).padStart(2, '0')}</span>
+          <span class="leader-name"><b>${escapeHtml(row.display)}</b><small>${escapeHtml(row.provider)}${row.visual != null ? ` · vis ${row.visual}/20` : ''}</small></span>
+          <span class="leader-track" aria-hidden="true"><i style="width:${row.score}%"></i></span>
+          <strong>${row.score}<small>/100</small></strong>
+        </a>`).join('');
+      boardTabState.clipboardLoaded = true;
+      if (boardDateNode) boardDateNode.textContent = `${coded.length} entries`;
+    }
+
+    async function activateBoardTab(name) {
+      const isClip = name === 'clipboard';
+      document.querySelectorAll('[data-board-tab]').forEach((tab) => {
+        const active = tab.dataset.boardTab === name;
+        tab.classList.toggle('is-active', active);
+        tab.setAttribute('aria-selected', String(active));
+      });
+      document.getElementById('leader-preview').hidden = isClip;
+      document.getElementById('clip-preview').hidden = !isClip;
+      if (boardKicker) boardKicker.textContent = isClip ? 'Clipboard GUI / score' : 'AHK-Eval / cold';
+      if (boardLink) boardLink.href = isClip ? 'clipboard-leaderboard.html' : 'leaderboard.html';
+      if (!isClip) {
+        if (boardDateNode && boardTabState.evalLabel) boardDateNode.textContent = boardTabState.evalLabel;
+        return;
+      }
+      if (boardDateNode) boardDateNode.textContent = boardTabState.clipCount ? `${boardTabState.clipCount} entries` : 'Loading board…';
+      if (boardTabState.clipboardLoaded) return;
+      const preview = document.getElementById('clip-preview');
+      preview.innerHTML = '<div class="leader-skeleton"></div>'.repeat(5);
+      try {
+        const res = await fetch('posts/clipboard-benchmark/models.json');
+        if (!res.ok) throw new Error('clipboard board unavailable');
+        renderClipboardBoard(await res.json());
+      } catch (error) {
+        console.error(error);
+        preview.innerHTML = '<p class="data-error">The clipboard board could not be loaded.</p>';
+      }
+    }
+
+    document.querySelectorAll('[data-board-tab]').forEach((tab) => {
+      tab.addEventListener('click', () => activateBoardTab(tab.dataset.boardTab));
+    });
+
+    // Deep links: #board opens the Benchmark Monitor, #board-clipboard selects the GUI board
+    if (location.hash === '#board' || location.hash === '#board-clipboard') {
+      document.querySelector('[data-open-window="board"]')?.click();
+      document.querySelector('.lab-hero')?.scrollIntoView({ block: 'start' });
+      if (location.hash === '#board-clipboard') activateBoardTab('clipboard');
     }
 
     document.querySelectorAll('.filter-button').forEach((button) => {

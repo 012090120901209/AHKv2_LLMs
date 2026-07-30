@@ -1058,6 +1058,40 @@ body > * { min-width: 0; }
 
 .panel-link:hover { color: var(--lab-orange-bright); }
 
+/* Benchmark Monitor board tabs */
+.board-tabs {
+  display: flex;
+  gap: 4px;
+  padding-top: 9px;
+  border-bottom: 1px solid var(--lab-line-soft);
+}
+
+.board-tab {
+  appearance: none;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  padding: 7px 10px 8px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--lab-dim);
+  cursor: pointer;
+}
+
+.board-tab:hover { color: var(--lab-text); }
+
+.board-tab.is-active {
+  color: var(--lab-orange);
+  border-bottom-color: var(--lab-orange);
+}
+
+.board-tab:focus-visible {
+  outline: 2px solid var(--lab-orange-bright);
+  outline-offset: 2px;
+}
+
 .signal-strip {
   min-height: 122px;
   display: grid;
