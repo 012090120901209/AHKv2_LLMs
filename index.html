@@ -47,6 +47,13 @@
       <div class="win11-wallpaper" aria-hidden="true"><picture><source srcset="public/windows11-dark-reference.webp" type="image/webp"><img class="win11-wallpaper-image" src="public/windows11-dark-reference.png" alt="" fetchpriority="high" decoding="async"></picture></div>
       <div class="desktop-status"><span><i aria-hidden="true"></i>AHK v2.1 interpreter online</span><time data-desktop-date></time></div>
 
+      <div class="desktop-shortcuts" aria-label="Desktop shortcuts">
+        <button type="button" data-open-window="studio"><img src="logo.svg" alt=""><span>Automation Studio</span></button>
+        <button type="button" data-open-window="board"><span class="shortcut-glyph"><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></span><span>Benchmark Monitor</span></button>
+        <a href="wiki.html"><span class="shortcut-glyph"><img src="public/fluent-icons/folder_24_regular.svg" alt=""></span><span>AHK Wiki</span></a>
+        <a href="prompts.html"><span class="shortcut-glyph shortcut-code">&lt;/&gt;</span><span>Prompts</span></a>
+      </div>
+
       <section class="win-window win-studio win-showcase is-focused" data-window="studio" aria-label="AHK v2 Automation Studio">
         <div class="win-titlebar" data-drag-handle>
           <div class="win-title"><img src="logo.svg" alt=""><span>AHK v2 Automation Studio</span><small>ahk-lab.ahk</small></div>
@@ -57,10 +64,16 @@
           </div>
         </div>
         <div class="studio-body">
+          <div class="studio-menubar" aria-hidden="true"><span>File</span><span>Edit</span><span>View</span><span>Run</span><span>Tools</span><span>Help</span></div>
+          <div class="studio-toolbar">
+            <button type="button" class="studio-tool" data-run-demo><span aria-hidden="true">▶</span>Run demo</button>
+            <button type="button" class="studio-tool" data-open-window="board"><img src="public/fluent-icons/window_multiple_24_regular.svg" alt="">Benchmark Monitor</button>
+            <span class="studio-toolbar-path" aria-hidden="true">C:\AHK\ahk-lab.ahk</span>
+          </div>
           <header class="studio-intro">
             <div class="studio-kicker"><span aria-hidden="true"></span>#Requires AutoHotkey v2.1</div>
             <h1 id="hero-title">AutoHotkey v2 makes Windows <em>yours.</em></h1>
-            <p>Choose one of the five capabilities below the desktop to run a hands-on AHK v2 demonstration in this window.</p>
+            <p>Pick a script from the library — the app runs a hands-on AHK v2 demonstration in the editor pane.</p>
             <div class="studio-actions">
               <a href="leaderboard.html">Open leaderboard</a>
               <a href="post.html?slug=ahk-eval-benchmark">How we test</a>
@@ -68,6 +81,14 @@
           </header>
 
           <section class="automation-workspace" aria-labelledby="automation-title">
+            <aside class="automation-launcher" aria-label="Demo script library">
+              <div><span class="studio-section-label">Script library</span><h2 id="automation-title">ahk-lab.ahk demos</h2></div>
+              <button type="button" class="automation-button is-active" data-ahk-demo="windows"><span><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></span><b>window-layout.ahk</b><small>Window control</small></button>
+              <button type="button" class="automation-button" data-ahk-demo="text"><span><img src="public/fluent-icons/text_case_title_24_regular.svg" alt=""></span><b>hotstrings.ahk</b><small>Text expansion</small></button>
+              <button type="button" class="automation-button" data-ahk-demo="clipboard"><span><img src="public/fluent-icons/clipboard_24_regular.svg" alt=""></span><b>clipboard-workflow.ahk</b><small>Clipboard workflows</small></button>
+              <button type="button" class="automation-button" data-ahk-demo="files"><span><img src="public/fluent-icons/folder_24_regular.svg" alt=""></span><b>download-sorter.ahk</b><small>File automation</small></button>
+              <button type="button" class="automation-button" data-ahk-demo="gui"><span><img src="public/fluent-icons/window_dev_tools_24_regular.svg" alt=""></span><b>release-builder.ahk</b><small>Desktop apps</small></button>
+            </aside>
             <div class="automation-demo" data-demo-output aria-live="polite">
               <div class="demo-titlebar"><span><i aria-hidden="true"></i>window-layout.ahk</span><b data-demo-status>ready</b></div>
               <div class="demo-visual demo-windows" data-demo-visual>
@@ -79,6 +100,7 @@
               <pre data-demo-code><code><span>WinMove</span> 0, 0, A_ScreenWidth / 2, A_ScreenHeight, "A"</code></pre>
             </div>
           </section>
+          <footer class="studio-statusbar"><span data-studio-status>Ready</span><span aria-hidden="true">AHK v2.1 · alpha.30 · Ln 1, Col 1</span></footer>
         </div>
       </section>
 

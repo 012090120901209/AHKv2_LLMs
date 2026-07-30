@@ -12,7 +12,9 @@
   const startButton = desktop.querySelector('[data-start-button]');
   const startMenu = desktop.querySelector('[data-start-menu]');
   const windows = [...desktop.querySelectorAll('[data-window]')];
+  const studioStatus = desktop.querySelector('[data-studio-status]');
   let statusTimer;
+  let currentDemo = 'windows';
 
   const demos = {
     windows: {
@@ -65,6 +67,7 @@
   function selectDemo(name, animate = true) {
     const demo = demos[name];
     if (!demo || !demoOutput) return;
+    currentDemo = name;
     desktop.querySelectorAll('[data-ahk-demo]').forEach((button) => {
       button.classList.toggle('is-active', button.dataset.ahkDemo === name && button.classList.contains('automation-button'));
     });
@@ -85,10 +88,12 @@
     void demoOutput.offsetWidth;
     demoOutput.classList.add('is-running');
     demoStatus.textContent = 'running';
+    if (studioStatus) studioStatus.textContent = `Running ${demo.file}…`;
     clearTimeout(statusTimer);
     statusTimer = setTimeout(() => {
       demoStatus.textContent = 'complete';
       demoOutput.classList.remove('is-running');
+      if (studioStatus) studioStatus.textContent = `${demo.file} — complete`;
     }, 720);
   }
 
@@ -120,6 +125,7 @@
       toggleStart();
       return;
     }
+    if (event.target.closest('[data-run-demo]')) selectDemo(currentDemo);
     if (demoButton) selectDemo(demoButton.dataset.ahkDemo);
     if (openButton) openWindow(openButton.dataset.openWindow);
     if (demoButton || openButton) toggleStart(false);
