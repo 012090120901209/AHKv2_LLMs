@@ -143,22 +143,22 @@
     <section class="signal-strip" aria-label="Benchmark scale">
       <div><strong>36</strong><span>AHK-Eval tasks</span></div>
       <div><strong>181</strong><span>hidden cases</span></div>
-      <div><strong data-board-count>27</strong><span>board entries</span></div>
-      <div><strong>77</strong><span>models in the GUI sweep</span></div>
+      <div><strong data-board-count>35</strong><span>board entries</span></div>
+      <div><strong>83</strong><span>models in the GUI sweep</span></div>
       <p>Every score has a failure story. We publish those too.</p>
     </section>
 
     <section class="dispatch-section" aria-labelledby="dispatch-title">
       <div class="dispatch-label">
         <span>Latest dispatch</span>
-        <time id="featured-date" datetime="2026-07-09">July 9, 2026</time>
+        <time id="featured-date" datetime="2026-07-24">July 24, 2026</time>
       </div>
-      <a id="featured-link" class="dispatch-card" href="post.html?slug=gpt-5.6-ahk-eval">
+      <a id="featured-link" class="dispatch-card" href="post.html?slug=opus-5-clipboard-bench">
         <div class="dispatch-mark" aria-hidden="true">#1</div>
         <div class="dispatch-copy">
-          <p class="dispatch-topic">OpenAI · AHK-Eval · launch-day sweep</p>
-          <h2 id="dispatch-title">GPT-5.6 takes the board by one hidden case.</h2>
-          <p id="featured-description">Six endpoints, one $5.23 sweep, and a new leader whose only lost task came down to a borrowed string-comparison idiom.</p>
+          <p class="dispatch-topic">Anthropic · Clipboard · first perfect score</p>
+          <h2 id="dispatch-title">Opus 5 Takes the Clipboard Board's First Perfect Score</h2>
+          <p id="featured-description">A perfect 100 at the top, and the discovery that the board's screenshots were cropping 20% off every DPI-aware window.</p>
         </div>
         <span class="dispatch-arrow" aria-hidden="true">↗</span>
       </a>
@@ -338,7 +338,10 @@
           document.getElementById('featured-link').href = `post.html?slug=${encodeURIComponent(featured.slug)}`;
           document.getElementById('featured-date').dateTime = featured.date;
           document.getElementById('featured-date').textContent = formatDate(featured.date);
-          document.getElementById('featured-description').textContent = featured.description;
+          document.getElementById('dispatch-title').textContent = featured.preview_title || featured.title;
+          document.getElementById('featured-description').textContent = featured.preview || featured.description;
+          const topic = (featured.tags || []).filter((tag) => tag !== 'LLMs' && tag !== 'Benchmark').slice(0, 3).join(' · ');
+          if (topic) document.querySelector('.dispatch-topic').textContent = topic;
         }
       } catch (error) {
         console.error(error);

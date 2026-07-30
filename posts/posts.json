@@ -1,5 +1,37 @@
 [
  {
+  "slug": "opus-5-clipboard-bench",
+  "title": "Opus 5 Under the Live Harness: The First 100",
+  "preview_title": "Opus 5 Takes the Clipboard Board's First Perfect Score",
+  "date": "2026-07-24",
+  "description": "Claude Opus 5, run as the live working harness rather than a cold API call, takes rank 1 of 83 on the clipboard-formatter benchmark with the first perfect static score the board has produced — 100/100, a running window, and a 20/20 fully dark render. The two points over Fable 5 come from one item: a third derived wrapper class, where each override gives Value a different meaning per control type. The run also exposed a defect in the capture harness — PowerShell is DPI-unaware, so every screenshot of a DPI-aware window was measured 20% small and silently cropped, including the previously published rank-1 shot.",
+  "preview": "A perfect 100 at the top, and the discovery that the board's screenshots were cropping 20% off every DPI-aware window.",
+  "tags": [
+   "LLMs",
+   "Benchmark",
+   "Clipboard",
+   "Opus 5",
+   "Anthropic"
+  ],
+  "path": "posts/opus-5-clipboard-bench.md"
+ },
+ {
+  "slug": "kimi-k3-ahk-eval",
+  "title": "Kimi K3: Four Tasks Better Than K2.6, and the First Model Through AHK-Contract",
+  "preview_title": "Kimi K3 Nearly Beats the Agent Benchmark Cold",
+  "date": "2026-07-16",
+  "description": "Moonshot K3 takes rank 6 on AHK-Eval at 34/36 — four tasks clear of K2.6 — and becomes the first model ever to run AHK-Contract, scoring 23/24 cold. It went 4/4 on the binding and meta categories the suite named its load-bearing cases, leaving one task of headroom for the cold-to-agent delta the benchmark was built to measure. Its single contract loss is one line: calling a stored hook as this.pre(v), which AHK resolves as a method call and hands the instance as an implicit first argument. Both sweeps, 60 calls, $1.71.",
+  "preview": "23/24 cold on a suite built to be beaten by agents — and the one miss is a method-call resolution bug.",
+  "tags": [
+   "LLMs",
+   "Benchmark",
+   "AHK-Eval",
+   "AHK-Contract",
+   "Kimi"
+  ],
+  "path": "posts/kimi-k3-ahk-eval.md"
+ },
+ {
   "slug": "ahk-repair-benchmark",
   "title": "AHK-Repair: Terra Fixes What It Can't Write",
   "preview_title": "AHK-Repair: Terra Tops the Fix Board",
@@ -50,10 +82,8 @@
  {
   "slug": "gpt-5.6-ahk-eval",
   "title": "OpenAI GPT-5.6: A New #1 by One Hidden Case — and a Family That Codes in Borrowed APIs",
-  "preview_title": "GPT-5.6 Takes #1 by One Hidden Case",
   "date": "2026-07-09",
   "description": "All six GPT-5.6 endpoints ran AHK-Eval on launch day. Sol Pro dethrones GPT-5.5 by a single hidden case (177 vs 176); $6/M Luna Pro ties $30/M Sol at 34/36 and lands on the cost-efficiency frontier; Terra Pro pays 6× the tokens to score below base Terra. Nearly every dropped task is a borrowed API — s.Split(), Array.Sort(), a nonexistent Trunc(), and the char-range comparison that cost the new #1 its only task. Total sweep: $5.23.",
-  "preview": "Sol Pro takes #1 by one hidden case, while $6/M Luna Pro ties the $30/M Sol tier at 34/36.",
   "tags": [
    "LLMs",
    "Benchmark",
@@ -61,7 +91,9 @@
    "GPT-5.6",
    "AHK-Eval"
   ],
-  "path": "posts/gpt-5.6-ahk-eval.md"
+  "path": "posts/gpt-5.6-ahk-eval.md",
+  "preview_title": "GPT-5.6 Takes #1 by One Hidden Case",
+  "preview": "Sol Pro takes #1 by one hidden case, while $6/M Luna Pro ties the $30/M Sol tier at 34/36."
  },
  {
   "slug": "grok-4.5-ahk-eval",
@@ -132,9 +164,9 @@
  },
  {
   "slug": "ahk-eval-benchmark",
-    "title": "AHK-Eval Explained: 36 Tasks, 181 Hidden Tests",
+  "title": "AHK-Eval: 36 Tasks, 181 Hidden Tests, 13 Models",
   "date": "2026-06-11",
-    "description": "How AHK-Eval works: 36 independent AutoHotkey v2 functions, 181 hidden cases, live model rankings, category difficulty, and the measured lift from rules cards and execution feedback.",
+  "description": "A HumanEval-style AHK v2 benchmark: 36 independent functions across six categories and three difficulty tiers, graded against hidden test cases. GPT-5.5 lands one task from perfect; Claude Fable 5 — the model that built the benchmark, run cold over the bare API — takes second at 34/36 and falls into its own favorite trap.",
   "tags": [
    "LLMs",
    "Benchmark",
