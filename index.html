@@ -131,7 +131,7 @@
       </aside>
 
       <div class="win-start-menu" data-start-menu hidden>
-        <div class="start-search"><img src="public/fluent-icons/search_24_regular.svg" alt="">Search AHK v2 capabilities</div>
+        <div class="start-search"><img src="public/fluent-icons/search_24_regular.svg" alt=""><input type="text" placeholder="Search AHK v2 capabilities" aria-label="Search AHK v2 capabilities" data-start-search></div>
         <div class="start-heading"><span>Pinned</span><a href="benchmarks.html">All apps</a></div>
         <div class="start-grid">
           <button type="button" data-ahk-demo="windows" data-open-window="studio"><span><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></span><b>Windows</b></button>
@@ -145,6 +145,10 @@
       </div>
 
       <div class="win-taskbar" aria-label="Windows-style taskbar">
+        <div class="taskbar-widgets" aria-hidden="true">
+          <span class="widgets-icon">☀</span>
+          <span class="widgets-text">72°F<small>Mostly clear</small></span>
+        </div>
         <div class="taskbar-center">
           <button type="button" class="start-button" data-start-button aria-label="Open Start menu" aria-expanded="false"><img src="public/fluent-icons/apps_24_filled.svg" alt=""></button>
           <button type="button" class="task-search" data-open-window="studio"><img src="public/fluent-icons/search_24_regular.svg" alt="">Search AHK v2</button>
@@ -152,7 +156,31 @@
           <button type="button" class="task-app is-running" data-open-window="board" aria-label="Open benchmark monitor"><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></button>
           <a class="task-app" href="prompts.html" aria-label="Open prompt library"><img src="public/fluent-icons/code_24_regular.svg" alt=""></a>
         </div>
-        <div class="taskbar-tray"><span aria-hidden="true"><img src="public/fluent-icons/wifi_4_20_regular.svg" alt=""><img src="public/fluent-icons/speaker_2_20_regular.svg" alt=""><img src="public/fluent-icons/battery_10_20_regular.svg" alt=""></span><time data-taskbar-clock></time></div>
+        <div class="taskbar-tray"><button type="button" class="tray-icons" data-tray-icons aria-label="Quick settings" aria-expanded="false"><img src="public/fluent-icons/wifi_4_20_regular.svg" alt=""><img src="public/fluent-icons/speaker_2_20_regular.svg" alt=""><img src="public/fluent-icons/battery_10_20_regular.svg" alt=""></button><time data-taskbar-clock></time></div>
+      </div>
+
+      <div class="quick-settings" data-quick-settings hidden>
+        <div class="qs-grid">
+          <button type="button" class="qs-toggle is-on" aria-pressed="true"><img src="public/fluent-icons/wifi_4_20_regular.svg" alt=""><span>Wi-Fi</span></button>
+          <button type="button" class="qs-toggle is-on" aria-pressed="true"><span class="qs-glyph" aria-hidden="true">ᛒ</span><span>Bluetooth</span></button>
+          <button type="button" class="qs-toggle is-on" aria-pressed="true"><span class="qs-glyph" aria-hidden="true">☾</span><span>Night light</span></button>
+          <button type="button" class="qs-toggle" aria-pressed="false"><img src="public/fluent-icons/battery_10_20_regular.svg" alt=""><span>Battery saver</span></button>
+        </div>
+        <div class="qs-slider"><span class="qs-glyph" aria-hidden="true">☀</span><input type="range" min="40" max="110" value="86" aria-label="Brightness" data-qs-brightness></div>
+        <div class="qs-slider"><img src="public/fluent-icons/speaker_2_20_regular.svg" alt=""><input type="range" min="0" max="100" value="65" aria-label="Volume"></div>
+      </div>
+
+      <div class="desktop-menu" data-context-menu hidden role="menu" aria-label="Desktop context menu">
+        <button type="button" role="menuitem" disabled>View <span aria-hidden="true">▸</span></button>
+        <button type="button" role="menuitem" disabled>Sort by <span aria-hidden="true">▸</span></button>
+        <hr>
+        <button type="button" role="menuitem" data-menu-refresh>Refresh</button>
+        <hr>
+        <button type="button" role="menuitem" disabled>New <span aria-hidden="true">▸</span></button>
+        <hr>
+        <a role="menuitem" href="console.html">Open in Terminal</a>
+        <button type="button" role="menuitem" disabled>Personalize</button>
+        <button type="button" role="menuitem" disabled>Show more options</button>
       </div>
     </section>
 

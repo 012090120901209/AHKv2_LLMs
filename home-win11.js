@@ -24,7 +24,7 @@
       description: 'AHK can find, focus, resize, and arrange native Windows applications around the way you work.',
       visualClass: 'demo-windows',
       visual: '<div class="mini-window mini-one"><span></span><p>Research</p></div><div class="mini-window mini-two"><span></span><p>Editor</p></div><div class="mini-window mini-three"><span></span><p>Console</p></div>',
-      code: '<span>WinMove</span> 0, 0, A_ScreenWidth / 2, A_ScreenHeight, "A"'
+      code: '<span class="hl-fn">WinMove</span> <span class="hl-num">0</span>, <span class="hl-num">0</span>, <span class="hl-var">A_ScreenWidth</span> / <span class="hl-num">2</span>, <span class="hl-var">A_ScreenHeight</span>, <span class="hl-str">"A"</span>'
     },
     text: {
       file: 'hotstrings.ahk',
@@ -33,7 +33,7 @@
       description: 'Hotstrings expand signatures, case notes, templates, or any repeated text inside almost any Windows application.',
       visualClass: 'demo-text',
       visual: '<div class="demo-text-editor"><header>New message</header><p>Thanks for your help.<br><br><mark>;sig → Best,<br>Justin</mark></p></div>',
-      code: '<span>Hotstring</span> (":*:;sig", ExpandSignature)'
+      code: '<span class="hl-fn">Hotstring</span>(<span class="hl-str">":*:;sig"</span>, <span class="hl-var">ExpandSignature</span>)'
     },
     clipboard: {
       file: 'clipboard-workflow.ahk',
@@ -42,7 +42,7 @@
       description: 'Watch the clipboard, clean incoming text, keep useful snippets, and paste the right format into the active app.',
       visualClass: 'demo-clipboard',
       visual: '<div class="clipboard-list"><div class="clipboard-item"><span>Raw meeting notes</span><b>captured</b></div><div class="clipboard-item is-picked"><span>Clean Markdown</span><b>selected</b></div><div class="clipboard-item"><span>Plain-text summary</span><b>ready</b></div></div>',
-      code: '<span>A_Clipboard</span> := CleanMarkdown(A_Clipboard)'
+      code: '<span class="hl-var">A_Clipboard</span> := <span class="hl-fn">CleanMarkdown</span>(<span class="hl-var">A_Clipboard</span>)'
     },
     files: {
       file: 'download-sorter.ahk',
@@ -51,7 +51,7 @@
       description: 'AHK can watch directories, rename batches, move files by type, and launch the next step in a desktop workflow.',
       visualClass: 'demo-files',
       visual: '<div class="file-sorter"><div class="file-item"><span>report.pdf</span><b>Documents →</b></div><div class="file-item"><span>capture.png</span><b>Images →</b></div><div class="file-item"><span>results.csv</span><b>Data →</b></div></div>',
-      code: '<span>Loop Files</span> Downloads "\\*.*" { SortDownload(A_LoopFileFullPath) }'
+      code: '<span>Loop Files</span> <span class="hl-var">Downloads</span> <span class="hl-str">"\\*.*"</span> { <span class="hl-fn">SortDownload</span>(<span class="hl-var">A_LoopFileFullPath</span>) }'
     },
     gui: {
       file: 'release-builder.ahk',
@@ -60,7 +60,7 @@
       description: 'Create native tools with inputs, buttons, menus, events, and resizable layouts—without leaving AutoHotkey v2.',
       visualClass: 'demo-gui',
       visual: '<div class="gui-preview"><header><span>Release builder</span><span>×</span></header><label>Project name<i></i></label><label>Output folder<i></i></label><footer><button type="button">Build release</button></footer></div>',
-      code: '<span>app</span> := Gui("+Resize", "Release builder")'
+      code: '<span class="hl-var">app</span> := <span class="hl-fn">Gui</span>(<span class="hl-str">"+Resize"</span>, <span class="hl-str">"Release builder"</span>)'
     }
   };
 
@@ -127,7 +127,7 @@
     }
     if (event.target.closest('[data-run-demo]')) selectDemo(currentDemo);
     if (demoButton) selectDemo(demoButton.dataset.ahkDemo);
-    if (openButton) openWindow(openButton.dataset.openWindow);
+    if (openButton && !openButton.closest('.desktop-shortcuts')) openWindow(openButton.dataset.openWindow);
     if (demoButton || openButton) toggleStart(false);
 
     if (actionButton) {
@@ -199,6 +199,106 @@
     desktop.querySelectorAll('[data-taskbar-clock]').forEach((node) => { node.textContent = `${time}\n${date}`; });
     desktop.querySelectorAll('[data-desktop-date]').forEach((node) => {
       node.textContent = now.toLocaleDateString([], { weekday: 'long', month: 'long', day: 'numeric' });
+    });
+  }
+
+  // Desktop icons: single-click selects, double-click opens
+  const shortcutContainer = desktop.querySelector('.desktop-shortcuts');
+  if (shortcutContainer) {
+    const clearSelection = () => {
+      shortcutContainer.querySelectorAll('.is-selected').forEach((icon) => icon.classList.remove('is-selected'));
+    };
+    shortcutContainer.addEventListener('click', (event) => {
+      const icon = event.target.closest('button, a');
+      if (!icon) return;
+      event.preventDefault();
+      clearSelection();
+      icon.classList.add('is-selected');
+    });
+    shortcutContainer.addEventListener('dblclick', (event) => {
+      const icon = event.target.closest('button, a');
+      if (!icon) return;
+      event.preventDefault();
+      if (icon.tagName === 'A') {
+        window.location.href = icon.href;
+      } else {
+        openWindow(icon.dataset.openWindow);
+      }
+    });
+    desktop.addEventListener('click', (event) => {
+      if (!event.target.closest('.desktop-shortcuts')) clearSelection();
+    });
+  }
+
+  // Quick settings flyout from the tray icons
+  const trayButton = desktop.querySelector('[data-tray-icons]');
+  const quickSettings = desktop.querySelector('[data-quick-settings]');
+  const wallpaperImg = desktop.querySelector('.win11-wallpaper-image');
+  const setSettings = (open) => {
+    if (!quickSettings || !trayButton) return;
+    quickSettings.hidden = !open;
+    trayButton.setAttribute('aria-expanded', String(open));
+  };
+  if (trayButton && quickSettings) {
+    trayButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+      setSettings(quickSettings.hidden);
+    });
+    document.addEventListener('click', (event) => {
+      if (!quickSettings.hidden && !event.target.closest('[data-quick-settings], [data-tray-icons]')) setSettings(false);
+    });
+    quickSettings.querySelectorAll('.qs-toggle').forEach((toggle) => {
+      toggle.addEventListener('click', () => {
+        const on = toggle.classList.toggle('is-on');
+        toggle.setAttribute('aria-pressed', String(on));
+      });
+    });
+    const brightness = quickSettings.querySelector('[data-qs-brightness]');
+    if (brightness && wallpaperImg) {
+      brightness.addEventListener('input', () => {
+        wallpaperImg.style.filter = `saturate(1.04) contrast(1.02) brightness(${brightness.value / 100})`;
+      });
+    }
+  }
+
+  // Desktop right-click context menu
+  const contextMenu = desktop.querySelector('[data-context-menu]');
+  if (contextMenu) {
+    const hideMenu = () => { contextMenu.hidden = true; };
+    desktop.addEventListener('contextmenu', (event) => {
+      if (event.target.closest('.win-window, .win-taskbar, .win-start-menu, .quick-settings, .desktop-shortcuts')) return;
+      event.preventDefault();
+      contextMenu.hidden = false;
+      const rect = desktop.getBoundingClientRect();
+      const x = Math.min(Math.max(8, event.clientX - rect.left), desktop.clientWidth - contextMenu.offsetWidth - 8);
+      const y = Math.min(Math.max(8, event.clientY - rect.top), desktop.clientHeight - contextMenu.offsetHeight - 8);
+      contextMenu.style.left = `${x}px`;
+      contextMenu.style.top = `${y}px`;
+    });
+    contextMenu.addEventListener('click', (event) => {
+      const item = event.target.closest('[role="menuitem"]');
+      if (!item) return;
+      if (item.hasAttribute('data-menu-refresh')) selectDemo(currentDemo);
+      hideMenu();
+    });
+    document.addEventListener('click', (event) => {
+      if (!contextMenu.hidden && !event.target.closest('[data-context-menu]')) hideMenu();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key !== 'Escape') return;
+      hideMenu();
+      setSettings(false);
+    });
+  }
+
+  // Start menu search filters the pinned grid
+  const startSearch = desktop.querySelector('[data-start-search]');
+  if (startSearch) {
+    startSearch.addEventListener('input', () => {
+      const query = startSearch.value.trim().toLowerCase();
+      desktop.querySelectorAll('.start-grid > *').forEach((tile) => {
+        tile.hidden = query ? !tile.textContent.toLowerCase().includes(query) : false;
+      });
     });
   }
 
