@@ -43,4 +43,13 @@ A separate crop was not required. The raw 1440 × 1000 implementation capture pr
 - P3: the Start button uses the closest Fluent Apps glyph instead of Microsoft’s trademarked Windows logo.
 - P3: the taskbar intentionally shows only the site’s relevant apps instead of duplicating every application in the source screenshot.
 
+### Iteration 2
+
+- Added real window/taskbar state: minimize keeps the running underline, close removes it, taskbar clicks toggle minimize/restore/focus, and the focused app gets the wider active underline.
+- Added Windows 11 snap assist: drag to the top edge maximizes, to the left/right edge snaps to half, with a translucent snap preview; dragging a snapped or maximized titlebar restores the window under the cursor.
+- Maximize button swaps to a Fluent restore glyph; double-clicking a titlebar toggles maximize.
+- Added the notification center from the tray clock: AHK-themed notifications with Clear all, plus a live calendar with month navigation and today highlight.
+- Keyboard polish: Escape closes every flyout from anywhere, the Start menu autofocuses search, and Enter launches the first filtered match.
+- Evidence: `qa-win11.mjs` (Playwright, 25 interaction checks, all passing), `preview-v5-notif.png`, `preview-v5-start.png`, `preview-v5-snap.png`, `preview-v5-snapped.png`.
+
 final result: passed

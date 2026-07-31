@@ -13,6 +13,8 @@
   const startMenu = desktop.querySelector('[data-start-menu]');
   const windows = [...desktop.querySelectorAll('[data-window]')];
   const studioStatus = desktop.querySelector('[data-studio-status]');
+  const ICON_MAXIMIZE = 'public/fluent-icons/square_16_regular.svg';
+  const ICON_RESTORE = 'public/fluent-icons/square_multiple_16_regular.svg';
   let statusTimer;
   let currentDemo = 'windows';
 
@@ -97,23 +99,73 @@
     }, 720);
   }
 
+  // ---- Window + taskbar state --------------------------------------------
+  const taskApps = new Map();
+  desktop.querySelectorAll('.task-app[data-open-window]').forEach((button) => {
+    taskApps.set(button.dataset.openWindow, button);
+  });
+
+  const windowByName = (name) => desktop.querySelector(`[data-window="${name}"]`);
+  const isOpen = (win) => win && !win.classList.contains('is-hidden');
+
+  function syncTaskbar() {
+    windows.forEach((win) => {
+      const button = taskApps.get(win.dataset.window);
+      if (!button) return;
+      const open = isOpen(win);
+      button.classList.toggle('is-running', open || win.dataset.minimized === 'true');
+      button.classList.toggle('is-active', open && win.classList.contains('is-focused'));
+    });
+  }
+
+  function setMaximized(win, on) {
+    if (!win) return;
+    win.classList.toggle('is-maximized', on);
+    if (on) win.classList.remove('is-snapped-left', 'is-snapped-right');
+    const button = win.querySelector('[data-window-action="maximize"]');
+    if (button) {
+      button.setAttribute('aria-label', on ? 'Restore' : 'Maximize');
+      const img = button.querySelector('img');
+      if (img) img.src = on ? ICON_RESTORE : ICON_MAXIMIZE;
+    }
+  }
+
   function focusWindow(windowElement) {
     if (!windowElement) return;
     windows.forEach((item) => item.classList.toggle('is-focused', item === windowElement));
+    syncTaskbar();
   }
 
   function openWindow(name) {
-    const windowElement = desktop.querySelector(`[data-window="${name}"]`);
+    const windowElement = windowByName(name);
     if (!windowElement) return;
+    delete windowElement.dataset.minimized;
     windowElement.classList.remove('is-hidden');
     windowElement.setAttribute('aria-hidden', 'false');
     focusWindow(windowElement);
+  }
+
+  function minimizeWindow(win) {
+    if (!win) return;
+    win.dataset.minimized = 'true';
+    win.classList.add('is-hidden');
+    win.setAttribute('aria-hidden', 'true');
+    syncTaskbar();
+  }
+
+  function closeWindow(win) {
+    if (!win) return;
+    delete win.dataset.minimized;
+    win.classList.add('is-hidden');
+    win.setAttribute('aria-hidden', 'true');
+    syncTaskbar();
   }
 
   function toggleStart(force) {
     const shouldOpen = typeof force === 'boolean' ? force : startMenu.hidden;
     startMenu.hidden = !shouldOpen;
     startButton.setAttribute('aria-expanded', String(shouldOpen));
+    if (shouldOpen && startSearch) startSearch.focus();
   }
 
   desktop.addEventListener('click', (event) => {
@@ -127,18 +179,29 @@
     }
     if (event.target.closest('[data-run-demo]')) selectDemo(currentDemo);
     if (demoButton) selectDemo(demoButton.dataset.ahkDemo);
-    if (openButton && !openButton.closest('.desktop-shortcuts')) openWindow(openButton.dataset.openWindow);
+    if (openButton && !openButton.closest('.desktop-shortcuts')) {
+      if (openButton.classList.contains('task-app')) {
+        const win = windowByName(openButton.dataset.openWindow);
+        if (win) {
+          if (isOpen(win) && win.classList.contains('is-focused')) minimizeWindow(win);
+          else openWindow(openButton.dataset.openWindow);
+        }
+      } else {
+        openWindow(openButton.dataset.openWindow);
+      }
+    }
     if (demoButton || openButton) toggleStart(false);
 
     if (actionButton) {
       const windowElement = actionButton.closest('[data-window]');
       const action = actionButton.dataset.windowAction;
       if (action === 'maximize') {
-        windowElement.classList.toggle('is-maximized');
+        setMaximized(windowElement, !windowElement.classList.contains('is-maximized'));
         focusWindow(windowElement);
+      } else if (action === 'minimize') {
+        minimizeWindow(windowElement);
       } else {
-        windowElement.classList.add('is-hidden');
-        windowElement.setAttribute('aria-hidden', 'true');
+        closeWindow(windowElement);
       }
     }
 
@@ -147,27 +210,34 @@
     if (!event.target.closest('[data-start-menu], [data-start-button]')) toggleStart(false);
   });
 
+  // ---- Dragging, snap assist, restore-from-maximize -----------------------
+  const snapPreview = desktop.querySelector('[data-snap-preview]');
+
+  function showSnapPreview(zone) {
+    if (!snapPreview) return;
+    if (!zone) {
+      snapPreview.hidden = true;
+      snapPreview.className = 'snap-preview';
+      return;
+    }
+    snapPreview.hidden = false;
+    snapPreview.className = `snap-preview snap-${zone}`;
+  }
+
+  function snapZone(event, desktopRect) {
+    const relX = event.clientX - desktopRect.left;
+    const relY = event.clientY - desktopRect.top;
+    if (relY <= 24) return 'top';
+    if (relX <= 24) return 'left';
+    if (relX >= desktop.clientWidth - 24) return 'right';
+    return null;
+  }
+
   desktop.querySelectorAll('[data-drag-handle]').forEach((handle) => {
     let drag = null;
-    handle.addEventListener('pointerdown', (event) => {
-      if (event.button !== 0 || event.target.closest('button') || window.innerWidth <= 1180) return;
-      const windowElement = handle.closest('[data-window]');
-      if (windowElement.classList.contains('is-maximized')) return;
-      const desktopRect = desktop.getBoundingClientRect();
-      const windowRect = windowElement.getBoundingClientRect();
-      drag = {
-        windowElement,
-        startX: event.clientX,
-        startY: event.clientY,
-        left: windowRect.left - desktopRect.left,
-        top: windowRect.top - desktopRect.top
-      };
-      windowElement.style.width = `${windowRect.width}px`;
-      windowElement.style.height = `${windowRect.height}px`;
-      focusWindow(windowElement);
-      handle.setPointerCapture(event.pointerId);
-    });
-    handle.addEventListener('pointermove', (event) => {
+    let pendingRestore = null;
+
+    function positionDragged(event) {
       if (!drag) return;
       const maxLeft = desktop.clientWidth - drag.windowElement.offsetWidth - 8;
       const maxTop = desktop.clientHeight - drag.windowElement.offsetHeight - 72;
@@ -175,10 +245,92 @@
       drag.windowElement.style.top = `${Math.max(8, Math.min(maxTop, drag.top + event.clientY - drag.startY))}px`;
       drag.windowElement.style.right = 'auto';
       drag.windowElement.style.bottom = 'auto';
+    }
+
+    function beginDrag(windowElement, event, resetPosition) {
+      if (resetPosition) {
+        windowElement.classList.remove('is-snapped-left', 'is-snapped-right');
+        windowElement.style.left = '';
+        windowElement.style.top = '';
+        windowElement.style.right = '';
+        windowElement.style.bottom = '';
+      }
+      const desktopRect = desktop.getBoundingClientRect();
+      const windowRect = windowElement.getBoundingClientRect();
+      windowElement.style.width = `${windowRect.width}px`;
+      windowElement.style.height = `${windowRect.height}px`;
+      drag = {
+        windowElement,
+        startX: event.clientX,
+        startY: event.clientY,
+        desktopRect,
+        left: windowRect.left - desktopRect.left,
+        top: windowRect.top - desktopRect.top
+      };
+      if (resetPosition) {
+        drag.left = event.clientX - desktopRect.left - windowRect.width / 2;
+        drag.top = event.clientY - desktopRect.top - 15;
+        positionDragged(event);
+      }
+    }
+
+    handle.addEventListener('pointerdown', (event) => {
+      if (event.button !== 0 || event.target.closest('button') || window.innerWidth <= 1180) return;
+      const windowElement = handle.closest('[data-window]');
+      focusWindow(windowElement);
+      handle.setPointerCapture(event.pointerId);
+      if (windowElement.classList.contains('is-maximized')) {
+        pendingRestore = { windowElement, startX: event.clientX, startY: event.clientY };
+        return;
+      }
+      const wasSnapped = windowElement.classList.contains('is-snapped-left') || windowElement.classList.contains('is-snapped-right');
+      beginDrag(windowElement, event, wasSnapped);
     });
-    const endDrag = () => { drag = null; };
+
+    handle.addEventListener('pointermove', (event) => {
+      if (pendingRestore && !drag) {
+        const dx = event.clientX - pendingRestore.startX;
+        const dy = event.clientY - pendingRestore.startY;
+        if (dx * dx + dy * dy > 144) {
+          setMaximized(pendingRestore.windowElement, false);
+          beginDrag(pendingRestore.windowElement, event, true);
+          pendingRestore = null;
+        }
+        return;
+      }
+      if (!drag) return;
+      positionDragged(event);
+      showSnapPreview(snapZone(event, drag.desktopRect));
+    });
+
+    const endDrag = (event) => {
+      pendingRestore = null;
+      if (!drag) return;
+      const zone = snapZone(event, drag.desktopRect);
+      const windowElement = drag.windowElement;
+      drag = null;
+      showSnapPreview(null);
+      if (zone === 'top') {
+        setMaximized(windowElement, true);
+      } else if (zone === 'left' || zone === 'right') {
+        windowElement.style.left = '';
+        windowElement.style.top = '';
+        windowElement.style.right = '';
+        windowElement.style.bottom = '';
+        windowElement.style.width = '';
+        windowElement.style.height = '';
+        windowElement.classList.add(`is-snapped-${zone}`);
+      }
+    };
     handle.addEventListener('pointerup', endDrag);
     handle.addEventListener('pointercancel', endDrag);
+
+    handle.addEventListener('dblclick', (event) => {
+      if (event.target.closest('button') || window.innerWidth <= 1180) return;
+      const windowElement = handle.closest('[data-window]');
+      setMaximized(windowElement, !windowElement.classList.contains('is-maximized'));
+      focusWindow(windowElement);
+    });
   });
 
   document.querySelectorAll('[data-ahk-feature]').forEach((button) => {
@@ -242,7 +394,9 @@
   if (trayButton && quickSettings) {
     trayButton.addEventListener('click', (event) => {
       event.stopPropagation();
-      setSettings(quickSettings.hidden);
+      const opening = quickSettings.hidden;
+      setSettings(opening);
+      if (opening) setNotif(false);
     });
     document.addEventListener('click', (event) => {
       if (!quickSettings.hidden && !event.target.closest('[data-quick-settings], [data-tray-icons]')) setSettings(false);
@@ -261,12 +415,74 @@
     }
   }
 
+  // Notification center + calendar from the tray clock
+  const notifButton = desktop.querySelector('[data-notif-button]');
+  const notifCenter = desktop.querySelector('[data-notif-center]');
+  function setNotif(open) {
+    if (!notifCenter || !notifButton) return;
+    notifCenter.hidden = !open;
+    notifButton.setAttribute('aria-expanded', String(open));
+  }
+  if (notifButton && notifCenter) {
+    notifButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const opening = notifCenter.hidden;
+      setNotif(opening);
+      if (opening) setSettings(false);
+    });
+    document.addEventListener('click', (event) => {
+      if (!notifCenter.hidden && !event.target.closest('[data-notif-center], [data-notif-button]')) setNotif(false);
+    });
+
+    const notifList = notifCenter.querySelector('[data-notif-list]');
+    const clearButton = notifCenter.querySelector('[data-notif-clear]');
+    if (clearButton && notifList) {
+      clearButton.addEventListener('click', () => {
+        notifList.innerHTML = '<div class="notif-empty">No new notifications</div>';
+        clearButton.disabled = true;
+      });
+    }
+
+    const calTitle = notifCenter.querySelector('[data-cal-title]');
+    const calGrid = notifCenter.querySelector('[data-cal-grid]');
+    const calCursor = new Date();
+    calCursor.setDate(1);
+    function renderCalendar() {
+      if (!calTitle || !calGrid) return;
+      const today = new Date();
+      const year = calCursor.getFullYear();
+      const month = calCursor.getMonth();
+      calTitle.textContent = calCursor.toLocaleDateString([], { month: 'long', year: 'numeric' });
+      const firstWeekday = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const daysInPrev = new Date(year, month, 0).getDate();
+      let html = ['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((d) => `<span class="cal-dow">${d}</span>`).join('');
+      for (let i = firstWeekday - 1; i >= 0; i -= 1) html += `<span class="cal-out">${daysInPrev - i}</span>`;
+      for (let day = 1; day <= daysInMonth; day += 1) {
+        const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+        html += `<span${isToday ? ' class="cal-today"' : ''}>${day}</span>`;
+      }
+      const trailing = (7 - ((firstWeekday + daysInMonth) % 7)) % 7;
+      for (let day = 1; day <= trailing; day += 1) html += `<span class="cal-out">${day}</span>`;
+      calGrid.innerHTML = html;
+    }
+    notifCenter.querySelector('[data-cal-prev]').addEventListener('click', () => {
+      calCursor.setMonth(calCursor.getMonth() - 1);
+      renderCalendar();
+    });
+    notifCenter.querySelector('[data-cal-next]').addEventListener('click', () => {
+      calCursor.setMonth(calCursor.getMonth() + 1);
+      renderCalendar();
+    });
+    renderCalendar();
+  }
+
   // Desktop right-click context menu
   const contextMenu = desktop.querySelector('[data-context-menu]');
   if (contextMenu) {
     const hideMenu = () => { contextMenu.hidden = true; };
     desktop.addEventListener('contextmenu', (event) => {
-      if (event.target.closest('.win-window, .win-taskbar, .win-start-menu, .quick-settings, .desktop-shortcuts')) return;
+      if (event.target.closest('.win-window, .win-taskbar, .win-start-menu, .quick-settings, .notif-center, .desktop-shortcuts')) return;
       event.preventDefault();
       contextMenu.hidden = false;
       const rect = desktop.getBoundingClientRect();
@@ -284,14 +500,18 @@
     document.addEventListener('click', (event) => {
       if (!contextMenu.hidden && !event.target.closest('[data-context-menu]')) hideMenu();
     });
-    document.addEventListener('keydown', (event) => {
-      if (event.key !== 'Escape') return;
-      hideMenu();
-      setSettings(false);
-    });
   }
 
-  // Start menu search filters the pinned grid
+  // Escape closes every flyout, from anywhere on the page
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    if (contextMenu) contextMenu.hidden = true;
+    setSettings(false);
+    setNotif(false);
+    toggleStart(false);
+  });
+
+  // Start menu search filters the pinned grid; Enter opens the first match
   const startSearch = desktop.querySelector('[data-start-search]');
   if (startSearch) {
     startSearch.addEventListener('input', () => {
@@ -300,9 +520,15 @@
         tile.hidden = query ? !tile.textContent.toLowerCase().includes(query) : false;
       });
     });
+    startSearch.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter') return;
+      const first = [...desktop.querySelectorAll('.start-grid > *')].find((tile) => !tile.hidden);
+      if (first) first.click();
+    });
   }
 
   selectDemo('windows', false);
   updateClock();
+  syncTaskbar();
   setInterval(updateClock, 30000);
 })();

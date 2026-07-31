@@ -1,0 +1,124 @@
+import { createRequire } from 'node:module';
+
+const require = createRequire('C:/Users/user/AppData/Roaming/npm/node_modules/@qpd-v/mcp-server-ragdocs/node_modules/');
+const { chromium } = require('playwright-core');
+
+const EXE = 'C:/Users/user/AppData/Local/ms-playwright/chromium-1228/chrome-win64/chrome.exe';
+const URL = 'file:///C:/Users/user/Documents/Autohotkey/AHKv2_LLMs/index.html';
+
+const results = [];
+const check = (name, ok, detail = '') => {
+  results.push(`${ok ? 'PASS' : 'FAIL'}  ${name}${detail ? ` — ${detail}` : ''}`);
+};
+
+const browser = await chromium.launch({ executablePath: EXE });
+const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+const consoleErrors = [];
+page.on('console', (msg) => { if (msg.type() === 'error') consoleErrors.push(msg.text()); });
+page.on('pageerror', (err) => consoleErrors.push(String(err)));
+
+await page.goto(URL);
+await page.waitForTimeout(600);
+
+// 1. Notification center opens from the clock, calendar renders with today
+await page.click('[data-notif-button]');
+await page.waitForTimeout(250);
+check('notif center opens', await page.isVisible('[data-notif-center]'));
+const calCells = await page.locator('[data-cal-grid] span').count();
+check('calendar renders 7xN grid', calCells >= 35, `${calCells} cells`);
+check('calendar highlights today', await page.locator('[data-cal-grid] .cal-today').count() === 1);
+await page.screenshot({ path: 'preview-v5-notif.png' });
+
+// calendar month navigation
+const calTitle = await page.textContent('[data-cal-title]');
+await page.click('[data-cal-next]');
+check('calendar next month', (await page.textContent('[data-cal-title]')) !== calTitle);
+await page.click('[data-cal-prev]');
+
+// clear all notifications
+await page.click('[data-notif-clear]');
+check('clear all shows empty state', await page.isVisible('.notif-empty'));
+
+// Escape closes the flyout
+await page.keyboard.press('Escape');
+check('Escape closes notif center', await page.isHidden('[data-notif-center]'));
+
+// 2. Start menu: autofocus search, filter, Enter opens first match
+await page.click('[data-start-button]');
+await page.waitForTimeout(200);
+check('start search autofocused', await page.evaluate(() => document.activeElement?.hasAttribute('data-start-search')));
+await page.keyboard.type('hot');
+await page.waitForTimeout(150);
+const visibleTiles = await page.locator('.start-grid > *:visible').count();
+check('search filters pinned grid', visibleTiles === 1, `${visibleTiles} visible`);
+await page.screenshot({ path: 'preview-v5-start.png' });
+await page.keyboard.press('Enter');
+await page.waitForTimeout(300);
+check('Enter runs first match (hotstrings demo)', (await page.textContent('[data-demo-label]')) === 'TEXT EXPANSION');
+check('start menu closed after Enter', await page.isHidden('[data-start-menu]'));
+
+// 3. Minimize keeps taskbar underline; taskbar click restores; click again minimizes
+await page.click('.win-studio [data-window-action="minimize"]');
+await page.waitForTimeout(150);
+check('minimize hides studio', await page.evaluate(() => document.querySelector('.win-studio').classList.contains('is-hidden')));
+check('minimized app still running in taskbar', await page.evaluate(() => document.querySelector('.task-app[data-open-window="studio"]').classList.contains('is-running')));
+await page.click('.task-app[data-open-window="studio"]');
+await page.waitForTimeout(150);
+check('taskbar click restores studio', await page.evaluate(() => !document.querySelector('.win-studio').classList.contains('is-hidden')));
+await page.click('.task-app[data-open-window="studio"]');
+await page.waitForTimeout(150);
+check('taskbar click on focused app minimizes', await page.evaluate(() => document.querySelector('.win-studio').classList.contains('is-hidden')));
+await page.click('.task-app[data-open-window="studio"]');
+
+// 4. Close removes the underline
+await page.click('.task-app[data-open-window="board"]');
+await page.waitForTimeout(150);
+await page.click('.win-board [data-window-action="close"]');
+await page.waitForTimeout(150);
+check('close removes running underline', await page.evaluate(() => !document.querySelector('.task-app[data-open-window="board"]').classList.contains('is-running')));
+await page.click('.task-app[data-open-window="board"]');
+
+// 5. Double-click titlebar maximizes and swaps the icon
+await page.dblclick('.win-board [data-drag-handle]', { position: { x: 120, y: 20 } });
+await page.waitForTimeout(200);
+check('dblclick maximizes board', await page.evaluate(() => document.querySelector('.win-board').classList.contains('is-maximized')));
+check('maximize icon swaps to restore', (await page.getAttribute('.win-board [data-window-action="maximize"] img', 'src')).includes('square_multiple'));
+
+// 6. Drag from maximized restores the window under the cursor
+const boardBar = await page.locator('.win-board [data-drag-handle]').boundingBox();
+await page.mouse.move(boardBar.x + 150, boardBar.y + 20);
+await page.mouse.down();
+await page.mouse.move(boardBar.x + 150, boardBar.y + 120, { steps: 8 });
+await page.waitForTimeout(100);
+check('drag from maximized restores', await page.evaluate(() => !document.querySelector('.win-board').classList.contains('is-maximized')));
+check('restore icon swaps back', (await page.getAttribute('.win-board [data-window-action="maximize"] img', 'src')).includes('square_16'));
+
+// 7. Drag to left edge shows snap preview, release snaps left
+await page.mouse.move(8, 400, { steps: 10 });
+check('snap preview visible at left edge', await page.isVisible('[data-snap-preview]'));
+await page.screenshot({ path: 'preview-v5-snap.png' });
+await page.mouse.up();
+await page.waitForTimeout(150);
+check('release snaps window left', await page.evaluate(() => document.querySelector('.win-board').classList.contains('is-snapped-left')));
+check('snap preview hidden after drop', await page.isHidden('[data-snap-preview]'));
+await page.screenshot({ path: 'preview-v5-snapped.png' });
+
+// 8. Drag snapped window unsnaps it
+const snappedBar = await page.locator('.win-board [data-drag-handle]').boundingBox();
+await page.mouse.move(snappedBar.x + 100, snappedBar.y + 20);
+await page.mouse.down();
+await page.mouse.move(snappedBar.x + 300, snappedBar.y + 150, { steps: 8 });
+await page.mouse.up();
+check('drag unsnaps window', await page.evaluate(() => !document.querySelector('.win-board').classList.contains('is-snapped-left')));
+
+// 9. Escape closes start menu
+await page.click('[data-start-button]');
+await page.keyboard.press('Escape');
+check('Escape closes start menu', await page.isHidden('[data-start-menu]'));
+
+const realErrors = consoleErrors.filter((e) => !/fetch|CORS|ERR_FAILED/i.test(e));
+check('no console errors (fetch over file:// excluded)', realErrors.length === 0, realErrors.join(' | '));
+
+await browser.close();
+console.log(results.join('\n'));
+process.exit(results.some((r) => r.startsWith('FAIL')) ? 1 : 0);

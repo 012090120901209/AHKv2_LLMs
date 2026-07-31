@@ -47,6 +47,8 @@
       <div class="win11-wallpaper" aria-hidden="true"><picture><source srcset="public/windows11-dark-reference.webp" type="image/webp"><img class="win11-wallpaper-image" src="public/windows11-dark-reference.png" alt="" fetchpriority="high" decoding="async"></picture></div>
       <div class="desktop-status"><span><i aria-hidden="true"></i>AHK v2.1 interpreter online</span><time data-desktop-date></time></div>
 
+      <div class="snap-preview" data-snap-preview hidden aria-hidden="true"></div>
+
       <div class="desktop-shortcuts" aria-label="Desktop shortcuts">
         <button type="button" data-open-window="studio"><img src="logo.svg" alt=""><span>Automation Studio</span></button>
         <button type="button" data-open-window="board"><span class="shortcut-glyph"><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></span><span>Benchmark Monitor</span></button>
@@ -152,11 +154,11 @@
         <div class="taskbar-center">
           <button type="button" class="start-button" data-start-button aria-label="Open Start menu" aria-expanded="false"><img src="public/fluent-icons/apps_24_filled.svg" alt=""></button>
           <button type="button" class="task-search" data-open-window="studio"><img src="public/fluent-icons/search_24_regular.svg" alt="">Search AHK v2</button>
-          <button type="button" class="task-app is-running" data-open-window="studio" aria-label="Open AHK Studio"><img src="logo.svg" alt=""></button>
-          <button type="button" class="task-app is-running" data-open-window="board" aria-label="Open benchmark monitor"><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></button>
-          <a class="task-app" href="prompts.html" aria-label="Open prompt library"><img src="public/fluent-icons/code_24_regular.svg" alt=""></a>
+          <button type="button" class="task-app is-running" data-open-window="studio" aria-label="AHK v2 Automation Studio" title="AHK v2 Automation Studio"><img src="logo.svg" alt=""></button>
+          <button type="button" class="task-app is-running" data-open-window="board" aria-label="Benchmark Monitor" title="Benchmark Monitor"><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></button>
+          <a class="task-app" href="prompts.html" aria-label="Open prompt library" title="Prompt library"><img src="public/fluent-icons/code_24_regular.svg" alt=""></a>
         </div>
-        <div class="taskbar-tray"><button type="button" class="tray-icons" data-tray-icons aria-label="Quick settings" aria-expanded="false"><img src="public/fluent-icons/wifi_4_20_regular.svg" alt=""><img src="public/fluent-icons/speaker_2_20_regular.svg" alt=""><img src="public/fluent-icons/battery_10_20_regular.svg" alt=""></button><time data-taskbar-clock></time></div>
+        <div class="taskbar-tray"><button type="button" class="tray-icons" data-tray-icons aria-label="Quick settings" aria-expanded="false"><img src="public/fluent-icons/wifi_4_20_regular.svg" alt=""><img src="public/fluent-icons/speaker_2_20_regular.svg" alt=""><img src="public/fluent-icons/battery_10_20_regular.svg" alt=""></button><button type="button" class="tray-clock" data-notif-button aria-label="Open calendar and notifications" aria-expanded="false"><time data-taskbar-clock></time></button></div>
       </div>
 
       <div class="quick-settings" data-quick-settings hidden>
@@ -168,6 +170,18 @@
         </div>
         <div class="qs-slider"><span class="qs-glyph" aria-hidden="true">☀</span><input type="range" min="40" max="110" value="86" aria-label="Brightness" data-qs-brightness></div>
         <div class="qs-slider"><img src="public/fluent-icons/speaker_2_20_regular.svg" alt=""><input type="range" min="0" max="100" value="65" aria-label="Volume"></div>
+      </div>
+
+      <div class="notif-center" data-notif-center hidden aria-label="Notification center">
+        <div class="notif-header"><span>Notifications</span><button type="button" data-notif-clear>Clear all</button></div>
+        <div class="notif-list" data-notif-list>
+          <div class="notif-card"><img src="logo.svg" alt=""><div><b>AHK-Eval</b><p>Cold-board run complete — fresh results are live on the leaderboard.</p><time>9:41 AM</time></div></div>
+          <div class="notif-card"><img src="logo.svg" alt=""><div><b>Script library</b><p>download-sorter.ahk was updated for AutoHotkey v2.1-alpha.30.</p><time>8:17 AM</time></div></div>
+        </div>
+        <div class="notif-calendar">
+          <div class="cal-header"><button type="button" data-cal-prev aria-label="Previous month">‹</button><b data-cal-title></b><button type="button" data-cal-next aria-label="Next month">›</button></div>
+          <div class="cal-grid" data-cal-grid></div>
+        </div>
       </div>
 
       <div class="desktop-menu" data-context-menu hidden role="menu" aria-label="Desktop context menu">
