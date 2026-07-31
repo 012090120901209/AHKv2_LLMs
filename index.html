@@ -66,21 +66,13 @@
           </div>
         </div>
         <div class="studio-body">
+          <h1 id="hero-title" class="sr-only">AutoHotkey v2 makes Windows yours.</h1>
           <div class="studio-menubar" aria-hidden="true"><span>File</span><span>Edit</span><span>View</span><span>Run</span><span>Tools</span><span>Help</span></div>
           <div class="studio-toolbar">
             <button type="button" class="studio-tool" data-run-demo><span aria-hidden="true">▶</span>Run demo</button>
             <button type="button" class="studio-tool" data-open-window="board"><img src="public/fluent-icons/window_multiple_24_regular.svg" alt="">Benchmark Monitor</button>
-            <span class="studio-toolbar-path" aria-hidden="true">C:\AHK\ahk-lab.ahk</span>
+            <span class="studio-toolbar-path" aria-hidden="true" data-studio-path>C:\AHK\window-layout.ahk</span>
           </div>
-          <header class="studio-intro">
-            <div class="studio-kicker"><span aria-hidden="true"></span>#Requires AutoHotkey v2.1</div>
-            <h1 id="hero-title">AutoHotkey v2 makes Windows <em>yours.</em></h1>
-            <p>Pick a script from the library — the app runs a hands-on AHK v2 demonstration in the editor pane.</p>
-            <div class="studio-actions">
-              <a href="leaderboard.html">Open leaderboard</a>
-              <a href="post.html?slug=ahk-eval-benchmark">How we test</a>
-            </div>
-          </header>
 
           <section class="automation-workspace" aria-labelledby="automation-title">
             <aside class="automation-launcher" aria-label="Demo script library">
@@ -91,15 +83,31 @@
               <button type="button" class="automation-button" data-ahk-demo="files"><span><img src="public/fluent-icons/folder_24_regular.svg" alt=""></span><b>download-sorter.ahk</b><small>File automation</small></button>
               <button type="button" class="automation-button" data-ahk-demo="gui"><span><img src="public/fluent-icons/window_dev_tools_24_regular.svg" alt=""></span><b>release-builder.ahk</b><small>Desktop apps</small></button>
             </aside>
-            <div class="automation-demo" data-demo-output aria-live="polite">
-              <div class="demo-titlebar"><span><i aria-hidden="true"></i>window-layout.ahk</span><b data-demo-status>ready</b></div>
-              <div class="demo-visual demo-windows" data-demo-visual>
-                <div class="mini-window mini-one"><span></span><p>Research</p></div>
-                <div class="mini-window mini-two"><span></span><p>Editor</p></div>
-                <div class="mini-window mini-three"><span></span><p>Console</p></div>
+            <div class="studio-main">
+              <div class="editor-pane">
+                <div class="editor-tabs"><span class="editor-tab"><i aria-hidden="true"></i><b data-editor-tab>window-layout.ahk</b></span></div>
+                <div class="editor-code" data-demo-editor>
+                  <div class="editor-line"><span class="editor-ln">1</span><code>#Requires AutoHotkey v2.1</code></div>
+                  <div class="editor-line"><span class="editor-ln">2</span><code><span class="hl-com">; Tile a workspace in one command.</span></code></div>
+                  <div class="editor-line"><span class="editor-ln">3</span><code>&nbsp;</code></div>
+                  <div class="editor-line"><span class="editor-ln">4</span><code><span class="hl-var">#w</span>:: {  <span class="hl-com">; Win+W</span></code></div>
+                  <div class="editor-line"><span class="editor-ln">5</span><code>    <span class="hl-var">half</span> := <span class="hl-var">A_ScreenWidth</span> // <span class="hl-num">2</span></code></div>
+                  <div class="editor-line"><span class="editor-ln">6</span><code>    <span class="hl-fn">WinMove</span> <span class="hl-num">0</span>, <span class="hl-num">0</span>, <span class="hl-var">half</span>, <span class="hl-var">A_ScreenHeight</span>, <span class="hl-str">"Research"</span></code></div>
+                  <div class="editor-line"><span class="editor-ln">7</span><code>    <span class="hl-fn">WinMove</span> <span class="hl-var">half</span>, <span class="hl-num">0</span>, <span class="hl-var">half</span>, <span class="hl-var">A_ScreenHeight</span> // <span class="hl-num">2</span>, <span class="hl-str">"Editor"</span></code></div>
+                  <div class="editor-line"><span class="editor-ln">8</span><code>    <span class="hl-fn">WinMove</span> <span class="hl-var">half</span>, <span class="hl-var">A_ScreenHeight</span> // <span class="hl-num">2</span>, <span class="hl-var">half</span>, <span class="hl-var">A_ScreenHeight</span> // <span class="hl-num">2</span>, <span class="hl-str">"Console"</span></code></div>
+                  <div class="editor-line"><span class="editor-ln">9</span><code>}</code></div>
+                </div>
               </div>
-              <div class="demo-copy"><span data-demo-label>WINDOW CONTROL</span><h3 data-demo-title>Tile a workspace in one command.</h3><p data-demo-description>AHK can find, focus, resize, and arrange native Windows applications around the way you work.</p></div>
-              <pre data-demo-code><code><span>WinMove</span> 0, 0, A_ScreenWidth / 2, A_ScreenHeight, "A"</code></pre>
+              <div class="automation-demo" data-demo-output aria-live="polite">
+                <div class="demo-titlebar"><span><i aria-hidden="true"></i>window-layout.ahk</span><b data-demo-status>ready</b></div>
+                <div class="demo-visual demo-windows" data-demo-visual>
+                  <div class="mini-window mini-one"><span></span><p>Research</p></div>
+                  <div class="mini-window mini-two"><span></span><p>Editor</p></div>
+                  <div class="mini-window mini-three"><span></span><p>Console</p></div>
+                </div>
+                <div class="demo-copy"><span data-demo-label>WINDOW CONTROL</span><h3 data-demo-title>Tile a workspace in one command.</h3></div>
+                <div class="demo-console" data-demo-console>&gt; 3 windows tiled across 2 columns · 14 ms</div>
+              </div>
             </div>
           </section>
           <footer class="studio-statusbar"><span data-studio-status>Ready</span><span aria-hidden="true">AHK v2.1 · alpha.30 · Ln 1, Col 1</span></footer>

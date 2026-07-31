@@ -7,8 +7,10 @@
   const demoStatus = desktop.querySelector('[data-demo-status]');
   const demoLabel = desktop.querySelector('[data-demo-label]');
   const demoTitle = desktop.querySelector('[data-demo-title]');
-  const demoDescription = desktop.querySelector('[data-demo-description]');
-  const demoCode = desktop.querySelector('[data-demo-code]');
+  const demoEditor = desktop.querySelector('[data-demo-editor]');
+  const demoConsole = desktop.querySelector('[data-demo-console]');
+  const editorTab = desktop.querySelector('[data-editor-tab]');
+  const studioPath = desktop.querySelector('[data-studio-path]');
   const startButton = desktop.querySelector('[data-start-button]');
   const startMenu = desktop.querySelector('[data-start-menu]');
   const windows = [...desktop.querySelectorAll('[data-window]')];
@@ -26,7 +28,18 @@
       description: 'AHK can find, focus, resize, and arrange native Windows applications around the way you work.',
       visualClass: 'demo-windows',
       visual: '<div class="mini-window mini-one"><span></span><p>Research</p></div><div class="mini-window mini-two"><span></span><p>Editor</p></div><div class="mini-window mini-three"><span></span><p>Console</p></div>',
-      code: '<span class="hl-fn">WinMove</span> <span class="hl-num">0</span>, <span class="hl-num">0</span>, <span class="hl-var">A_ScreenWidth</span> / <span class="hl-num">2</span>, <span class="hl-var">A_ScreenHeight</span>, <span class="hl-str">"A"</span>'
+      script: [
+        '<span class="hl-dir">#Requires</span> AutoHotkey <span class="hl-num">v2.1</span>',
+        '<span class="hl-com">; Tile a workspace in one command.</span>',
+        '',
+        '<span class="hl-var">#w</span>:: {  <span class="hl-com">; Win+W</span>',
+        '    <span class="hl-var">half</span> := <span class="hl-var">A_ScreenWidth</span> // <span class="hl-num">2</span>',
+        '    <span class="hl-fn">WinMove</span> <span class="hl-num">0</span>, <span class="hl-num">0</span>, <span class="hl-var">half</span>, <span class="hl-var">A_ScreenHeight</span>, <span class="hl-str">"Research"</span>',
+        '    <span class="hl-fn">WinMove</span> <span class="hl-var">half</span>, <span class="hl-num">0</span>, <span class="hl-var">half</span>, <span class="hl-var">A_ScreenHeight</span> // <span class="hl-num">2</span>, <span class="hl-str">"Editor"</span>',
+        '    <span class="hl-fn">WinMove</span> <span class="hl-var">half</span>, <span class="hl-var">A_ScreenHeight</span> // <span class="hl-num">2</span>, <span class="hl-var">half</span>, <span class="hl-var">A_ScreenHeight</span> // <span class="hl-num">2</span>, <span class="hl-str">"Console"</span>',
+        '}'
+      ],
+      output: '&gt; 3 windows tiled across 2 columns · 14 ms'
     },
     text: {
       file: 'hotstrings.ahk',
@@ -35,7 +48,17 @@
       description: 'Hotstrings expand signatures, case notes, templates, or any repeated text inside almost any Windows application.',
       visualClass: 'demo-text',
       visual: '<div class="demo-text-editor"><header>New message</header><p>Thanks for your help.<br><br><mark>;sig → Best,<br>Justin</mark></p></div>',
-      code: '<span class="hl-fn">Hotstring</span>(<span class="hl-str">":*:;sig"</span>, <span class="hl-var">ExpandSignature</span>)'
+      script: [
+        '<span class="hl-dir">#Requires</span> AutoHotkey <span class="hl-num">v2.1</span>',
+        '<span class="hl-com">; Hotstrings turn a short trigger into finished writing.</span>',
+        '',
+        '<span class="hl-var">::;sig::</span> {',
+        '    <span class="hl-fn">SendText</span> <span class="hl-str">"Best,`nJustin"</span>',
+        '}',
+        '',
+        '<span class="hl-var">::;ty::</span><span class="hl-str">Thanks for your help.</span>'
+      ],
+      output: '&gt; ;sig expanded to 2 lines · 3 ms'
     },
     clipboard: {
       file: 'clipboard-workflow.ahk',
@@ -44,7 +67,19 @@
       description: 'Watch the clipboard, clean incoming text, keep useful snippets, and paste the right format into the active app.',
       visualClass: 'demo-clipboard',
       visual: '<div class="clipboard-list"><div class="clipboard-item"><span>Raw meeting notes</span><b>captured</b></div><div class="clipboard-item is-picked"><span>Clean Markdown</span><b>selected</b></div><div class="clipboard-item"><span>Plain-text summary</span><b>ready</b></div></div>',
-      code: '<span class="hl-var">A_Clipboard</span> := <span class="hl-fn">CleanMarkdown</span>(<span class="hl-var">A_Clipboard</span>)'
+      script: [
+        '<span class="hl-dir">#Requires</span> AutoHotkey <span class="hl-num">v2.1</span>',
+        '<span class="hl-com">; Transform and reuse everything you copy.</span>',
+        '',
+        '<span class="hl-fn">OnClipboardChange</span> <span class="hl-var">CleanMarkdown</span>',
+        '',
+        '<span class="hl-var">CleanMarkdown</span>(*) {',
+        '    <span class="hl-var">clean</span> := <span class="hl-fn">RegExReplace</span>(<span class="hl-fn">Trim</span>(<span class="hl-var">A_Clipboard</span>), <span class="hl-str">"\\r\\n?"</span>, <span class="hl-str">"`n"</span>)',
+        '    <span class="hl-kw">if</span> (<span class="hl-var">clean</span> != <span class="hl-var">A_Clipboard</span>)',
+        '        <span class="hl-var">A_Clipboard</span> := <span class="hl-var">clean</span>',
+        '}'
+      ],
+      output: '&gt; Clipboard cleaned → Markdown · 6 ms'
     },
     files: {
       file: 'download-sorter.ahk',
@@ -53,7 +88,20 @@
       description: 'AHK can watch directories, rename batches, move files by type, and launch the next step in a desktop workflow.',
       visualClass: 'demo-files',
       visual: '<div class="file-sorter"><div class="file-item"><span>report.pdf</span><b>Documents →</b></div><div class="file-item"><span>capture.png</span><b>Images →</b></div><div class="file-item"><span>results.csv</span><b>Data →</b></div></div>',
-      code: '<span>Loop Files</span> <span class="hl-var">Downloads</span> <span class="hl-str">"\\*.*"</span> { <span class="hl-fn">SortDownload</span>(<span class="hl-var">A_LoopFileFullPath</span>) }'
+      script: [
+        '<span class="hl-dir">#Requires</span> AutoHotkey <span class="hl-num">v2.1</span>',
+        '<span class="hl-com">; Sort a messy folder while you keep working.</span>',
+        '',
+        '<span class="hl-var">routes</span> := <span class="hl-fn">Map</span>(<span class="hl-str">"pdf"</span>, <span class="hl-str">"Documents"</span>, <span class="hl-str">"png"</span>, <span class="hl-str">"Images"</span>, <span class="hl-str">"csv"</span>, <span class="hl-str">"Data"</span>)',
+        '',
+        '<span class="hl-kw">Loop Files</span> <span class="hl-var">A_Desktop</span> <span class="hl-str">"\\Downloads\\*.*"</span> {',
+        '    <span class="hl-kw">if</span> !<span class="hl-var">routes</span>.<span class="hl-fn">Has</span>(<span class="hl-var">A_LoopFileExt</span>)',
+        '        <span class="hl-kw">continue</span>',
+        '    <span class="hl-fn">DirCreate</span> <span class="hl-var">A_Desktop</span> <span class="hl-str">"\\"</span> <span class="hl-var">routes</span>[<span class="hl-var">A_LoopFileExt</span>]',
+        '    <span class="hl-fn">FileMove</span> <span class="hl-var">A_LoopFileFullPath</span>, <span class="hl-var">A_Desktop</span> <span class="hl-str">"\\"</span> <span class="hl-var">routes</span>[<span class="hl-var">A_LoopFileExt</span>]',
+        '}'
+      ],
+      output: '&gt; 3 files sorted into Documents, Images, Data · 22 ms'
     },
     gui: {
       file: 'release-builder.ahk',
@@ -62,7 +110,21 @@
       description: 'Create native tools with inputs, buttons, menus, events, and resizable layouts—without leaving AutoHotkey v2.',
       visualClass: 'demo-gui',
       visual: '<div class="gui-preview"><header><span>Release builder</span><span>×</span></header><label>Project name<i></i></label><label>Output folder<i></i></label><footer><button type="button">Build release</button></footer></div>',
-      code: '<span class="hl-var">app</span> := <span class="hl-fn">Gui</span>(<span class="hl-str">"+Resize"</span>, <span class="hl-str">"Release builder"</span>)'
+      script: [
+        '<span class="hl-dir">#Requires</span> AutoHotkey <span class="hl-num">v2.1</span>',
+        '<span class="hl-com">; Build a real Windows interface in AHK.</span>',
+        '',
+        '<span class="hl-var">app</span> := <span class="hl-fn">Gui</span>(<span class="hl-str">"+Resize"</span>, <span class="hl-str">"Release builder"</span>)',
+        '<span class="hl-var">app</span>.<span class="hl-fn">AddText</span>(, <span class="hl-str">"Project name"</span>)',
+        '<span class="hl-var">name</span> := <span class="hl-var">app</span>.<span class="hl-fn">AddEdit</span>(<span class="hl-str">"w220"</span>)',
+        '<span class="hl-var">app</span>.<span class="hl-fn">AddText</span>(, <span class="hl-str">"Output folder"</span>)',
+        '<span class="hl-var">out</span> := <span class="hl-var">app</span>.<span class="hl-fn">AddEdit</span>(<span class="hl-str">"w220"</span>)',
+        '<span class="hl-var">app</span>.<span class="hl-fn">AddButton</span>(<span class="hl-str">"Default"</span>, <span class="hl-str">"Build release"</span>).<span class="hl-fn">OnEvent</span>(<span class="hl-str">"Click"</span>, <span class="hl-var">Build</span>)',
+        '<span class="hl-var">app</span>.<span class="hl-fn">Show</span>()',
+        '',
+        '<span class="hl-var">Build</span>(*) =&gt; <span class="hl-fn">MsgBox</span>(<span class="hl-str">"Building "</span> <span class="hl-var">name</span>.<span class="hl-var">Value</span> <span class="hl-str">" → "</span> <span class="hl-var">out</span>.<span class="hl-var">Value</span>)'
+      ],
+      output: '&gt; Gui "Release builder" shown · 9 ms'
     }
   };
 
@@ -83,18 +145,28 @@
     demoVisual.innerHTML = demo.visual;
     demoLabel.textContent = demo.label;
     demoTitle.textContent = demo.title;
-    demoDescription.textContent = demo.description;
-    demoCode.innerHTML = `<code>${demo.code}</code>`;
-    if (!animate) return;
+    if (demoEditor) {
+      demoEditor.innerHTML = demo.script
+        .map((line, index) => `<div class="editor-line"><span class="editor-ln">${index + 1}</span><code>${line || '&nbsp;'}</code></div>`)
+        .join('');
+    }
+    if (editorTab) editorTab.textContent = demo.file;
+    if (studioPath) studioPath.textContent = `C:\\AHK\\${demo.file}`;
+    if (!animate) {
+      if (demoConsole) demoConsole.innerHTML = demo.output;
+      return;
+    }
     demoOutput.classList.remove('is-running');
     void demoOutput.offsetWidth;
     demoOutput.classList.add('is-running');
     demoStatus.textContent = 'running';
+    if (demoConsole) demoConsole.textContent = `> Running ${demo.file}…`;
     if (studioStatus) studioStatus.textContent = `Running ${demo.file}…`;
     clearTimeout(statusTimer);
     statusTimer = setTimeout(() => {
       demoStatus.textContent = 'complete';
       demoOutput.classList.remove('is-running');
+      if (demoConsole) demoConsole.innerHTML = demo.output;
       if (studioStatus) studioStatus.textContent = `${demo.file} — complete`;
     }, 720);
   }

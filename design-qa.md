@@ -52,4 +52,10 @@ A separate crop was not required. The raw 1440 × 1000 implementation capture pr
 - Keyboard polish: Escape closes every flyout from anywhere, the Start menu autofocuses search, and Enter launches the first filtered match.
 - Evidence: `qa-win11.mjs` (Playwright, 25 interaction checks, all passing), `preview-v5-notif.png`, `preview-v5-start.png`, `preview-v5-snap.png`, `preview-v5-snapped.png`.
 
+### Iteration 3
+
+- Feedback: the app inside the fake Windows screen rendered the site's landing webpage (hero headline, marketing copy, CTA buttons) instead of showing how AHK v2 works.
+- Fix: replaced the webpage hero with an IDE-style editor pane — a file tab, line numbers, and full syntax-highlighted AutoHotkey v2 scripts for each of the five demos (`WinMove` tiling, hotstrings, `OnClipboardChange`, `Loop Files` + `Map`, and a `Gui` builder). The demo runner keeps its visual effect pane and now ends in a green run-output console line. The toolbar path and editor tab track the selected script, and the page h1 moved to a screen-reader-only element.
+- Evidence: `preview-v6-studio.png`, `preview-v6-files.png`; 25/25 checks in `qa-win11.mjs`, 7/7 site tests.
+
 final result: passed
