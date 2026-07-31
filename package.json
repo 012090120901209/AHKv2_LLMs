@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "python -m http.server 8080 --bind 127.0.0.1",
+    "dev": "node scripts/dev-server.mjs",
     "build": "node scripts/build-site.mjs",
     "test": "npm run build && node --test tests/site.test.mjs"
   }
