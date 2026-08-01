@@ -1492,24 +1492,25 @@ body > * { min-width: 0; }
 .editor-line { display: grid; grid-template-columns: 36px minmax(0, 1fr); align-items: baseline; }
 .editor-line:hover { background: rgba(255, 255, 255, .03); }
 .editor-ln { padding-right: 11px; color: #4c4c54; font: 500 8px/1.75 var(--font-mono); text-align: right; user-select: none; }
-.editor-line code { padding-right: 12px; overflow: hidden; color: #b9bdc7; font: 500 9.5px/1.75 var(--font-mono); white-space: pre; text-overflow: ellipsis; }
+.editor-line code { padding: 0 12px 0 0; overflow: hidden; color: #b9bdc7; background: none; border-radius: 0; box-shadow: none; font: 500 9.5px/1.75 var(--font-mono); white-space: pre; text-overflow: ellipsis; }
 .editor-code .hl-com { color: #6A9955; }
 .editor-code .hl-dir, .editor-code .hl-kw { color: #C586C0; }
 
 .demo-console { margin: 6px 13px 13px; padding: 8px 10px; border-radius: 7px; color: #7BC96F; background: #191a1e; box-shadow: inset 0 0 0 1px #2b2d32; font: 500 9px/1.5 var(--font-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .automation-workspace { flex: 1; min-height: 350px; display: grid; grid-template-columns: 205px minmax(0, 1fr); gap: 14px; padding: 17px; }
-.automation-launcher { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
-.automation-launcher > div { padding: 3px 5px 10px; }
+.automation-launcher { min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.automation-launcher > div { padding: 2px 4px 9px; }
 .studio-section-label { color: #707070; font: 600 8px/1 var(--font-mono); text-transform: uppercase; letter-spacing: .11em; }
-.automation-launcher h2 { margin: 5px 0 0; color: #f7f7f7; font-size: 15px; letter-spacing: -.02em; }
-.automation-button { min-height: 49px; display: grid; grid-template-columns: 31px 1fr; grid-template-rows: auto auto; align-items: center; column-gap: 9px; padding: 7px 9px; border: 0; border-radius: 8px; color: #b8b8bd; background: transparent; box-shadow: none; text-align: left; }
-.automation-button > span { grid-row: 1 / 3; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 7px; color: #dbeaff; background: #252b36; box-shadow: inset 0 0 0 1px #353d4b; font: 500 12px/1 var(--font-mono); }
-.automation-button b { align-self: end; color: #dedee1; font-size: 10px; font-weight: 500; }
-.automation-button small { align-self: start; color: #707075; font: 500 7px/1.4 var(--font-mono); }
-.automation-button:hover { background: rgba(255,255,255,.055); }
-.automation-button.is-active { background: #2a2d34; box-shadow: inset 0 0 0 1px #3b414c; }
-.automation-button.is-active > span { color: #fff; background: #276aa8; box-shadow: inset 0 0 0 1px #5B9FEF; }
+.automation-launcher h2 { margin: 5px 0 3px; color: #cfcfd4; font: 600 10px/1.2 var(--font-windows); text-transform: uppercase; letter-spacing: .05em; }
+.automation-launcher h2 span { color: #8f8f94; font-size: 8px; }
+.automation-button { min-height: 25px; display: flex; align-items: center; gap: 7px; padding: 0 7px; border: 0; border-radius: 5px; color: #b8b8bd; background: transparent; box-shadow: none; text-align: left; }
+.automation-button > span { width: 15px; height: 15px; display: grid; place-items: center; }
+.automation-button b { overflow: hidden; color: #cfcfd4; font: 400 10.5px/1.3 var(--font-windows); white-space: nowrap; text-overflow: ellipsis; }
+.automation-button:hover { background: rgba(255,255,255,.05); }
+.automation-button:hover b { color: #fff; }
+.automation-button.is-active { background: rgba(91,159,239,.13); box-shadow: inset 2px 0 #5B9FEF; }
+.automation-button.is-active b { color: #fff; }
 
 .automation-demo { min-width: 0; overflow: hidden; position: relative; border-radius: 10px; background: #101114; box-shadow: inset 0 0 0 1px #34363c; }
 .automation-demo.is-running::after { content: ''; position: absolute; inset: 0 auto 0 -30%; width: 25%; background: linear-gradient(90deg, transparent, rgba(91,159,239,.15), transparent); animation: demo-scan .72s ease-out; pointer-events: none; }
@@ -1525,10 +1526,9 @@ body > * { min-width: 0; }
 .mini-one { inset: 12px 51% 12px 12px; }
 .mini-two { inset: 12px 12px 55% 51%; }
 .mini-three { inset: 49% 12px 12px 51%; }
-.demo-copy { padding: 13px 14px 8px; }
-.demo-copy > span { color: #5B9FEF; font: 600 7px/1 var(--font-mono); letter-spacing: .1em; }
-.demo-copy h3 { margin: 5px 0 5px; color: #fff; font-size: 15px; letter-spacing: -.02em; }
-.demo-copy p { margin: 0; color: #898990; font-size: 9px; line-height: 1.5; }
+.demo-copy { display: flex; align-items: baseline; gap: 9px; padding: 11px 14px 3px; }
+.demo-copy > span { flex: none; color: #5B9FEF; font: 600 7px/1 var(--font-mono); letter-spacing: .1em; }
+.demo-copy h3 { margin: 0; overflow: hidden; color: #d5d5d8; font: 400 11px/1.4 var(--font-windows); white-space: nowrap; text-overflow: ellipsis; }
 .automation-demo pre { margin: 5px 13px 13px; padding: 9px 10px; overflow: auto; border-radius: 7px; background: #191a1e; box-shadow: inset 0 0 0 1px #2b2d32; color: #b9bdc7; font: 500 8px/1.55 var(--font-mono); }
 .automation-demo pre span { color: #5B9FEF; }
 
@@ -1699,11 +1699,11 @@ body > * { min-width: 0; }
 .win-controls button img { width: 12px; height: 12px; filter: invert(1); opacity: .82; }
 .board-app-icon img { width: 15px; height: 15px; filter: invert(1); }
 .win-showcase .automation-workspace { grid-template-columns: 190px minmax(0, 1fr); min-height: 0; padding: 12px 16px 14px; gap: 12px; }
-.win-showcase .automation-demo { min-height: 0; flex: 1; }
-.win-showcase .demo-visual { height: 150px; }
-.win-showcase .demo-copy h3 { font-size: 17px; }
-.win-showcase .demo-copy p { font-size: 11px; }
-.win-showcase .automation-demo pre { font-size: 10px; }
+.win-showcase .automation-demo { min-height: 0; flex: 1; display: flex; flex-direction: column; }
+.win-showcase .demo-visual { flex: 1; height: auto; min-height: 150px; }
+.win-showcase .demo-titlebar, .win-showcase .demo-copy, .win-showcase .demo-console { flex: none; }
+.editor-tab em { margin-left: 4px; color: #707075; font-style: normal; font-size: 11px; line-height: 1; }
+.editor-tab:hover em { color: #fff; }
 
 /* Windows app chrome: menu bar, toolbar, status bar */
 .studio-menubar {
@@ -1746,7 +1746,7 @@ body > * { min-width: 0; }
 .studio-toolbar-path { margin-left: auto; color: #6d6d72; font: 500 10px/1 var(--font-mono); }
 
 .win-showcase .automation-launcher { gap: 3px; }
-.automation-button > span img { width: 15px; height: 15px; filter: invert(1); opacity: .85; }
+.automation-button > span img { width: 13px; height: 13px; filter: invert(1); opacity: .75; }
 
 .studio-statusbar {
   display: flex;
@@ -1755,12 +1755,11 @@ body > * { min-width: 0; }
   gap: 12px;
   min-height: 26px;
   padding: 0 12px;
-  background: rgba(255, 255, 255, .025);
-  box-shadow: inset 0 1px rgba(255, 255, 255, .06);
-  color: #8f8f94;
+  background: #276AA8;
+  color: rgba(255, 255, 255, .82);
   font-size: 10.5px;
 }
-.studio-statusbar [data-studio-status] { color: #b9b9be; }
+.studio-statusbar [data-studio-status] { color: #fff; }
 
 .win-taskbar {
   inset: auto 0 0;
