@@ -49,68 +49,78 @@
 
       <div class="snap-preview" data-snap-preview hidden aria-hidden="true"></div>
 
+      <h1 id="hero-title" class="sr-only">AutoHotkey v2 makes Windows yours.</h1>
+
       <div class="desktop-shortcuts" aria-label="Desktop shortcuts">
-        <button type="button" data-open-window="studio"><img src="logo.svg" alt=""><span>Automation Studio</span></button>
+        <button type="button" data-open-window="notepad"><span class="shortcut-glyph"><img src="public/fluent-icons/notepad_24_regular.svg" alt=""></span><span>Notepad</span></button>
+        <button type="button" data-open-window="terminal"><span class="shortcut-glyph"><img src="public/fluent-icons/window_console_24_regular.svg" alt=""></span><span>Terminal</span></button>
+        <button type="button" data-open-window="calc"><span class="shortcut-glyph"><img src="public/fluent-icons/calculator_24_regular.svg" alt=""></span><span>Calculator</span></button>
         <button type="button" data-open-window="board"><span class="shortcut-glyph"><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></span><span>Benchmark Monitor</span></button>
         <a href="wiki.html"><span class="shortcut-glyph"><img src="public/fluent-icons/folder_24_regular.svg" alt=""></span><span>AHK Wiki</span></a>
         <a href="prompts.html"><span class="shortcut-glyph shortcut-code">&lt;/&gt;</span><span>Prompts</span></a>
       </div>
 
-      <section class="win-window win-studio win-showcase is-focused" data-window="studio" aria-label="AHK v2 Automation Studio">
+      <section class="win-window win-notepad is-focused" data-window="notepad" aria-label="Notepad">
         <div class="win-titlebar" data-drag-handle>
-          <div class="win-title"><img src="logo.svg" alt=""><span>AHK v2 Automation Studio</span><small>ahk-lab.ahk</small></div>
+          <div class="win-title"><img src="public/fluent-icons/notepad_24_regular.svg" alt=""><span data-notepad-file>window-layout.ahk — Notepad</span></div>
           <div class="win-controls" aria-label="Window controls">
             <button type="button" data-window-action="minimize" aria-label="Minimize"><img src="public/fluent-icons/subtract_16_regular.svg" alt=""></button>
             <button type="button" data-window-action="maximize" aria-label="Maximize"><img src="public/fluent-icons/square_16_regular.svg" alt=""></button>
             <button type="button" data-window-action="close" aria-label="Close"><img src="public/fluent-icons/dismiss_16_regular.svg" alt=""></button>
           </div>
         </div>
-        <div class="studio-body">
-          <h1 id="hero-title" class="sr-only">AutoHotkey v2 makes Windows yours.</h1>
-          <div class="studio-menubar" aria-hidden="true"><span>File</span><span>Edit</span><span>View</span><span>Run</span><span>Tools</span><span>Help</span></div>
-          <div class="studio-toolbar">
-            <button type="button" class="studio-tool" data-run-demo><span aria-hidden="true">▶</span>Run demo</button>
-            <button type="button" class="studio-tool" data-open-window="board"><img src="public/fluent-icons/window_multiple_24_regular.svg" alt="">Benchmark Monitor</button>
-            <span class="studio-toolbar-path" aria-hidden="true" data-studio-path>C:\AHK\window-layout.ahk</span>
-          </div>
+        <div class="notepad-body">
+          <div class="notepad-menu" aria-hidden="true"><span>File</span><span>Edit</span><span>View</span></div>
+          <pre class="notepad-text" data-notepad-body>#Requires AutoHotkey v2.1
+; Tile a workspace in one command.
 
-          <section class="automation-workspace" aria-labelledby="automation-title">
-            <aside class="automation-launcher" aria-label="Demo script library">
-              <div><span class="studio-section-label">Explorer</span><h2 id="automation-title"><span aria-hidden="true">▾</span> AHK-LAB</h2></div>
-              <button type="button" class="automation-button is-active" data-ahk-demo="windows"><span><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></span><b>window-layout.ahk</b></button>
-              <button type="button" class="automation-button" data-ahk-demo="text"><span><img src="public/fluent-icons/text_case_title_24_regular.svg" alt=""></span><b>hotstrings.ahk</b></button>
-              <button type="button" class="automation-button" data-ahk-demo="clipboard"><span><img src="public/fluent-icons/clipboard_24_regular.svg" alt=""></span><b>clipboard-workflow.ahk</b></button>
-              <button type="button" class="automation-button" data-ahk-demo="files"><span><img src="public/fluent-icons/folder_24_regular.svg" alt=""></span><b>download-sorter.ahk</b></button>
-              <button type="button" class="automation-button" data-ahk-demo="gui"><span><img src="public/fluent-icons/window_dev_tools_24_regular.svg" alt=""></span><b>release-builder.ahk</b></button>
-            </aside>
-            <div class="studio-main">
-              <div class="editor-pane">
-                <div class="editor-tabs"><span class="editor-tab"><i aria-hidden="true"></i><b data-editor-tab>window-layout.ahk</b><em aria-hidden="true">×</em></span></div>
-                <div class="editor-code" data-demo-editor>
-                  <div class="editor-line"><span class="editor-ln">1</span><code>#Requires AutoHotkey v2.1</code></div>
-                  <div class="editor-line"><span class="editor-ln">2</span><code><span class="hl-com">; Tile a workspace in one command.</span></code></div>
-                  <div class="editor-line"><span class="editor-ln">3</span><code>&nbsp;</code></div>
-                  <div class="editor-line"><span class="editor-ln">4</span><code><span class="hl-var">#w</span>:: {  <span class="hl-com">; Win+W</span></code></div>
-                  <div class="editor-line"><span class="editor-ln">5</span><code>    <span class="hl-var">half</span> := <span class="hl-var">A_ScreenWidth</span> // <span class="hl-num">2</span></code></div>
-                  <div class="editor-line"><span class="editor-ln">6</span><code>    <span class="hl-fn">WinMove</span> <span class="hl-num">0</span>, <span class="hl-num">0</span>, <span class="hl-var">half</span>, <span class="hl-var">A_ScreenHeight</span>, <span class="hl-str">"Research"</span></code></div>
-                  <div class="editor-line"><span class="editor-ln">7</span><code>    <span class="hl-fn">WinMove</span> <span class="hl-var">half</span>, <span class="hl-num">0</span>, <span class="hl-var">half</span>, <span class="hl-var">A_ScreenHeight</span> // <span class="hl-num">2</span>, <span class="hl-str">"Editor"</span></code></div>
-                  <div class="editor-line"><span class="editor-ln">8</span><code>    <span class="hl-fn">WinMove</span> <span class="hl-var">half</span>, <span class="hl-var">A_ScreenHeight</span> // <span class="hl-num">2</span>, <span class="hl-var">half</span>, <span class="hl-var">A_ScreenHeight</span> // <span class="hl-num">2</span>, <span class="hl-str">"Console"</span></code></div>
-                  <div class="editor-line"><span class="editor-ln">9</span><code>}</code></div>
-                </div>
-              </div>
-              <div class="automation-demo" data-demo-output aria-live="polite">
-                <div class="demo-titlebar"><span><i aria-hidden="true"></i>window-layout.ahk</span><b data-demo-status>ready</b></div>
-                <div class="demo-visual demo-windows" data-demo-visual>
-                  <div class="mini-window mini-one"><span></span><p>Research</p></div>
-                  <div class="mini-window mini-two"><span></span><p>Editor</p></div>
-                  <div class="mini-window mini-three"><span></span><p>Console</p></div>
-                </div>
-                <div class="demo-copy"><span data-demo-label>WINDOW CONTROL</span><h3 data-demo-title>Tile a workspace in one command.</h3></div>
-                <div class="demo-console" data-demo-console>&gt; 3 windows tiled across 2 columns · 14 ms</div>
-              </div>
-            </div>
-          </section>
-          <footer class="studio-statusbar"><span data-studio-status>Ready</span><span aria-hidden="true">AHK v2.1 · alpha.30 · Ln 1, Col 1</span></footer>
+#w:: {  ; Win+W
+    half := A_ScreenWidth // 2
+    WinMove 0, 0, half, A_ScreenHeight, "Research"
+    WinMove half, 0, half, A_ScreenHeight // 2, "Editor"
+    WinMove half, A_ScreenHeight // 2, half, A_ScreenHeight // 2, "Console"
+}</pre>
+          <div class="notepad-status" aria-hidden="true"><span>Ln 1, Col 1</span><span>100% · Windows (CRLF) · UTF-8</span></div>
+        </div>
+      </section>
+
+      <section class="win-window win-terminal" data-window="terminal" aria-label="Windows Terminal">
+        <div class="win-titlebar" data-drag-handle>
+          <div class="win-title"><img src="public/fluent-icons/window_console_24_regular.svg" alt=""><span>Windows Terminal</span></div>
+          <div class="win-controls" aria-label="Window controls">
+            <button type="button" data-window-action="minimize" aria-label="Minimize"><img src="public/fluent-icons/subtract_16_regular.svg" alt=""></button>
+            <button type="button" data-window-action="maximize" aria-label="Maximize"><img src="public/fluent-icons/square_16_regular.svg" alt=""></button>
+            <button type="button" data-window-action="close" aria-label="Close"><img src="public/fluent-icons/dismiss_16_regular.svg" alt=""></button>
+          </div>
+        </div>
+        <div class="terminal-tabs" aria-hidden="true"><span class="term-tab is-active">⌄ Windows PowerShell</span><span class="term-tab-add">+</span></div>
+        <div class="terminal-body" data-terminal-body aria-live="polite">
+          <div class="term-line"><button type="button" data-run-demo title="Run again"><span class="term-prompt">PS C:\AHK&gt;</span> <span class="term-cmd">.\window-layout.ahk</span></button></div>
+          <div class="term-line term-ok">[ok] 3 windows tiled across 2 columns (14 ms)</div>
+          <div class="term-line"><span class="term-prompt">PS C:\AHK&gt;</span> <span class="term-cursor"></span></div>
+        </div>
+      </section>
+
+      <section class="win-window win-calc" data-window="calc" aria-label="Calculator">
+        <div class="win-titlebar" data-drag-handle>
+          <div class="win-title"><img src="public/fluent-icons/calculator_24_regular.svg" alt=""><span>Calculator</span></div>
+          <div class="win-controls" aria-label="Window controls">
+            <button type="button" data-window-action="minimize" aria-label="Minimize"><img src="public/fluent-icons/subtract_16_regular.svg" alt=""></button>
+            <button type="button" data-window-action="maximize" aria-label="Maximize"><img src="public/fluent-icons/square_16_regular.svg" alt=""></button>
+            <button type="button" data-window-action="close" aria-label="Close"><img src="public/fluent-icons/dismiss_16_regular.svg" alt=""></button>
+          </div>
+        </div>
+        <div class="calc-body">
+          <div class="calc-header" aria-hidden="true"><span>☰</span><b>Standard</b></div>
+          <div class="calc-display"><small data-calc-history></small><b data-calc-display>0</b></div>
+          <div class="calc-grid">
+            <button type="button" data-calc-key="pct">%</button><button type="button" data-calc-key="ce">CE</button><button type="button" data-calc-key="c">C</button><button type="button" data-calc-key="back">⌫</button>
+            <button type="button" data-calc-key="inv">1/x</button><button type="button" data-calc-key="sq">x²</button><button type="button" data-calc-key="sqrt">√x</button><button type="button" data-calc-key="div">÷</button>
+            <button type="button" data-calc-key="7">7</button><button type="button" data-calc-key="8">8</button><button type="button" data-calc-key="9">9</button><button type="button" data-calc-key="mul">×</button>
+            <button type="button" data-calc-key="4">4</button><button type="button" data-calc-key="5">5</button><button type="button" data-calc-key="6">6</button><button type="button" data-calc-key="sub">−</button>
+            <button type="button" data-calc-key="1">1</button><button type="button" data-calc-key="2">2</button><button type="button" data-calc-key="3">3</button><button type="button" data-calc-key="add">+</button>
+            <button type="button" data-calc-key="neg">±</button><button type="button" data-calc-key="0">0</button><button type="button" data-calc-key="dot">.</button><button type="button" data-calc-key="eq" class="calc-eq">=</button>
+          </div>
         </div>
       </section>
 
@@ -144,11 +154,11 @@
         <div class="start-search"><img src="public/fluent-icons/search_24_regular.svg" alt=""><input type="text" placeholder="Search AHK v2 capabilities" aria-label="Search AHK v2 capabilities" data-start-search></div>
         <div class="start-heading"><span>Pinned</span><a href="benchmarks.html">All apps</a></div>
         <div class="start-grid">
-          <button type="button" data-ahk-demo="windows" data-open-window="studio"><span><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></span><b>Windows</b></button>
-          <button type="button" data-ahk-demo="text" data-open-window="studio"><span><img src="public/fluent-icons/text_case_title_24_regular.svg" alt=""></span><b>Hotstrings</b></button>
-          <button type="button" data-ahk-demo="clipboard" data-open-window="studio"><span><img src="public/fluent-icons/clipboard_24_regular.svg" alt=""></span><b>Clipboard</b></button>
-          <button type="button" data-ahk-demo="files" data-open-window="studio"><span><img src="public/fluent-icons/folder_24_regular.svg" alt=""></span><b>Files</b></button>
-          <button type="button" data-ahk-demo="gui" data-open-window="studio"><span><img src="public/fluent-icons/window_dev_tools_24_regular.svg" alt=""></span><b>GUI builder</b></button>
+          <button type="button" data-ahk-demo="windows"><span><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></span><b>Windows</b></button>
+          <button type="button" data-ahk-demo="text"><span><img src="public/fluent-icons/text_case_title_24_regular.svg" alt=""></span><b>Hotstrings</b></button>
+          <button type="button" data-ahk-demo="clipboard"><span><img src="public/fluent-icons/clipboard_24_regular.svg" alt=""></span><b>Clipboard</b></button>
+          <button type="button" data-ahk-demo="files"><span><img src="public/fluent-icons/folder_24_regular.svg" alt=""></span><b>Files</b></button>
+          <button type="button" data-ahk-demo="gui"><span><img src="public/fluent-icons/window_dev_tools_24_regular.svg" alt=""></span><b>GUI builder</b></button>
           <a href="leaderboard.html"><span><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></span><b>Leaderboard</b></a>
         </div>
         <div class="start-footer"><span><img src="logo.svg" alt="">AHK Benchmarks</span><a href="wiki.html">AHK Wiki</a></div>
@@ -161,9 +171,11 @@
         </div>
         <div class="taskbar-center">
           <button type="button" class="start-button" data-start-button aria-label="Open Start menu" aria-expanded="false"><img src="public/fluent-icons/apps_24_filled.svg" alt=""></button>
-          <button type="button" class="task-search" data-open-window="studio"><img src="public/fluent-icons/search_24_regular.svg" alt="">Search AHK v2</button>
-          <button type="button" class="task-app is-running" data-open-window="studio" aria-label="AHK v2 Automation Studio" title="AHK v2 Automation Studio"><img src="logo.svg" alt=""></button>
-          <button type="button" class="task-app is-running" data-open-window="board" aria-label="Benchmark Monitor" title="Benchmark Monitor"><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></button>
+          <button type="button" class="task-search" data-task-search><img src="public/fluent-icons/search_24_regular.svg" alt="">Search AHK v2</button>
+          <button type="button" class="task-app is-running" data-open-window="terminal" aria-label="Windows Terminal" title="Windows Terminal"><img src="public/fluent-icons/window_console_24_regular.svg" alt=""></button>
+          <button type="button" class="task-app is-running" data-open-window="notepad" aria-label="Notepad" title="Notepad"><img src="public/fluent-icons/notepad_24_regular.svg" alt=""></button>
+          <button type="button" class="task-app is-running" data-open-window="calc" aria-label="Calculator" title="Calculator"><img src="public/fluent-icons/calculator_24_regular.svg" alt=""></button>
+          <button type="button" class="task-app" data-open-window="board" aria-label="Benchmark Monitor" title="Benchmark Monitor"><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></button>
           <a class="task-app" href="prompts.html" aria-label="Open prompt library" title="Prompt library"><img src="public/fluent-icons/code_24_regular.svg" alt=""></a>
         </div>
         <div class="taskbar-tray"><button type="button" class="tray-icons" data-tray-icons aria-label="Quick settings" aria-expanded="false"><img src="public/fluent-icons/wifi_4_20_regular.svg" alt=""><img src="public/fluent-icons/speaker_2_20_regular.svg" alt=""><img src="public/fluent-icons/battery_10_20_regular.svg" alt=""></button><button type="button" class="tray-clock" data-notif-button aria-label="Open calendar and notifications" aria-expanded="false"><time data-taskbar-clock></time></button></div>

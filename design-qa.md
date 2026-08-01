@@ -64,4 +64,10 @@ A separate crop was not required. The raw 1440 × 1000 implementation capture pr
 - Fix: neutralized the `code` style leak inside the editor; rebuilt the script library as a VS Code-style Explorer tree (EXPLORER / AHK-LAB, compact single-line file rows with an accent-selected state); replaced the serif marketing title with a single-line app caption; added a tab close glyph; gave the window a VS Code-style blue status bar; and let the preview pane flex to fill the window height.
 - Evidence: `preview-v7-studio.png`; 25/25 checks in `qa-win11.mjs`, 7/7 site tests.
 
+### Iteration 5
+
+- Feedback: replace the custom Automation Studio window with real, recognizable Windows apps — Calculator, Terminal, and Notepad.
+- Fix: the desktop now opens Notepad (the demo script, plain text with the Win11 Notepad menu/status bar), Windows Terminal (PowerShell tab that runs `.\<script>.ahk` and prints `[ok]` output lines; the command line is a working run-again button), and a fully functional Calculator (all 24 keys compute). The window-control demo now physically tiles the three real app windows across the desktop; other demos untile. Desktop icons, Start tiles, taskbar buttons (four running apps), and the feature dock all drive the demos; the old studio window is gone.
+- Evidence: `preview-v8-desktop.png`, `preview-v8-tiled.png`; 30/30 checks in `qa-win11.mjs` (including `7 × 8 = 56` and tile/untile), 7/7 site tests.
+
 final result: passed

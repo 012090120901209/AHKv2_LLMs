@@ -54,21 +54,36 @@ check('search filters pinned grid', visibleTiles === 1, `${visibleTiles} visible
 await page.screenshot({ path: 'preview-v5-start.png' });
 await page.keyboard.press('Enter');
 await page.waitForTimeout(300);
-check('Enter runs first match (hotstrings demo)', (await page.textContent('[data-demo-label]')) === 'TEXT EXPANSION');
+check('Enter runs first match (hotstrings demo)', (await page.textContent('[data-notepad-file]')).includes('hotstrings.ahk'));
 check('start menu closed after Enter', await page.isHidden('[data-start-menu]'));
 
+// Calculator computes
+for (const key of ['7', 'mul', '8', 'eq']) await page.click(`[data-calc-key="${key}"]`);
+check('calculator 7 × 8 = 56', (await page.textContent('[data-calc-display]')) === '56');
+await page.click('[data-calc-key="c"]');
+check('calculator C resets', (await page.textContent('[data-calc-display]')) === '0');
+
+// Window-control demo tiles the real desktop apps
+await page.click('[data-ahk-feature="windows"]');
+await page.waitForTimeout(300);
+check('windows demo tiles desktop apps', await page.evaluate(() => document.querySelector('.win11-hero').classList.contains('is-tiled')));
+await page.click('[data-ahk-feature="files"]');
+await page.waitForTimeout(300);
+check('other demos until tile', await page.evaluate(() => !document.querySelector('.win11-hero').classList.contains('is-tiled')));
+check('notepad switched to files script', (await page.textContent('[data-notepad-file]')).includes('download-sorter.ahk'));
+
 // 3. Minimize keeps taskbar underline; taskbar click restores; click again minimizes
-await page.click('.win-studio [data-window-action="minimize"]');
+await page.click('.win-notepad [data-window-action="minimize"]');
 await page.waitForTimeout(150);
-check('minimize hides studio', await page.evaluate(() => document.querySelector('.win-studio').classList.contains('is-hidden')));
-check('minimized app still running in taskbar', await page.evaluate(() => document.querySelector('.task-app[data-open-window="studio"]').classList.contains('is-running')));
-await page.click('.task-app[data-open-window="studio"]');
+check('minimize hides notepad', await page.evaluate(() => document.querySelector('.win-notepad').classList.contains('is-hidden')));
+check('minimized app still running in taskbar', await page.evaluate(() => document.querySelector('.task-app[data-open-window="notepad"]').classList.contains('is-running')));
+await page.click('.task-app[data-open-window="notepad"]');
 await page.waitForTimeout(150);
-check('taskbar click restores studio', await page.evaluate(() => !document.querySelector('.win-studio').classList.contains('is-hidden')));
-await page.click('.task-app[data-open-window="studio"]');
+check('taskbar click restores notepad', await page.evaluate(() => !document.querySelector('.win-notepad').classList.contains('is-hidden')));
+await page.click('.task-app[data-open-window="notepad"]');
 await page.waitForTimeout(150);
-check('taskbar click on focused app minimizes', await page.evaluate(() => document.querySelector('.win-studio').classList.contains('is-hidden')));
-await page.click('.task-app[data-open-window="studio"]');
+check('taskbar click on focused app minimizes', await page.evaluate(() => document.querySelector('.win-notepad').classList.contains('is-hidden')));
+await page.click('.task-app[data-open-window="notepad"]');
 
 // 4. Close removes the underline
 await page.click('.task-app[data-open-window="board"]');

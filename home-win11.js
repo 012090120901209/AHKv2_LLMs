@@ -2,19 +2,12 @@
   const desktop = document.querySelector('[data-win-desktop]');
   if (!desktop) return;
 
-  const demoOutput = desktop.querySelector('[data-demo-output]');
-  const demoVisual = desktop.querySelector('[data-demo-visual]');
-  const demoStatus = desktop.querySelector('[data-demo-status]');
-  const demoLabel = desktop.querySelector('[data-demo-label]');
-  const demoTitle = desktop.querySelector('[data-demo-title]');
-  const demoEditor = desktop.querySelector('[data-demo-editor]');
-  const demoConsole = desktop.querySelector('[data-demo-console]');
-  const editorTab = desktop.querySelector('[data-editor-tab]');
-  const studioPath = desktop.querySelector('[data-studio-path]');
+  const notepadFile = desktop.querySelector('[data-notepad-file]');
+  const notepadBody = desktop.querySelector('[data-notepad-body]');
+  const terminalBody = desktop.querySelector('[data-terminal-body]');
   const startButton = desktop.querySelector('[data-start-button]');
   const startMenu = desktop.querySelector('[data-start-menu]');
   const windows = [...desktop.querySelectorAll('[data-window]')];
-  const studioStatus = desktop.querySelector('[data-studio-status]');
   const ICON_MAXIMIZE = 'public/fluent-icons/square_16_regular.svg';
   const ICON_RESTORE = 'public/fluent-icons/square_multiple_16_regular.svg';
   let statusTimer;
@@ -23,152 +16,116 @@
   const demos = {
     windows: {
       file: 'window-layout.ahk',
-      label: 'WINDOW CONTROL',
-      title: 'Tile a workspace in one command.',
-      description: 'AHK can find, focus, resize, and arrange native Windows applications around the way you work.',
-      visualClass: 'demo-windows',
-      visual: '<div class="mini-window mini-one"><span></span><p>Research</p></div><div class="mini-window mini-two"><span></span><p>Editor</p></div><div class="mini-window mini-three"><span></span><p>Console</p></div>',
       script: [
-        '<span class="hl-dir">#Requires</span> AutoHotkey <span class="hl-num">v2.1</span>',
-        '<span class="hl-com">; Tile a workspace in one command.</span>',
+        '#Requires AutoHotkey v2.1',
+        '; Tile a workspace in one command.',
         '',
-        '<span class="hl-var">#w</span>:: {  <span class="hl-com">; Win+W</span>',
-        '    <span class="hl-var">half</span> := <span class="hl-var">A_ScreenWidth</span> // <span class="hl-num">2</span>',
-        '    <span class="hl-fn">WinMove</span> <span class="hl-num">0</span>, <span class="hl-num">0</span>, <span class="hl-var">half</span>, <span class="hl-var">A_ScreenHeight</span>, <span class="hl-str">"Research"</span>',
-        '    <span class="hl-fn">WinMove</span> <span class="hl-var">half</span>, <span class="hl-num">0</span>, <span class="hl-var">half</span>, <span class="hl-var">A_ScreenHeight</span> // <span class="hl-num">2</span>, <span class="hl-str">"Editor"</span>',
-        '    <span class="hl-fn">WinMove</span> <span class="hl-var">half</span>, <span class="hl-var">A_ScreenHeight</span> // <span class="hl-num">2</span>, <span class="hl-var">half</span>, <span class="hl-var">A_ScreenHeight</span> // <span class="hl-num">2</span>, <span class="hl-str">"Console"</span>',
+        '#w:: {  ; Win+W',
+        '    half := A_ScreenWidth // 2',
+        '    WinMove 0, 0, half, A_ScreenHeight, "Notepad"',
+        '    WinMove half, 0, half, A_ScreenHeight // 2, "Windows Terminal"',
+        '    WinMove half, A_ScreenHeight // 2, half, A_ScreenHeight // 2, "Calculator"',
         '}'
       ],
-      output: '&gt; 3 windows tiled across 2 columns · 14 ms'
+      terminal: ['[ok] 3 windows tiled across 2 columns (14 ms)']
     },
     text: {
       file: 'hotstrings.ahk',
-      label: 'TEXT EXPANSION',
-      title: 'Turn a short trigger into finished writing.',
-      description: 'Hotstrings expand signatures, case notes, templates, or any repeated text inside almost any Windows application.',
-      visualClass: 'demo-text',
-      visual: '<div class="demo-text-editor"><header>New message</header><p>Thanks for your help.<br><br><mark>;sig → Best,<br>Justin</mark></p></div>',
       script: [
-        '<span class="hl-dir">#Requires</span> AutoHotkey <span class="hl-num">v2.1</span>',
-        '<span class="hl-com">; Hotstrings turn a short trigger into finished writing.</span>',
+        '#Requires AutoHotkey v2.1',
+        '; Hotstrings turn a short trigger into finished writing.',
         '',
-        '<span class="hl-var">::;sig::</span> {',
-        '    <span class="hl-fn">SendText</span> <span class="hl-str">"Best,`nJustin"</span>',
+        '::;sig:: {',
+        '    SendText "Best,`nJustin"',
         '}',
         '',
-        '<span class="hl-var">::;ty::</span><span class="hl-str">Thanks for your help.</span>'
+        '::;ty::Thanks for your help.'
       ],
-      output: '&gt; ;sig expanded to 2 lines · 3 ms'
+      terminal: ['[ok] Hotstring ::;sig:: armed — watching keyboard input', '     ;sig → "Best,`nJustin"']
     },
     clipboard: {
       file: 'clipboard-workflow.ahk',
-      label: 'CLIPBOARD WORKFLOWS',
-      title: 'Transform and reuse everything you copy.',
-      description: 'Watch the clipboard, clean incoming text, keep useful snippets, and paste the right format into the active app.',
-      visualClass: 'demo-clipboard',
-      visual: '<div class="clipboard-list"><div class="clipboard-item"><span>Raw meeting notes</span><b>captured</b></div><div class="clipboard-item is-picked"><span>Clean Markdown</span><b>selected</b></div><div class="clipboard-item"><span>Plain-text summary</span><b>ready</b></div></div>',
       script: [
-        '<span class="hl-dir">#Requires</span> AutoHotkey <span class="hl-num">v2.1</span>',
-        '<span class="hl-com">; Transform and reuse everything you copy.</span>',
+        '#Requires AutoHotkey v2.1',
+        '; Transform and reuse everything you copy.',
         '',
-        '<span class="hl-fn">OnClipboardChange</span> <span class="hl-var">CleanMarkdown</span>',
+        'OnClipboardChange CleanMarkdown',
         '',
-        '<span class="hl-var">CleanMarkdown</span>(*) {',
-        '    <span class="hl-var">clean</span> := <span class="hl-fn">RegExReplace</span>(<span class="hl-fn">Trim</span>(<span class="hl-var">A_Clipboard</span>), <span class="hl-str">"\\r\\n?"</span>, <span class="hl-str">"`n"</span>)',
-        '    <span class="hl-kw">if</span> (<span class="hl-var">clean</span> != <span class="hl-var">A_Clipboard</span>)',
-        '        <span class="hl-var">A_Clipboard</span> := <span class="hl-var">clean</span>',
+        'CleanMarkdown(*) {',
+        '    clean := RegExReplace(Trim(A_Clipboard), "\\r\\n?", "`n")',
+        '    if (clean != A_Clipboard)',
+        '        A_Clipboard := clean',
         '}'
       ],
-      output: '&gt; Clipboard cleaned → Markdown · 6 ms'
+      terminal: ['[ok] OnClipboardChange hook registered', '[ok] Clipboard cleaned → Markdown (6 ms)']
     },
     files: {
       file: 'download-sorter.ahk',
-      label: 'FILE AUTOMATION',
-      title: 'Sort a messy folder while you keep working.',
-      description: 'AHK can watch directories, rename batches, move files by type, and launch the next step in a desktop workflow.',
-      visualClass: 'demo-files',
-      visual: '<div class="file-sorter"><div class="file-item"><span>report.pdf</span><b>Documents →</b></div><div class="file-item"><span>capture.png</span><b>Images →</b></div><div class="file-item"><span>results.csv</span><b>Data →</b></div></div>',
       script: [
-        '<span class="hl-dir">#Requires</span> AutoHotkey <span class="hl-num">v2.1</span>',
-        '<span class="hl-com">; Sort a messy folder while you keep working.</span>',
+        '#Requires AutoHotkey v2.1',
+        '; Sort a messy folder while you keep working.',
         '',
-        '<span class="hl-var">routes</span> := <span class="hl-fn">Map</span>(<span class="hl-str">"pdf"</span>, <span class="hl-str">"Documents"</span>, <span class="hl-str">"png"</span>, <span class="hl-str">"Images"</span>, <span class="hl-str">"csv"</span>, <span class="hl-str">"Data"</span>)',
+        'routes := Map("pdf", "Documents", "png", "Images", "csv", "Data")',
         '',
-        '<span class="hl-kw">Loop Files</span> <span class="hl-var">A_Desktop</span> <span class="hl-str">"\\Downloads\\*.*"</span> {',
-        '    <span class="hl-kw">if</span> !<span class="hl-var">routes</span>.<span class="hl-fn">Has</span>(<span class="hl-var">A_LoopFileExt</span>)',
-        '        <span class="hl-kw">continue</span>',
-        '    <span class="hl-fn">DirCreate</span> <span class="hl-var">A_Desktop</span> <span class="hl-str">"\\"</span> <span class="hl-var">routes</span>[<span class="hl-var">A_LoopFileExt</span>]',
-        '    <span class="hl-fn">FileMove</span> <span class="hl-var">A_LoopFileFullPath</span>, <span class="hl-var">A_Desktop</span> <span class="hl-str">"\\"</span> <span class="hl-var">routes</span>[<span class="hl-var">A_LoopFileExt</span>]',
+        'Loop Files A_Desktop "\\Downloads\\*.*" {',
+        '    if !routes.Has(A_LoopFileExt)',
+        '        continue',
+        '    DirCreate A_Desktop "\\" routes[A_LoopFileExt]',
+        '    FileMove A_LoopFileFullPath, A_Desktop "\\" routes[A_LoopFileExt]',
         '}'
       ],
-      output: '&gt; 3 files sorted into Documents, Images, Data · 22 ms'
+      terminal: ['[ok] 3 files sorted into Documents, Images, Data (22 ms)']
     },
     gui: {
       file: 'release-builder.ahk',
-      label: 'CUSTOM DESKTOP APPS',
-      title: 'Build a real Windows interface in AHK.',
-      description: 'Create native tools with inputs, buttons, menus, events, and resizable layouts—without leaving AutoHotkey v2.',
-      visualClass: 'demo-gui',
-      visual: '<div class="gui-preview"><header><span>Release builder</span><span>×</span></header><label>Project name<i></i></label><label>Output folder<i></i></label><footer><button type="button">Build release</button></footer></div>',
       script: [
-        '<span class="hl-dir">#Requires</span> AutoHotkey <span class="hl-num">v2.1</span>',
-        '<span class="hl-com">; Build a real Windows interface in AHK.</span>',
+        '#Requires AutoHotkey v2.1',
+        '; Build a real Windows interface in AHK.',
         '',
-        '<span class="hl-var">app</span> := <span class="hl-fn">Gui</span>(<span class="hl-str">"+Resize"</span>, <span class="hl-str">"Release builder"</span>)',
-        '<span class="hl-var">app</span>.<span class="hl-fn">AddText</span>(, <span class="hl-str">"Project name"</span>)',
-        '<span class="hl-var">name</span> := <span class="hl-var">app</span>.<span class="hl-fn">AddEdit</span>(<span class="hl-str">"w220"</span>)',
-        '<span class="hl-var">app</span>.<span class="hl-fn">AddText</span>(, <span class="hl-str">"Output folder"</span>)',
-        '<span class="hl-var">out</span> := <span class="hl-var">app</span>.<span class="hl-fn">AddEdit</span>(<span class="hl-str">"w220"</span>)',
-        '<span class="hl-var">app</span>.<span class="hl-fn">AddButton</span>(<span class="hl-str">"Default"</span>, <span class="hl-str">"Build release"</span>).<span class="hl-fn">OnEvent</span>(<span class="hl-str">"Click"</span>, <span class="hl-var">Build</span>)',
-        '<span class="hl-var">app</span>.<span class="hl-fn">Show</span>()',
+        'app := Gui("+Resize", "Release builder")',
+        'app.AddText(, "Project name")',
+        'name := app.AddEdit("w220")',
+        'app.AddText(, "Output folder")',
+        'out := app.AddEdit("w220")',
+        'app.AddButton("Default", "Build release").OnEvent("Click", Build)',
+        'app.Show',
         '',
-        '<span class="hl-var">Build</span>(*) =&gt; <span class="hl-fn">MsgBox</span>(<span class="hl-str">"Building "</span> <span class="hl-var">name</span>.<span class="hl-var">Value</span> <span class="hl-str">" → "</span> <span class="hl-var">out</span>.<span class="hl-var">Value</span>)'
+        'Build(*) => MsgBox("Building " name.Value " → " out.Value)'
       ],
-      output: '&gt; Gui "Release builder" shown · 9 ms'
+      terminal: ['[ok] Gui "Release builder" shown (9 ms)']
     }
   };
 
+  function renderTerminal(demo, animate) {
+    if (!terminalBody) return;
+    const prompt = '<span class="term-prompt">PS C:\\AHK&gt;</span>';
+    const cmdLine = `<div class="term-line"><button type="button" data-run-demo title="Run again">${prompt} <span class="term-cmd">.\\${demo.file}</span></button></div>`;
+    const outLines = demo.terminal.map((line) => `<div class="term-line term-ok">${line}</div>`).join('');
+    const nextPrompt = `<div class="term-line">${prompt} <span class="term-cursor"></span></div>`;
+    clearTimeout(statusTimer);
+    if (!animate) {
+      terminalBody.innerHTML = cmdLine + outLines + nextPrompt;
+      return;
+    }
+    terminalBody.innerHTML = cmdLine + nextPrompt;
+    statusTimer = setTimeout(() => {
+      terminalBody.innerHTML = cmdLine + outLines + nextPrompt;
+    }, 720);
+  }
+
   function selectDemo(name, animate = true) {
     const demo = demos[name];
-    if (!demo || !demoOutput) return;
+    if (!demo) return;
     currentDemo = name;
-    desktop.querySelectorAll('[data-ahk-demo]').forEach((button) => {
-      button.classList.toggle('is-active', button.dataset.ahkDemo === name && button.classList.contains('automation-button'));
-    });
     document.querySelectorAll('[data-ahk-feature]').forEach((button) => {
       const active = button.dataset.ahkFeature === name;
       button.classList.toggle('is-active', active);
       button.setAttribute('aria-pressed', String(active));
     });
-    demoOutput.querySelector('.demo-titlebar span').lastChild.textContent = demo.file;
-    demoVisual.className = `demo-visual ${demo.visualClass}`;
-    demoVisual.innerHTML = demo.visual;
-    demoLabel.textContent = demo.label;
-    demoTitle.textContent = demo.title;
-    if (demoEditor) {
-      demoEditor.innerHTML = demo.script
-        .map((line, index) => `<div class="editor-line"><span class="editor-ln">${index + 1}</span><code>${line || '&nbsp;'}</code></div>`)
-        .join('');
-    }
-    if (editorTab) editorTab.textContent = demo.file;
-    if (studioPath) studioPath.textContent = `C:\\AHK\\${demo.file}`;
-    if (!animate) {
-      if (demoConsole) demoConsole.innerHTML = demo.output;
-      return;
-    }
-    demoOutput.classList.remove('is-running');
-    void demoOutput.offsetWidth;
-    demoOutput.classList.add('is-running');
-    demoStatus.textContent = 'running';
-    if (demoConsole) demoConsole.textContent = `> Running ${demo.file}…`;
-    if (studioStatus) studioStatus.textContent = `Running ${demo.file}…`;
-    clearTimeout(statusTimer);
-    statusTimer = setTimeout(() => {
-      demoStatus.textContent = 'complete';
-      demoOutput.classList.remove('is-running');
-      if (demoConsole) demoConsole.innerHTML = demo.output;
-      if (studioStatus) studioStatus.textContent = `${demo.file} — complete`;
-    }, 720);
+    if (notepadFile) notepadFile.textContent = `${demo.file} — Notepad`;
+    if (notepadBody) notepadBody.textContent = demo.script.join('\n');
+    renderTerminal(demo, animate);
+    if (animate) desktop.classList.toggle('is-tiled', name === 'windows');
   }
 
   // ---- Window + taskbar state --------------------------------------------
@@ -192,6 +149,7 @@
 
   function setMaximized(win, on) {
     if (!win) return;
+    if (on) desktop.classList.remove('is-tiled');
     win.classList.toggle('is-maximized', on);
     if (on) win.classList.remove('is-snapped-left', 'is-snapped-right');
     const button = win.querySelector('[data-window-action="maximize"]');
@@ -245,12 +203,16 @@
     const openButton = event.target.closest('[data-open-window]');
     const actionButton = event.target.closest('[data-window-action]');
 
-    if (event.target.closest('[data-start-button]')) {
+    if (event.target.closest('[data-start-button], [data-task-search]')) {
       toggleStart();
       return;
     }
     if (event.target.closest('[data-run-demo]')) selectDemo(currentDemo);
-    if (demoButton) selectDemo(demoButton.dataset.ahkDemo);
+    if (demoButton) {
+      selectDemo(demoButton.dataset.ahkDemo);
+      openWindow('notepad');
+      openWindow('terminal');
+    }
     if (openButton && !openButton.closest('.desktop-shortcuts')) {
       if (openButton.classList.contains('task-app')) {
         const win = windowByName(openButton.dataset.openWindow);
@@ -279,7 +241,7 @@
 
     const clickedWindow = event.target.closest('[data-window]');
     if (clickedWindow) focusWindow(clickedWindow);
-    if (!event.target.closest('[data-start-menu], [data-start-button]')) toggleStart(false);
+    if (!event.target.closest('[data-start-menu], [data-start-button], [data-task-search]')) toggleStart(false);
   });
 
   // ---- Dragging, snap assist, restore-from-maximize -----------------------
@@ -320,6 +282,7 @@
     }
 
     function beginDrag(windowElement, event, resetPosition) {
+      desktop.classList.remove('is-tiled');
       if (resetPosition) {
         windowElement.classList.remove('is-snapped-left', 'is-snapped-right');
         windowElement.style.left = '';
@@ -408,13 +371,83 @@
   document.querySelectorAll('[data-ahk-feature]').forEach((button) => {
     button.addEventListener('click', () => {
       selectDemo(button.dataset.ahkFeature);
-      openWindow('studio');
+      openWindow('notepad');
+      openWindow('terminal');
       desktop.scrollIntoView({
         behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
         block: 'start'
       });
     });
   });
+
+  // ---- Calculator ----------------------------------------------------------
+  const calcDisplay = desktop.querySelector('[data-calc-display]');
+  const calcHistory = desktop.querySelector('[data-calc-history]');
+  if (calcDisplay) {
+    let current = '0';
+    let stored = null;
+    let op = null;
+    let fresh = true;
+    const ops = { add: (a, b) => a + b, sub: (a, b) => a - b, mul: (a, b) => a * b, div: (a, b) => a / b };
+    const symbols = { add: '+', sub: '−', mul: '×', div: '÷' };
+    const show = () => { calcDisplay.textContent = current; };
+    const tidy = (n) => String(Math.round(n * 1e10) / 1e10);
+
+    function equals() {
+      if (op === null || stored === null) return;
+      const b = parseFloat(current);
+      if (calcHistory) calcHistory.textContent = `${stored} ${symbols[op]} ${b} =`;
+      current = tidy(ops[op](stored, b));
+      op = null;
+      stored = null;
+      fresh = true;
+      show();
+    }
+
+    function setOp(next) {
+      if (op !== null && !fresh) equals();
+      stored = parseFloat(current);
+      op = next;
+      fresh = true;
+      if (calcHistory) calcHistory.textContent = `${current} ${symbols[next]}`;
+    }
+
+    function unary(fn) {
+      current = tidy(fn(parseFloat(current)));
+      fresh = true;
+      show();
+    }
+
+    desktop.querySelectorAll('[data-calc-key]').forEach((key) => {
+      key.addEventListener('click', () => {
+        const k = key.dataset.calcKey;
+        if (/^[0-9]$/.test(k)) {
+          if (fresh) { current = k; fresh = false; }
+          else if (current.replace(/[-.]/g, '').length < 12) current = current === '0' ? k : current + k;
+          show();
+        } else if (k === 'dot') {
+          if (fresh) { current = '0.'; fresh = false; }
+          else if (!current.includes('.')) current += '.';
+          show();
+        } else if (k === 'neg') {
+          if (current !== '0') current = current.startsWith('-') ? current.slice(1) : `-${current}`;
+          show();
+        } else if (k === 'pct') unary((n) => n / 100);
+        else if (k === 'inv') unary((n) => 1 / n);
+        else if (k === 'sq') unary((n) => n * n);
+        else if (k === 'sqrt') unary(Math.sqrt);
+        else if (k === 'ce') { current = '0'; fresh = true; show(); }
+        else if (k === 'c') {
+          current = '0'; stored = null; op = null; fresh = true;
+          if (calcHistory) calcHistory.textContent = '';
+          show();
+        } else if (k === 'back') {
+          if (!fresh) { current = current.length > 1 ? current.slice(0, -1) : '0'; show(); }
+        } else if (k === 'eq') equals();
+        else if (ops[k]) setOp(k);
+      });
+    });
+  }
 
   function updateClock() {
     const now = new Date();
