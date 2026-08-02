@@ -97,4 +97,11 @@ A separate crop was not required. The raw 1440 × 1000 implementation capture pr
 - Fix: `terminal.svg` is now the actual official Microsoft Terminal icon scaled to 24 px; `notepad.svg` redrawn as the real spiral-bound notepad (light-blue page, four dark-teal spiral loops, three text lines, white page edge and gray base); `calculator.svg` redrawn as the real blue tile with a white display bar and a three-column grid of blue keys in the official gradient (`#1571BF → #0F4F93`).
 - Evidence: `preview-v10-icons.png`; 32/32 checks in `qa-win11.mjs`, 7/7 site tests.
 
+### Iteration 10
+
+- Feedback: some icons looked off-center, especially the Calculator.
+- Root cause: the shortcut/taskbar layout centers the `<img>` correctly; the imbalance was inside the SVG art — the Calculator's keypad ran to the bottom edge of the tile (bottom-heavy, and 0.2 px left of center) and the Notepad's visual center sat ~0.5 px high.
+- Fix: rebalanced the geometry — Calculator keys now sit in a 3×3 grid with even margins all around (display raised, right-column equals key spanning two rows, columns centered at 5.2–18.8); Notepad art shifted down 0.5 px so the spiral, page, and base center on the viewBox.
+- Evidence: `preview-v11-icons.png`; 32/32 checks in `qa-win11.mjs`, 7/7 site tests.
+
 final result: passed
