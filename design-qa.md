@@ -84,4 +84,10 @@ A separate crop was not required. The raw 1440 × 1000 implementation capture pr
 - Fix: removed the Notepad status bar entirely; the Terminal now renders a single empty `PS C:\AHK>` prompt with the blinking cursor. Deleted the now-dead demo `terminal` output arrays, the run-again button handler, and the orphaned `.notepad-status` / `.term-cmd` / `.term-ok` CSS.
 - Evidence: `preview-v6-clean.png`; 32/32 checks in `qa-win11.mjs`, 7/7 site tests.
 
+### Iteration 8
+
+- Feedback: the taskbar and desktop icons were monochrome line glyphs inverted to white — they should look like real, colorful Windows app icons.
+- Fix: drew a new colorful `public/app-icons/` SVG set — Notepad (blue tile, white page, folded corner), Windows Terminal (dark console with `>_` prompt), Calculator (dark body, display, key grid, blue equals key), Benchmark Monitor (line-chart tile), AHK Wiki (yellow folder), Prompts (purple `</>` tile), and a four-pane blue Windows Start logo. Swapped them into the desktop shortcuts, window titlebars, Terminal tab, Start button, and taskbar buttons; dropped the gradient tiles behind desktop shortcuts (real desktop icons sit bare on the wallpaper with a drop shadow) and removed every invert/hue-rotate filter that would have recolored them.
+- Evidence: `preview-v9-icons.png`; 32/32 checks in `qa-win11.mjs`, 7/7 site tests.
+
 final result: passed

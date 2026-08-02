@@ -52,17 +52,17 @@
       <h1 id="hero-title" class="sr-only">AutoHotkey v2 makes Windows yours.</h1>
 
       <div class="desktop-shortcuts" aria-label="Desktop shortcuts">
-        <button type="button" data-open-window="notepad"><span class="shortcut-glyph"><img src="public/fluent-icons/notepad_24_regular.svg" alt=""></span><span>Notepad</span></button>
-        <button type="button" data-open-window="terminal"><span class="shortcut-glyph"><img src="public/fluent-icons/window_console_24_regular.svg" alt=""></span><span>Terminal</span></button>
-        <button type="button" data-open-window="calc"><span class="shortcut-glyph"><img src="public/fluent-icons/calculator_24_regular.svg" alt=""></span><span>Calculator</span></button>
-        <button type="button" data-open-window="board"><span class="shortcut-glyph"><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></span><span>Benchmark Monitor</span></button>
-        <a href="wiki.html"><span class="shortcut-glyph"><img src="public/fluent-icons/folder_24_regular.svg" alt=""></span><span>AHK Wiki</span></a>
-        <a href="prompts.html"><span class="shortcut-glyph shortcut-code">&lt;/&gt;</span><span>Prompts</span></a>
+        <button type="button" data-open-window="notepad"><span class="shortcut-glyph"><img src="public/app-icons/notepad.svg" alt=""></span><span>Notepad</span></button>
+        <button type="button" data-open-window="terminal"><span class="shortcut-glyph"><img src="public/app-icons/terminal.svg" alt=""></span><span>Terminal</span></button>
+        <button type="button" data-open-window="calc"><span class="shortcut-glyph"><img src="public/app-icons/calculator.svg" alt=""></span><span>Calculator</span></button>
+        <button type="button" data-open-window="board"><span class="shortcut-glyph"><img src="public/app-icons/benchmark.svg" alt=""></span><span>Benchmark Monitor</span></button>
+        <a href="wiki.html"><span class="shortcut-glyph"><img src="public/app-icons/folder.svg" alt=""></span><span>AHK Wiki</span></a>
+        <a href="prompts.html"><span class="shortcut-glyph"><img src="public/app-icons/prompts.svg" alt=""></span><span>Prompts</span></a>
       </div>
 
       <section class="win-window win-notepad is-focused" data-window="notepad" aria-label="Notepad">
         <div class="win-titlebar" data-drag-handle>
-          <div class="win-title"><img src="public/fluent-icons/notepad_24_regular.svg" alt=""><span data-notepad-file>window-layout.ahk — Notepad</span></div>
+          <div class="win-title"><img src="public/app-icons/notepad.svg" alt=""><span data-notepad-file>window-layout.ahk — Notepad</span></div>
           <div class="win-controls" aria-label="Window controls">
             <button type="button" data-window-action="minimize" aria-label="Minimize"><img src="public/fluent-icons/subtract_16_regular.svg" alt=""></button>
             <button type="button" data-window-action="maximize" aria-label="Maximize"><img src="public/fluent-icons/square_16_regular.svg" alt=""></button>
@@ -86,7 +86,7 @@
 
       <section class="win-window win-terminal" data-window="terminal" aria-label="Windows Terminal">
         <div class="win-titlebar term-titlebar" data-drag-handle>
-          <div class="term-tabs" aria-hidden="true"><span class="term-tab is-active"><img src="public/fluent-icons/window_console_24_regular.svg" alt="">Windows PowerShell<em>×</em></span><span class="term-tab-add">+</span><span class="term-tab-drop">⌄</span></div>
+          <div class="term-tabs" aria-hidden="true"><span class="term-tab is-active"><img src="public/app-icons/terminal.svg" alt="">Windows PowerShell<em>×</em></span><span class="term-tab-add">+</span><span class="term-tab-drop">⌄</span></div>
           <div class="win-controls" aria-label="Window controls">
             <button type="button" data-window-action="minimize" aria-label="Minimize"><img src="public/fluent-icons/subtract_16_regular.svg" alt=""></button>
             <button type="button" data-window-action="maximize" aria-label="Maximize"><img src="public/fluent-icons/square_16_regular.svg" alt=""></button>
@@ -100,7 +100,7 @@
 
       <section class="win-window win-calc" data-window="calc" aria-label="Calculator">
         <div class="win-titlebar" data-drag-handle>
-          <div class="win-title"><img src="public/fluent-icons/calculator_24_regular.svg" alt=""><span>Calculator</span></div>
+          <div class="win-title"><img src="public/app-icons/calculator.svg" alt=""><span>Calculator</span></div>
           <div class="win-controls" aria-label="Window controls">
             <button type="button" data-window-action="minimize" aria-label="Minimize"><img src="public/fluent-icons/subtract_16_regular.svg" alt=""></button>
             <button type="button" data-window-action="maximize" aria-label="Maximize"><img src="public/fluent-icons/square_16_regular.svg" alt=""></button>
@@ -123,7 +123,7 @@
 
       <aside class="win-window win-board is-hidden" data-window="board" aria-labelledby="board-preview-title" aria-hidden="true">
         <div class="win-titlebar" data-drag-handle>
-          <div class="win-title"><span class="board-app-icon"><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></span><span>Benchmark Monitor</span></div>
+          <div class="win-title"><span class="board-app-icon"><img src="public/app-icons/benchmark.svg" alt=""></span><span>Benchmark Monitor</span></div>
           <div class="win-controls" aria-label="Window controls">
             <button type="button" data-window-action="minimize" aria-label="Minimize"><img src="public/fluent-icons/subtract_16_regular.svg" alt=""></button>
             <button type="button" data-window-action="maximize" aria-label="Maximize"><img src="public/fluent-icons/square_16_regular.svg" alt=""></button>
@@ -167,13 +167,13 @@
           <span class="widgets-text">72°F<small>Mostly clear</small></span>
         </div>
         <div class="taskbar-center">
-          <button type="button" class="start-button" data-start-button aria-label="Open Start menu" aria-expanded="false"><img src="public/fluent-icons/apps_24_filled.svg" alt=""></button>
+          <button type="button" class="start-button" data-start-button aria-label="Open Start menu" aria-expanded="false"><img src="public/app-icons/start.svg" alt=""></button>
           <button type="button" class="task-search" data-task-search><img src="public/fluent-icons/search_24_regular.svg" alt="">Search AHK v2</button>
-          <button type="button" class="task-app is-running" data-open-window="terminal" aria-label="Windows Terminal" title="Windows Terminal"><img src="public/fluent-icons/window_console_24_regular.svg" alt=""></button>
-          <button type="button" class="task-app is-running" data-open-window="notepad" aria-label="Notepad" title="Notepad"><img src="public/fluent-icons/notepad_24_regular.svg" alt=""></button>
-          <button type="button" class="task-app is-running" data-open-window="calc" aria-label="Calculator" title="Calculator"><img src="public/fluent-icons/calculator_24_regular.svg" alt=""></button>
-          <button type="button" class="task-app" data-open-window="board" aria-label="Benchmark Monitor" title="Benchmark Monitor"><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></button>
-          <a class="task-app" href="prompts.html" aria-label="Open prompt library" title="Prompt library"><img src="public/fluent-icons/code_24_regular.svg" alt=""></a>
+          <button type="button" class="task-app is-running" data-open-window="terminal" aria-label="Windows Terminal" title="Windows Terminal"><img src="public/app-icons/terminal.svg" alt=""></button>
+          <button type="button" class="task-app is-running" data-open-window="notepad" aria-label="Notepad" title="Notepad"><img src="public/app-icons/notepad.svg" alt=""></button>
+          <button type="button" class="task-app is-running" data-open-window="calc" aria-label="Calculator" title="Calculator"><img src="public/app-icons/calculator.svg" alt=""></button>
+          <button type="button" class="task-app" data-open-window="board" aria-label="Benchmark Monitor" title="Benchmark Monitor"><img src="public/app-icons/benchmark.svg" alt=""></button>
+          <a class="task-app" href="prompts.html" aria-label="Open prompt library" title="Prompt library"><img src="public/app-icons/prompts.svg" alt=""></a>
         </div>
         <div class="taskbar-tray"><button type="button" class="tray-icons" data-tray-icons aria-label="Quick settings" aria-expanded="false"><img src="public/fluent-icons/wifi_4_20_regular.svg" alt=""><img src="public/fluent-icons/speaker_2_20_regular.svg" alt=""><img src="public/fluent-icons/battery_10_20_regular.svg" alt=""></button><button type="button" class="tray-clock" data-notif-button aria-label="Open calendar and notifications" aria-expanded="false"><time data-taskbar-clock></time></button></div>
       </div>
