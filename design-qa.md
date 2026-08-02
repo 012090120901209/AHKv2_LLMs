@@ -90,4 +90,11 @@ A separate crop was not required. The raw 1440 × 1000 implementation capture pr
 - Fix: drew a new colorful `public/app-icons/` SVG set — Notepad (blue tile, white page, folded corner), Windows Terminal (dark console with `>_` prompt), Calculator (dark body, display, key grid, blue equals key), Benchmark Monitor (line-chart tile), AHK Wiki (yellow folder), Prompts (purple `</>` tile), and a four-pane blue Windows Start logo. Swapped them into the desktop shortcuts, window titlebars, Terminal tab, Start button, and taskbar buttons; dropped the gradient tiles behind desktop shortcuts (real desktop icons sit bare on the wallpaper with a drop shadow) and removed every invert/hue-rotate filter that would have recolored them.
 - Evidence: `preview-v9-icons.png`; 32/32 checks in `qa-win11.mjs`, 7/7 site tests.
 
+### Iteration 9
+
+- Feedback: the custom icons were a good direction but should be reviewed against the actual Windows app icons and made closer.
+- Reference gathering: pulled the real assets — the official Windows Terminal SVG from Microsoft's open-source `microsoft/terminal` repo (`res/terminal/Terminal.svg`, MIT-licensed), the genuine Win11 Notepad spiral icon (`Notepad_Win11.svg` from Logopedia), and the Win11 Calculator tile (blue rounded tile, white display, blue key grid) from Wikimedia Commons. Local System32 extraction only yielded the legacy icons, so it was discarded.
+- Fix: `terminal.svg` is now the actual official Microsoft Terminal icon scaled to 24 px; `notepad.svg` redrawn as the real spiral-bound notepad (light-blue page, four dark-teal spiral loops, three text lines, white page edge and gray base); `calculator.svg` redrawn as the real blue tile with a white display bar and a three-column grid of blue keys in the official gradient (`#1571BF → #0F4F93`).
+- Evidence: `preview-v10-icons.png`; 32/32 checks in `qa-win11.mjs`, 7/7 site tests.
+
 final result: passed
