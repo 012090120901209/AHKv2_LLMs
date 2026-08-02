@@ -78,4 +78,10 @@ A separate crop was not required. The raw 1440 × 1000 implementation capture pr
 - Polish: Notepad gained a Win11-style tab row (accent top-border tab with modified dot, close glyph, and a + button; the tab tracks the demo file name); Windows Terminal's tab strip moved into its titlebar like the real app (PowerShell tab with console icon, close glyph, + and chevron); Calculator header now shows the ☰ hamburger, "Standard", and a history clock, the display digits grew to 38 px, and the equals key uses the real light-blue accent with dark text; titlebar Fluent icons are inverted to match the dark chrome.
 - Evidence: `preview-v6-1440.png`, `preview-v6-1100.png`; 32/32 checks in `qa-win11.mjs` (new regression: "drag works at 1100px width", "calculator visible at 1100px width"), 7/7 site tests.
 
+### Iteration 7
+
+- Feedback: the Notepad status bar text ("Ln 1, Col 1", "100% · Windows (CRLF) · UTF-8") and the Terminal's fake command output (`.\window-layout.ahk`, `[ok] ...` lines) are not needed — the Terminal should just show an empty prompt.
+- Fix: removed the Notepad status bar entirely; the Terminal now renders a single empty `PS C:\AHK>` prompt with the blinking cursor. Deleted the now-dead demo `terminal` output arrays, the run-again button handler, and the orphaned `.notepad-status` / `.term-cmd` / `.term-ok` CSS.
+- Evidence: `preview-v6-clean.png`; 32/32 checks in `qa-win11.mjs`, 7/7 site tests.
+
 final result: passed

@@ -1477,7 +1477,6 @@ body > * { min-width: 0; }
 .np-add { padding: 4px 8px; border-radius: 4px; color: #c9c9cd; font-size: 12px; }
 .np-add:hover { color: #fff; background: rgba(255, 255, 255, .08); }
 .notepad-text { flex: 1; margin: 0; padding: 8px 14px; overflow: auto; color: #e3e3e6; background: rgba(255, 255, 255, .05); border: 0; border-radius: 0; box-shadow: none; font: 400 11.5px/1.65 var(--font-mono); white-space: pre; scrollbar-width: thin; }
-.notepad-status { display: flex; justify-content: space-between; gap: 12px; padding: 5px 14px; color: #8f8f94; font-size: 9.5px; box-shadow: inset 0 1px rgba(255, 255, 255, .06); }
 
 .term-titlebar { align-items: flex-end; padding-left: 8px; }
 .term-tabs { display: flex; align-items: flex-end; gap: 4px; min-width: 0; user-select: none; }
@@ -1488,11 +1487,7 @@ body > * { min-width: 0; }
 .term-tab-add, .term-tab-drop { padding: 5px 8px 6px; border-radius: 4px; color: #c9c9cd; font-size: 11px; }
 .term-tab-add:hover, .term-tab-drop:hover { color: #fff; background: rgba(255, 255, 255, .08); }
 .terminal-body { flex: 1; overflow: auto; padding: 10px 14px; color: #cccccc; background: rgba(10, 10, 12, .9); font: 400 11px/1.7 var(--font-mono); scrollbar-width: thin; }
-.term-line button { border: 0; padding: 0; color: inherit; background: transparent; font: inherit; text-align: left; cursor: pointer; }
-.term-line button:hover .term-cmd { text-decoration: underline; }
 .term-prompt { color: #9a9a9e; }
-.term-cmd { color: #fff; }
-.term-ok { color: #7BC96F; white-space: pre-wrap; }
 .term-cursor { display: inline-block; width: 7px; height: 13px; vertical-align: -2px; background: #9a9a9e; animation: term-blink 1.1s steps(1) infinite; }
 @keyframes term-blink { 50% { opacity: 0; } }
 

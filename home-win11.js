@@ -11,7 +11,6 @@
   const windows = [...desktop.querySelectorAll('[data-window]')];
   const ICON_MAXIMIZE = 'public/fluent-icons/square_16_regular.svg';
   const ICON_RESTORE = 'public/fluent-icons/square_multiple_16_regular.svg';
-  let statusTimer;
   let currentDemo = 'windows';
 
   const demos = {
@@ -27,8 +26,7 @@
         '    WinMove half, 0, half, A_ScreenHeight // 2, "Windows Terminal"',
         '    WinMove half, A_ScreenHeight // 2, half, A_ScreenHeight // 2, "Calculator"',
         '}'
-      ],
-      terminal: ['[ok] 3 windows tiled across 2 columns (14 ms)']
+      ]
     },
     text: {
       file: 'hotstrings.ahk',
@@ -41,8 +39,7 @@
         '}',
         '',
         '::;ty::Thanks for your help.'
-      ],
-      terminal: ['[ok] Hotstring ::;sig:: armed — watching keyboard input', '     ;sig → "Best,`nJustin"']
+      ]
     },
     clipboard: {
       file: 'clipboard-workflow.ahk',
@@ -57,8 +54,7 @@
         '    if (clean != A_Clipboard)',
         '        A_Clipboard := clean',
         '}'
-      ],
-      terminal: ['[ok] OnClipboardChange hook registered', '[ok] Clipboard cleaned → Markdown (6 ms)']
+      ]
     },
     files: {
       file: 'download-sorter.ahk',
@@ -74,8 +70,7 @@
         '    DirCreate A_Desktop "\\" routes[A_LoopFileExt]',
         '    FileMove A_LoopFileFullPath, A_Desktop "\\" routes[A_LoopFileExt]',
         '}'
-      ],
-      terminal: ['[ok] 3 files sorted into Documents, Images, Data (22 ms)']
+      ]
     },
     gui: {
       file: 'release-builder.ahk',
@@ -92,26 +87,13 @@
         'app.Show',
         '',
         'Build(*) => MsgBox("Building " name.Value " → " out.Value)'
-      ],
-      terminal: ['[ok] Gui "Release builder" shown (9 ms)']
+      ]
     }
   };
 
-  function renderTerminal(demo, animate) {
+  function renderTerminal() {
     if (!terminalBody) return;
-    const prompt = '<span class="term-prompt">PS C:\\AHK&gt;</span>';
-    const cmdLine = `<div class="term-line"><button type="button" data-run-demo title="Run again">${prompt} <span class="term-cmd">.\\${demo.file}</span></button></div>`;
-    const outLines = demo.terminal.map((line) => `<div class="term-line term-ok">${line}</div>`).join('');
-    const nextPrompt = `<div class="term-line">${prompt} <span class="term-cursor"></span></div>`;
-    clearTimeout(statusTimer);
-    if (!animate) {
-      terminalBody.innerHTML = cmdLine + outLines + nextPrompt;
-      return;
-    }
-    terminalBody.innerHTML = cmdLine + nextPrompt;
-    statusTimer = setTimeout(() => {
-      terminalBody.innerHTML = cmdLine + outLines + nextPrompt;
-    }, 720);
+    terminalBody.innerHTML = '<div class="term-line"><span class="term-prompt">PS C:\\AHK&gt;</span> <span class="term-cursor"></span></div>';
   }
 
   function selectDemo(name, animate = true) {
@@ -126,7 +108,7 @@
     if (notepadFile) notepadFile.textContent = `${demo.file} — Notepad`;
     if (notepadTab) notepadTab.textContent = demo.file;
     if (notepadBody) notepadBody.textContent = demo.script.join('\n');
-    renderTerminal(demo, animate);
+    renderTerminal();
     if (animate) desktop.classList.toggle('is-tiled', name === 'windows');
   }
 
@@ -209,7 +191,6 @@
       toggleStart();
       return;
     }
-    if (event.target.closest('[data-run-demo]')) selectDemo(currentDemo);
     if (demoButton) {
       selectDemo(demoButton.dataset.ahkDemo);
       openWindow('notepad');
