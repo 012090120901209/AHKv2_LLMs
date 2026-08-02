@@ -3,6 +3,7 @@
   if (!desktop) return;
 
   const notepadFile = desktop.querySelector('[data-notepad-file]');
+  const notepadTab = desktop.querySelector('[data-notepad-tab]');
   const notepadBody = desktop.querySelector('[data-notepad-body]');
   const terminalBody = desktop.querySelector('[data-terminal-body]');
   const startButton = desktop.querySelector('[data-start-button]');
@@ -123,6 +124,7 @@
       button.setAttribute('aria-pressed', String(active));
     });
     if (notepadFile) notepadFile.textContent = `${demo.file} — Notepad`;
+    if (notepadTab) notepadTab.textContent = demo.file;
     if (notepadBody) notepadBody.textContent = demo.script.join('\n');
     renderTerminal(demo, animate);
     if (animate) desktop.classList.toggle('is-tiled', name === 'windows');
@@ -310,7 +312,7 @@
     }
 
     handle.addEventListener('pointerdown', (event) => {
-      if (event.button !== 0 || event.target.closest('button') || window.innerWidth <= 1180) return;
+      if (event.button !== 0 || event.target.closest('button') || window.innerWidth <= 900) return;
       const windowElement = handle.closest('[data-window]');
       focusWindow(windowElement);
       handle.setPointerCapture(event.pointerId);
@@ -361,7 +363,7 @@
     handle.addEventListener('pointercancel', endDrag);
 
     handle.addEventListener('dblclick', (event) => {
-      if (event.target.closest('button') || window.innerWidth <= 1180) return;
+      if (event.target.closest('button') || window.innerWidth <= 900) return;
       const windowElement = handle.closest('[data-window]');
       setMaximized(windowElement, !windowElement.classList.contains('is-maximized'));
       focusWindow(windowElement);

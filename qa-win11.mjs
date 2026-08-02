@@ -126,6 +126,24 @@ await page.mouse.move(snappedBar.x + 300, snappedBar.y + 150, { steps: 8 });
 await page.mouse.up();
 check('drag unsnaps window', await page.evaluate(() => !document.querySelector('.win-board').classList.contains('is-snapped-left')));
 
+// 8b. Below the old 1180px breakpoint windows must still be draggable (regression: stacked layout now starts at 900px)
+await page.click('.win-board [data-window-action="close"]');
+await page.setViewportSize({ width: 1100, height: 900 });
+await page.waitForTimeout(250);
+const npBefore = await page.locator('.win-notepad').boundingBox();
+const npBar = await page.locator('.win-notepad [data-drag-handle]').boundingBox();
+await page.mouse.move(npBar.x + 60, npBar.y + 18);
+await page.mouse.down();
+await page.mouse.move(npBar.x + 160, npBar.y + 118, { steps: 8 });
+await page.mouse.up();
+await page.waitForTimeout(150);
+const npAfter = await page.locator('.win-notepad').boundingBox();
+check('drag works at 1100px width', Math.abs(npAfter.x - npBefore.x) > 50 && Math.abs(npAfter.y - npBefore.y) > 50,
+  `moved ${Math.round(npAfter.x - npBefore.x)},${Math.round(npAfter.y - npBefore.y)}`);
+check('calculator visible at 1100px width', await page.isVisible('.win-calc'));
+await page.setViewportSize({ width: 1440, height: 1000 });
+await page.waitForTimeout(150);
+
 // 9. Escape closes start menu
 await page.click('[data-start-button]');
 await page.keyboard.press('Escape');

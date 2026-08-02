@@ -71,6 +71,7 @@
         </div>
         <div class="notepad-body">
           <div class="notepad-menu" aria-hidden="true"><span>File</span><span>Edit</span><span>View</span></div>
+          <div class="notepad-tabs" aria-hidden="true"><span class="np-tab"><i></i><b data-notepad-tab>window-layout.ahk</b><em>×</em></span><span class="np-add">+</span></div>
           <pre class="notepad-text" data-notepad-body>#Requires AutoHotkey v2.1
 ; Tile a workspace in one command.
 
@@ -85,15 +86,14 @@
       </section>
 
       <section class="win-window win-terminal" data-window="terminal" aria-label="Windows Terminal">
-        <div class="win-titlebar" data-drag-handle>
-          <div class="win-title"><img src="public/fluent-icons/window_console_24_regular.svg" alt=""><span>Windows Terminal</span></div>
+        <div class="win-titlebar term-titlebar" data-drag-handle>
+          <div class="term-tabs" aria-hidden="true"><span class="term-tab is-active"><img src="public/fluent-icons/window_console_24_regular.svg" alt="">Windows PowerShell<em>×</em></span><span class="term-tab-add">+</span><span class="term-tab-drop">⌄</span></div>
           <div class="win-controls" aria-label="Window controls">
             <button type="button" data-window-action="minimize" aria-label="Minimize"><img src="public/fluent-icons/subtract_16_regular.svg" alt=""></button>
             <button type="button" data-window-action="maximize" aria-label="Maximize"><img src="public/fluent-icons/square_16_regular.svg" alt=""></button>
             <button type="button" data-window-action="close" aria-label="Close"><img src="public/fluent-icons/dismiss_16_regular.svg" alt=""></button>
           </div>
         </div>
-        <div class="terminal-tabs" aria-hidden="true"><span class="term-tab is-active">⌄ Windows PowerShell</span><span class="term-tab-add">+</span></div>
         <div class="terminal-body" data-terminal-body aria-live="polite">
           <div class="term-line"><button type="button" data-run-demo title="Run again"><span class="term-prompt">PS C:\AHK&gt;</span> <span class="term-cmd">.\window-layout.ahk</span></button></div>
           <div class="term-line term-ok">[ok] 3 windows tiled across 2 columns (14 ms)</div>
@@ -111,7 +111,7 @@
           </div>
         </div>
         <div class="calc-body">
-          <div class="calc-header" aria-hidden="true"><span>☰</span><b>Standard</b></div>
+          <div class="calc-header" aria-hidden="true"><span>☰</span><b>Standard</b><span class="calc-hist">🕘</span></div>
           <div class="calc-display"><small data-calc-history></small><b data-calc-display>0</b></div>
           <div class="calc-grid">
             <button type="button" data-calc-key="pct">%</button><button type="button" data-calc-key="ce">CE</button><button type="button" data-calc-key="c">C</button><button type="button" data-calc-key="back">⌫</button>

@@ -70,4 +70,12 @@ A separate crop was not required. The raw 1440 × 1000 implementation capture pr
 - Fix: the desktop now opens Notepad (the demo script, plain text with the Win11 Notepad menu/status bar), Windows Terminal (PowerShell tab that runs `.\<script>.ahk` and prints `[ok]` output lines; the command line is a working run-again button), and a fully functional Calculator (all 24 keys compute). The window-control demo now physically tiles the three real app windows across the desktop; other demos untile. Desktop icons, Start tiles, taskbar buttons (four running apps), and the feature dock all drive the demos; the old studio window is gone.
 - Evidence: `preview-v8-desktop.png`, `preview-v8-tiled.png`; 30/30 checks in `qa-win11.mjs` (including `7 × 8 = 56` and tile/untile), 7/7 site tests.
 
+### Iteration 6
+
+- Feedback: windows should be movable; apps should look more like the real Windows apps; the Calculator was not visible.
+- Root cause: dragging and the floating layout were disabled below a 1180 px breakpoint (windows stacked statically), so at common laptop widths nothing could be dragged and the Calculator was pushed out of view.
+- Fix: dropped the drag/stack breakpoint from 1180 px to 900 px in `home-win11.js` and `style.css` (tiling media query now `min-width: 901px`), so windows stay draggable and floating down to 900 px. Repositioned the Terminal (`left: clamp(400px, 38%, 540px)`) so all three apps stay visible at narrower widths.
+- Polish: Notepad gained a Win11-style tab row (accent top-border tab with modified dot, close glyph, and a + button; the tab tracks the demo file name); Windows Terminal's tab strip moved into its titlebar like the real app (PowerShell tab with console icon, close glyph, + and chevron); Calculator header now shows the ☰ hamburger, "Standard", and a history clock, the display digits grew to 38 px, and the equals key uses the real light-blue accent with dark text; titlebar Fluent icons are inverted to match the dark chrome.
+- Evidence: `preview-v6-1440.png`, `preview-v6-1100.png`; 32/32 checks in `qa-win11.mjs` (new regression: "drag works at 1100px width", "calculator visible at 1100px width"), 7/7 site tests.
+
 final result: passed
