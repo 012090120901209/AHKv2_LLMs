@@ -104,4 +104,10 @@ A separate crop was not required. The raw 1440 × 1000 implementation capture pr
 - Fix: rebalanced the geometry — Calculator keys now sit in a 3×3 grid with even margins all around (display raised, right-column equals key spanning two rows, columns centered at 5.2–18.8); Notepad art shifted down 0.5 px so the spiral, page, and base center on the viewBox.
 - Evidence: `preview-v11-icons.png`; 32/32 checks in `qa-win11.mjs`, 7/7 site tests.
 
+### Iteration 11
+
+- Feedback: Notepad should have a few different tabs, and real Notepad tabs do not have a blue line on top.
+- Fix: removed the accent top border (`inset 0 2px #5B9FEF`) from the tab; the tab row now shows three real tabs — `window-layout.ahk`, `hotstrings.ahk`, `download-sorter.ahk` — styled like Win11 Notepad (active tab lighter, inactive tabs subdued with hover). Tabs are real buttons: clicking one switches the demo script and the active state follows whichever demo is selected from anywhere (feature dock, Start menu, desktop icons).
+- Evidence: `preview-v12-tabs.png`; 37/37 checks in `qa-win11.mjs` (new: 3 tabs render, active tab tracks demo, no accent top line, tab click switches script), 7/7 site tests.
+
 final result: passed

@@ -72,6 +72,17 @@ await page.waitForTimeout(300);
 check('other demos until tile', await page.evaluate(() => !document.querySelector('.win11-hero').classList.contains('is-tiled')));
 check('notepad switched to files script', (await page.textContent('[data-notepad-file]')).includes('download-sorter.ahk'));
 
+// Notepad tab row: multiple tabs, active tracks demo, clicking switches script
+check('notepad shows 3 tabs', await page.locator('.np-tab').count() === 3);
+check('active tab tracks files demo', await page.evaluate(() => document.querySelector('[data-np-demo="files"]').classList.contains('is-active')));
+check('tabs have no accent top line', await page.evaluate(() => !getComputedStyle(document.querySelector('.np-tab.is-active')).boxShadow.includes('rgb')));
+await page.click('[data-np-demo="text"]');
+await page.waitForTimeout(200);
+check('clicking tab switches script', (await page.textContent('[data-notepad-file]')).includes('hotstrings.ahk'));
+check('clicked tab becomes active', await page.evaluate(() => document.querySelector('[data-np-demo="text"]').classList.contains('is-active')));
+await page.click('[data-np-demo="windows"]');
+await page.waitForTimeout(300);
+
 // 3. Minimize keeps taskbar underline; taskbar click restores; click again minimizes
 await page.click('.win-notepad [data-window-action="minimize"]');
 await page.waitForTimeout(150);

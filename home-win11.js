@@ -3,7 +3,7 @@
   if (!desktop) return;
 
   const notepadFile = desktop.querySelector('[data-notepad-file]');
-  const notepadTab = desktop.querySelector('[data-notepad-tab]');
+  const notepadTabs = [...desktop.querySelectorAll('[data-np-demo]')];
   const notepadBody = desktop.querySelector('[data-notepad-body]');
   const terminalBody = desktop.querySelector('[data-terminal-body]');
   const startButton = desktop.querySelector('[data-start-button]');
@@ -106,7 +106,7 @@
       button.setAttribute('aria-pressed', String(active));
     });
     if (notepadFile) notepadFile.textContent = `${demo.file} — Notepad`;
-    if (notepadTab) notepadTab.textContent = demo.file;
+    notepadTabs.forEach((tab) => tab.classList.toggle('is-active', tab.dataset.npDemo === name));
     if (notepadBody) notepadBody.textContent = demo.script.join('\n');
     renderTerminal();
     if (animate) desktop.classList.toggle('is-tiled', name === 'windows');
@@ -190,6 +190,11 @@
     if (event.target.closest('[data-start-button], [data-task-search]')) {
       toggleStart();
       return;
+    }
+    const npTab = event.target.closest('[data-np-demo]');
+    if (npTab) {
+      selectDemo(npTab.dataset.npDemo);
+      openWindow('notepad');
     }
     if (demoButton) {
       selectDemo(demoButton.dataset.ahkDemo);
