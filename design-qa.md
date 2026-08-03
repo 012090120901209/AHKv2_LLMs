@@ -110,4 +110,10 @@ A separate crop was not required. The raw 1440 × 1000 implementation capture pr
 - Fix: removed the accent top border (`inset 0 2px #5B9FEF`) from the tab; the tab row now shows three real tabs — `window-layout.ahk`, `hotstrings.ahk`, `download-sorter.ahk` — styled like Win11 Notepad (active tab lighter, inactive tabs subdued with hover). Tabs are real buttons: clicking one switches the demo script and the active state follows whichever demo is selected from anywhere (feature dock, Start menu, desktop icons).
 - Evidence: `preview-v12-tabs.png`; 37/37 checks in `qa-win11.mjs` (new: 3 tabs render, active tab tracks demo, no accent top line, tab click switches script), 7/7 site tests.
 
+### Iteration 12
+
+- Feedback: the hotstrings example used a personal name ("Best, Justin"); replace it with an example, and let the user type `/d` + Space to insert the date into the text.
+- Fix: the signature example now reads `SendText "Best,`nAlex"`, and the script leads with a `::/d::` hotstring (`SendText FormatTime(, "LongDate")`) plus a "Try it live" comment. The Notepad editor is now genuinely editable (`contenteditable="plaintext-only"` with text cursor and visible caret), and a `beforeinput` handler makes the hotstring real: type `/d` then Space anywhere in the document and it expands to e.g. "Monday, August 3, 2026".
+- Evidence: `preview-v13-hotstring.png`; 39/39 checks in `qa-win11.mjs` (new: no personal name, `/d` + Space inserts today's date), 7/7 site tests.
+
 final result: passed

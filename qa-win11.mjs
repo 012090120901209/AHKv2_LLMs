@@ -80,6 +80,16 @@ await page.click('[data-np-demo="text"]');
 await page.waitForTimeout(200);
 check('clicking tab switches script', (await page.textContent('[data-notepad-file]')).includes('hotstrings.ahk'));
 check('clicked tab becomes active', await page.evaluate(() => document.querySelector('[data-np-demo="text"]').classList.contains('is-active')));
+
+// Live hotstring demo: script shows an example name, and typing /d + Space inserts today's date
+const hsScript = await page.textContent('[data-notepad-body]');
+check('no personal name in hotstring example', !hsScript.includes('Justin') && hsScript.includes('::/d::'));
+await page.click('[data-notepad-body]', { position: { x: 200, y: 40 } });
+await page.keyboard.press('Control+End').catch(() => {});
+await page.keyboard.type(' Try: /d ');
+const npText = await page.textContent('[data-notepad-body]');
+const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+check('typing /d + space inserts the date', npText.includes(today) && !npText.includes('/d '), npText.slice(-80));
 await page.click('[data-np-demo="windows"]');
 await page.waitForTimeout(300);
 

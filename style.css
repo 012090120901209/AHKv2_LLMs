@@ -1476,7 +1476,7 @@ body > * { min-width: 0; }
 .np-tab:hover em { color: #fff; }
 .np-add { padding: 4px 8px; border-radius: 4px; color: #c9c9cd; font-size: 12px; }
 .np-add:hover { color: #fff; background: rgba(255, 255, 255, .08); }
-.notepad-text { flex: 1; margin: 0; padding: 8px 14px; overflow: auto; color: #e3e3e6; background: rgba(255, 255, 255, .05); border: 0; border-radius: 0; box-shadow: none; font: 400 11.5px/1.65 var(--font-mono); white-space: pre; scrollbar-width: thin; }
+.notepad-text { flex: 1; margin: 0; padding: 8px 14px; overflow: auto; color: #e3e3e6; background: rgba(255, 255, 255, .05); border: 0; border-radius: 0; box-shadow: none; font: 400 11.5px/1.65 var(--font-mono); white-space: pre-wrap; scrollbar-width: thin; cursor: text; caret-color: #e3e3e6; outline: none; }
 
 .term-titlebar { align-items: flex-end; padding-left: 8px; }
 .term-tabs { display: flex; align-items: flex-end; gap: 4px; min-width: 0; user-select: none; }

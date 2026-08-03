@@ -33,9 +33,14 @@
       script: [
         '#Requires AutoHotkey v2.1',
         '; Hotstrings turn a short trigger into finished writing.',
+        '; Try it live: click here, type /d, then Space.',
+        '',
+        '::/d:: {',
+        '    SendText FormatTime(, "LongDate")',
+        '}',
         '',
         '::;sig:: {',
-        '    SendText "Best,`nJustin"',
+        '    SendText "Best,`nAlex"',
         '}',
         '',
         '::;ty::Thanks for your help.'
@@ -94,6 +99,27 @@
   function renderTerminal() {
     if (!terminalBody) return;
     terminalBody.innerHTML = '<div class="term-line"><span class="term-prompt">PS C:\\AHK&gt;</span> <span class="term-cursor"></span></div>';
+  }
+
+  // Live hotstring: typing "/d" + Space in Notepad expands to today's date
+  if (notepadBody) {
+    notepadBody.addEventListener('beforeinput', (event) => {
+      if (event.inputType !== 'insertText' || event.data !== ' ') return;
+      const selection = window.getSelection();
+      if (!selection.rangeCount) return;
+      const range = selection.getRangeAt(0);
+      const node = range.startContainer;
+      if (node.nodeType !== Node.TEXT_NODE) return;
+      const before = node.textContent.slice(0, range.startOffset);
+      if (!before.endsWith('/d')) return;
+      event.preventDefault();
+      const stamp = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      node.textContent = before.slice(0, -2) + stamp + ' ' + node.textContent.slice(range.startOffset);
+      range.setStart(node, before.length - 2 + stamp.length + 1);
+      range.collapse(true);
+      selection.removeAllRanges();
+      selection.addRange(range);
+    });
   }
 
   function selectDemo(name, animate = true) {
