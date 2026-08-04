@@ -62,7 +62,7 @@
 
       <section class="win-window win-notepad is-focused" data-window="notepad" aria-label="Notepad">
         <div class="win-titlebar" data-drag-handle>
-          <div class="win-title"><img src="public/app-icons/notepad.svg" alt=""><span data-notepad-file>window-layout.ahk — Notepad</span></div>
+          <div class="win-title"><img src="public/app-icons/notepad.svg" alt=""><span data-notepad-file>workspace-notes.txt — Notepad</span></div>
           <div class="win-controls" aria-label="Window controls">
             <button type="button" data-window-action="minimize" aria-label="Minimize"><img src="public/fluent-icons/subtract_16_regular.svg" alt=""></button>
             <button type="button" data-window-action="maximize" aria-label="Maximize"><img src="public/fluent-icons/square_16_regular.svg" alt=""></button>
@@ -72,20 +72,27 @@
         <div class="notepad-body">
           <div class="notepad-menu" aria-hidden="true"><span>File</span><span>Edit</span><span>View</span></div>
           <div class="notepad-tabs">
-            <button type="button" class="np-tab is-active" data-np-demo="windows"><i></i><b>window-layout.ahk</b><em>×</em></button>
-            <button type="button" class="np-tab" data-np-demo="text"><i></i><b>hotstrings.ahk</b><em>×</em></button>
-            <button type="button" class="np-tab" data-np-demo="files"><i></i><b>download-sorter.ahk</b><em>×</em></button>
+            <button type="button" class="np-tab is-active" data-np-demo="windows"><i></i><b>workspace-notes.txt</b><em>×</em></button>
+            <button type="button" class="np-tab" data-np-demo="text"><i></i><b>hotstring-ideas.txt</b><em>×</em></button>
+            <button type="button" class="np-tab" data-np-demo="files"><i></i><b>download-plan.txt</b><em>×</em></button>
             <span class="np-add">+</span>
           </div>
-          <pre class="notepad-text" data-notepad-body contenteditable="plaintext-only" spellcheck="false">#Requires AutoHotkey v2.1
-; Tile a workspace in one command.
+          <pre class="notepad-text" data-notepad-body contenteditable="plaintext-only" spellcheck="false">Workspace notes
 
-#w:: {  ; Win+W
-    half := A_ScreenWidth // 2
-    WinMove 0, 0, half, A_ScreenHeight, "Research"
-    WinMove half, 0, half, A_ScreenHeight // 2, "Editor"
-    WinMove half, A_ScreenHeight // 2, half, A_ScreenHeight // 2, "Console"
-}</pre>
+Tired of dragging the same three windows into
+place every morning. One hotkey does it now:
+
+    #Requires AutoHotkey v2.1
+    #w:: {  ; Win+W
+        half := A_ScreenWidth // 2
+        WinMove 0, 0, half, A_ScreenHeight, "Notepad"
+        WinMove half, 0, half, A_ScreenHeight // 2, "Terminal"
+        WinMove half, A_ScreenHeight // 2, half, A_ScreenHeight // 2, "Calculator"
+    }
+
+Still to do:
+[ ] try it on the big monitor
+[ ] add the chat app to the layout</pre>
         </div>
       </section>
 

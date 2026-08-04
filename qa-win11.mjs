@@ -54,7 +54,7 @@ check('search filters pinned grid', visibleTiles === 1, `${visibleTiles} visible
 await page.screenshot({ path: 'preview-v5-start.png' });
 await page.keyboard.press('Enter');
 await page.waitForTimeout(300);
-check('Enter runs first match (hotstrings demo)', (await page.textContent('[data-notepad-file]')).includes('hotstrings.ahk'));
+check('Enter runs first match (hotstrings demo)', (await page.textContent('[data-notepad-file]')).includes('hotstring-ideas.txt'));
 check('start menu closed after Enter', await page.isHidden('[data-start-menu]'));
 
 // Calculator computes
@@ -70,7 +70,7 @@ check('windows demo tiles desktop apps', await page.evaluate(() => document.quer
 await page.click('[data-ahk-feature="files"]');
 await page.waitForTimeout(300);
 check('other demos until tile', await page.evaluate(() => !document.querySelector('.win11-hero').classList.contains('is-tiled')));
-check('notepad switched to files script', (await page.textContent('[data-notepad-file]')).includes('download-sorter.ahk'));
+check('notepad switched to files script', (await page.textContent('[data-notepad-file]')).includes('download-plan.txt'));
 
 // Notepad tab row: multiple tabs, active tracks demo, clicking switches script
 check('notepad shows 3 tabs', await page.locator('.np-tab').count() === 3);
@@ -78,7 +78,7 @@ check('active tab tracks files demo', await page.evaluate(() => document.querySe
 check('tabs have no accent top line', await page.evaluate(() => !getComputedStyle(document.querySelector('.np-tab.is-active')).boxShadow.includes('rgb')));
 await page.click('[data-np-demo="text"]');
 await page.waitForTimeout(200);
-check('clicking tab switches script', (await page.textContent('[data-notepad-file]')).includes('hotstrings.ahk'));
+check('clicking tab switches script', (await page.textContent('[data-notepad-file]')).includes('hotstring-ideas.txt'));
 check('clicked tab becomes active', await page.evaluate(() => document.querySelector('[data-np-demo="text"]').classList.contains('is-active')));
 
 // Live hotstring demo: script shows an example name, and typing /d + Space inserts today's date

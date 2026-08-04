@@ -15,83 +15,101 @@
 
   const demos = {
     windows: {
-      file: 'window-layout.ahk',
+      file: 'workspace-notes.txt',
       script: [
-        '#Requires AutoHotkey v2.1',
-        '; Tile a workspace in one command.',
+        'Workspace notes',
         '',
-        '#w:: {  ; Win+W',
-        '    half := A_ScreenWidth // 2',
-        '    WinMove 0, 0, half, A_ScreenHeight, "Notepad"',
-        '    WinMove half, 0, half, A_ScreenHeight // 2, "Windows Terminal"',
-        '    WinMove half, A_ScreenHeight // 2, half, A_ScreenHeight // 2, "Calculator"',
-        '}'
+        'Tired of dragging the same three windows into',
+        'place every morning. One hotkey does it now:',
+        '',
+        '    #Requires AutoHotkey v2.1',
+        '    #w:: {  ; Win+W',
+        '        half := A_ScreenWidth // 2',
+        '        WinMove 0, 0, half, A_ScreenHeight, "Notepad"',
+        '        WinMove half, 0, half, A_ScreenHeight // 2, "Terminal"',
+        '        WinMove half, A_ScreenHeight // 2, half, A_ScreenHeight // 2, "Calculator"',
+        '    }',
+        '',
+        'Still to do:',
+        '[ ] try it on the big monitor',
+        '[ ] add the chat app to the layout'
       ]
     },
     text: {
-      file: 'hotstrings.ahk',
+      file: 'hotstring-ideas.txt',
       script: [
-        '#Requires AutoHotkey v2.1',
-        '; Hotstrings turn a short trigger into finished writing.',
-        '; Try it live: click here, type /d, then Space.',
+        'Hotstring ideas',
         '',
-        '::/d:: {',
-        '    SendText FormatTime(, "LongDate")',
-        '}',
+        'Short triggers that type whole phrases for me.',
+        'Try it live: click here, type /d, then Space.',
         '',
-        '::;sig:: {',
-        '    SendText "Best,`nAlex"',
-        '}',
+        '    ::/d::    SendText FormatTime(, "LongDate")',
+        '    ::;sig::  SendText "Best,`nAlex"',
+        '    ::;ty::   Thanks for your help.',
         '',
-        '::;ty::Thanks for your help.'
+        'More to add when I think of them:',
+        '- ;addr  ->  my mailing address',
+        '- ;meet  ->  the scheduling blurb',
+        '- ;ib    ->  the bug-report template'
       ]
     },
     clipboard: {
-      file: 'clipboard-workflow.ahk',
+      file: 'clipboard-fixes.txt',
       script: [
-        '#Requires AutoHotkey v2.1',
-        '; Transform and reuse everything you copy.',
+        'Clipboard cleanup',
         '',
-        'OnClipboardChange CleanMarkdown',
+        'Notes pasted from the wiki kept bringing stray',
+        'line endings with them. Fixed it on the fly:',
         '',
-        'CleanMarkdown(*) {',
-        '    clean := RegExReplace(Trim(A_Clipboard), "\\r\\n?", "`n")',
-        '    if (clean != A_Clipboard)',
-        '        A_Clipboard := clean',
-        '}'
+        '    OnClipboardChange CleanMarkdown',
+        '',
+        '    CleanMarkdown(*) {',
+        '        clean := RegExReplace(Trim(A_Clipboard), "\\r\\n?", "`n")',
+        '        if (clean != A_Clipboard)',
+        '            A_Clipboard := clean',
+        '    }',
+        '',
+        'Every copy is trimmed before I even paste it.'
       ]
     },
     files: {
-      file: 'download-sorter.ahk',
+      file: 'download-plan.txt',
       script: [
-        '#Requires AutoHotkey v2.1',
-        '; Sort a messy folder while you keep working.',
+        'Downloads folder plan',
         '',
-        'routes := Map("pdf", "Documents", "png", "Images", "csv", "Data")',
+        'The folder was a junk drawer. Now everything',
+        'lands where it belongs on its own:',
         '',
-        'Loop Files A_Desktop "\\Downloads\\*.*" {',
-        '    if !routes.Has(A_LoopFileExt)',
-        '        continue',
-        '    DirCreate A_Desktop "\\" routes[A_LoopFileExt]',
-        '    FileMove A_LoopFileFullPath, A_Desktop "\\" routes[A_LoopFileExt]',
-        '}'
+        '    routes := Map("pdf", "Documents", "png", "Images", "csv", "Data")',
+        '',
+        '    Loop Files A_Desktop "\\Downloads\\*.*" {',
+        '        if !routes.Has(A_LoopFileExt)',
+        '            continue',
+        '        DirCreate A_Desktop "\\" routes[A_LoopFileExt]',
+        '        FileMove A_LoopFileFullPath, A_Desktop "\\" routes[A_LoopFileExt]',
+        '    }',
+        '',
+        'Later: send .zip files to an Archives folder.'
       ]
     },
     gui: {
-      file: 'release-builder.ahk',
+      file: 'release-builder.txt',
       script: [
-        '#Requires AutoHotkey v2.1',
-        '; Build a real Windows interface in AHK.',
+        'Release builder — rough draft',
         '',
-        'app := Gui("+Resize", "Release builder")',
-        'app.AddText(, "Project name")',
-        'name := app.AddEdit("w220")',
-        'app.AddText(, "Output folder")',
-        'out := app.AddEdit("w220")',
-        'app.AddButton("Default", "Build release").OnEvent("Click", Build)',
-        'app.Show',
+        'Sketching the dialog before wiring it up:',
         '',
-        'Build(*) => MsgBox("Building " name.Value " → " out.Value)'
+        '    app := Gui("+Resize", "Release builder")',
+        '    app.AddText(, "Project name")',
+        '    name := app.AddEdit("w220")',
+        '    app.AddText(, "Output folder")',
+        '    out := app.AddEdit("w220")',
+        '    app.AddButton("Default", "Build release").OnEvent("Click", Build)',
+        '    app.Show',
+        '',
+        '    Build(*) => MsgBox("Building " name.Value " → " out.Value)',
+        '',
+        'Needs an icon and a progress bar next.'
       ]
     }
   };

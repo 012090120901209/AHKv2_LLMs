@@ -116,4 +116,10 @@ A separate crop was not required. The raw 1440 × 1000 implementation capture pr
 - Fix: the signature example now reads `SendText "Best,`nAlex"`, and the script leads with a `::/d::` hotstring (`SendText FormatTime(, "LongDate")`) plus a "Try it live" comment. The Notepad editor is now genuinely editable (`contenteditable="plaintext-only"` with text cursor and visible caret), and a `beforeinput` handler makes the hotstring real: type `/d` then Space anywhere in the document and it expands to e.g. "Monday, August 3, 2026".
 - Evidence: `preview-v13-hotstring.png`; 39/39 checks in `qa-win11.mjs` (new: no personal name, `/d` + Space inserts today's date), 7/7 site tests.
 
+### Iteration 13
+
+- Feedback: the Notepad should contain more than just code — it should not look like it's only code.
+- Fix: rewrote every tab as a realistic personal note with the AHK snippet embedded as a quoted block: `workspace-notes.txt` (why the tiling hotkey exists + a to-do list), `hotstring-ideas.txt` (trigger ideas list), `clipboard-fixes.txt` (what the clipboard cleanup solves), `download-plan.txt` (folder rules + a "later" idea), `release-builder.txt` (a UI sketch with next steps). Tabs and the title bar renamed from `.ahk` to `.txt`; the editor font switched from mono to the proportional Windows text font so it reads like notes, with the code blocks still indented inside. The live `/d` hotstring still works anywhere in the document.
+- Evidence: `preview-v14-notes.png`; 39/39 checks in `qa-win11.mjs`, 7/7 site tests.
+
 final result: passed
