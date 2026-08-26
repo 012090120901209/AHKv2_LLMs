@@ -44,13 +44,13 @@
 
   <main id="main-content" class="home-main">
     <h1 class="sr-only">AutoHotkey v2 benchmark and automation lab</h1>
-    <section class="lab-hero win11-hero" aria-label="Interactive AutoHotkey workbench" data-win-desktop>
+    <section class="lab-hero win11-hero" aria-label="Interactive AutoHotkey utility desktop" data-win-desktop>
       <div class="win11-wallpaper" aria-hidden="true"><img class="win11-wallpaper-image" src="public/windows11-dark-reference.png" alt=""></div>
       <div class="desktop-status"><span><i aria-hidden="true"></i>AHK v2.1 interpreter online</span><time data-desktop-date></time></div>
 
-      <section class="win-window win-studio win-showcase is-focused" data-window="studio" aria-label="AHK v2 Automation Studio">
+      <section class="win-window win-studio win-showcase is-focused" data-window="studio" aria-label="Clipboard Formatter">
         <div class="win-titlebar" data-drag-handle>
-          <div class="win-title"><img src="logo.svg" alt=""><span>AHK Automation Lab</span><small data-window-file>clipboard-workflow.ahk</small></div>
+          <div class="win-title"><img src="logo.svg" alt=""><span data-app-title>Clipboard Formatter</span><small><span data-window-file>clipboard-workflow.ahk</span> · AHK v2.1</small></div>
           <div class="win-controls" aria-label="Window controls">
             <button type="button" data-window-action="minimize" aria-label="Minimize"><img src="public/fluent-icons/subtract_16_regular.svg" alt=""></button>
             <button type="button" data-window-action="maximize" aria-label="Maximize"><img src="public/fluent-icons/square_16_regular.svg" alt=""></button>
@@ -58,62 +58,42 @@
           </div>
         </div>
         <div class="studio-body">
-          <header class="studio-toolbar" data-workbench-toolbar>
-            <div class="workspace-identity">
-              <span class="interpreter-dot" aria-hidden="true"></span>
-              <span><strong>Automation workspace</strong><small data-workbench-file>clipboard-workflow.ahk</small></span>
+          <div class="utility-shell" data-demo-output aria-live="polite">
+            <header class="utility-heading">
+              <span class="utility-app-icon"><img src="public/fluent-icons/clipboard_24_regular.svg" alt=""></span>
+              <div>
+                <h2 data-utility-heading>Clipboard Formatter</h2>
+                <p data-utility-description>Clean and reshape copied text without leaving your current app.</p>
             </div>
-            <div class="workspace-actions">
-              <span class="interpreter-version">AHK v2.1</span>
-              <button type="button" data-run-demo><span aria-hidden="true">▶</span> Run <kbd>Ctrl Enter</kbd></button>
-            </div>
-          </header>
+              <span class="utility-state">Watching clipboard</span>
+            </header>
 
-          <section class="automation-workspace" aria-labelledby="automation-title">
-            <nav class="automation-launcher" data-automation-sidebar aria-label="Automation scripts">
-              <div><span class="studio-section-label">Workspace</span><h2 id="automation-title">My automations</h2></div>
-              <button class="automation-button" type="button" data-ahk-demo="clipboard">
-                <span><img src="public/fluent-icons/clipboard_24_regular.svg" alt=""></span><b>Clipboard clean</b><small>capture · transform</small>
-              </button>
-              <button class="automation-button" type="button" data-ahk-demo="text">
-                <span><img src="public/fluent-icons/text_case_title_24_regular.svg" alt=""></span><b>Text expansion</b><small>hotstrings · templates</small>
-              </button>
-              <button class="automation-button" type="button" data-ahk-demo="files">
-                <span><img src="public/fluent-icons/folder_24_regular.svg" alt=""></span><b>Download sorter</b><small>watch · rename · move</small>
-              </button>
-              <button class="automation-button" type="button" data-ahk-demo="windows">
-                <span><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></span><b>Workspace layout</b><small>find · tile · focus</small>
-              </button>
-              <button class="automation-button" type="button" data-ahk-demo="gui">
-                <span><img src="public/fluent-icons/window_dev_tools_24_regular.svg" alt=""></span><b>Release builder</b><small>native GUI tool</small>
-              </button>
-            </nav>
+            <div class="utility-content" data-utility-content>
+              <div class="clipboard-utility">
+                <label class="utility-label" for="clipboard-input">Clipboard text <span>342 characters</span></label>
+                <textarea id="clipboard-input" class="utility-textarea" readonly>Meeting notes
 
-            <div class="automation-demo" data-demo-output aria-live="polite">
-              <div class="workbench-grid">
-                <section class="workbench-editor" data-script-editor aria-label="Script editor">
-                  <div class="pane-heading"><span>Script</span><small data-demo-file>clipboard-workflow.ahk</small></div>
-                  <pre data-demo-code><code><span class="code-directive">#Requires</span> AutoHotkey v2.1
+We reviewed the release checklist and assigned the remaining tasks.
 
-<span class="code-function">CleanMarkdown</span>(text) {
-    text := RegExReplace(text, "\R{3,}", "`n`n")
-    return Trim(text)
-}
-
-<span class="code-variable">A_Clipboard</span> := CleanMarkdown(A_Clipboard)</code></pre>
-                </section>
-
-                <section class="workbench-result" data-live-result aria-label="Live result">
-                  <div class="pane-heading"><span>Live result</span><small>preview</small></div>
-                  <div class="demo-visual demo-clipboard" data-demo-visual>
-                    <div class="clipboard-list"><div class="clipboard-item"><span>Raw meeting notes</span><b>captured</b></div><div class="clipboard-item is-picked"><span>Clean Markdown</span><b>selected</b></div><div class="clipboard-item"><span>Plain-text summary</span><b>ready</b></div></div>
-                  </div>
-                  <div class="demo-copy"><span data-demo-label>CLIPBOARD WORKFLOWS</span><h3 data-demo-title>Transform and reuse everything you copy.</h3><p data-demo-description>Watch the clipboard, clean incoming text, keep useful snippets, and paste the right format into the active app.</p></div>
+Next review: Thursday at 10:00 AM.</textarea>
+                <div class="utility-action-row" aria-label="Text transformations">
+                  <button class="is-primary" type="button" data-utility-action="Markdown cleaned">Clean Markdown</button>
+                  <button type="button" data-utility-action="Converted to title case">Title Case</button>
+                  <button type="button" data-utility-action="Last change undone">Undo</button>
+                </div>
+                <section class="utility-result-card" aria-label="Formatted result">
+                  <header><span>Formatted output</span><small>Plain text</small></header>
+                  <p><strong>Meeting notes</strong><br>We reviewed the release checklist and assigned the remaining tasks.<br><br>Next review: Thursday at 10:00 AM.</p>
                 </section>
               </div>
-              <div class="workbench-console"><span class="console-check" aria-hidden="true">✓</span><span data-console-message>Ready · clipboard listener active</span><b data-demo-status>ready</b></div>
             </div>
-          </section>
+
+            <footer class="utility-statusbar">
+              <span class="utility-ahk-badge"><i aria-hidden="true"></i>AHK v2.1</span>
+              <span data-window-file>clipboard-workflow.ahk</span>
+              <strong data-utility-status>Ready · clipboard listener active</strong>
+            </footer>
+          </div>
         </div>
       </section>
 
