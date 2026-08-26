@@ -15,8 +15,22 @@
   const startButton = desktop.querySelector('[data-start-button]');
   const startMenu = desktop.querySelector('[data-start-menu]');
   const windows = [...desktop.querySelectorAll('[data-window]')];
+  const desktopLayout = window.matchMedia('(max-width: 1180px)');
   let statusTimer;
   let currentDemoName = 'clipboard';
+
+  // Dragging writes inline geometry so the window can follow the pointer. Those
+  // values outrank responsive CSS, so discard them when crossing into the
+  // tablet/mobile layout or the desktop position can leave the app clipped.
+  function resetDraggedWindows(event) {
+    if (!event.matches) return;
+    windows.forEach((windowElement) => {
+      ['left', 'top', 'right', 'bottom', 'width', 'height', 'transform', 'will-change']
+        .forEach((property) => windowElement.style.removeProperty(property));
+    });
+  }
+
+  desktopLayout.addEventListener('change', resetDraggedWindows);
 
   const demos = {
     windows: {
