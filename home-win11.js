@@ -62,6 +62,38 @@
     }
   };
 
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  // Fades each word up from 40% opacity in sequence, so a line of AHK arrives
+  // the way a model streams it. Walking text nodes keeps the syntax-highlight
+  // spans the demo data already carries.
+  function streamWords(host, animate) {
+    if (!host || !animate || reduceMotion.matches) return;
+    const walker = document.createTreeWalker(host, NodeFilter.SHOW_TEXT);
+    const textNodes = [];
+    for (let node = walker.nextNode(); node; node = walker.nextNode()) textNodes.push(node);
+
+    let index = 0;
+    textNodes.forEach((node) => {
+      const parts = node.nodeValue.split(/(\s+)/).filter((part) => part.length);
+      if (parts.length === 0) return;
+      const fragment = document.createDocumentFragment();
+      parts.forEach((part) => {
+        if (!part.trim()) {
+          fragment.appendChild(document.createTextNode(part));
+          return;
+        }
+        const word = document.createElement('span');
+        word.className = 'streaming-word';
+        word.style.animationDelay = `${index * 34}ms`;
+        word.textContent = part;
+        fragment.appendChild(word);
+        index += 1;
+      });
+      node.parentNode.replaceChild(fragment, node);
+    });
+  }
+
   function selectDemo(name, animate = true) {
     const demo = demos[name];
     if (!demo || !demoOutput) return;
@@ -80,6 +112,7 @@
     demoTitle.textContent = demo.title;
     demoDescription.textContent = demo.description;
     demoCode.innerHTML = `<code>${demo.code}</code>`;
+    streamWords(demoCode, animate);
     if (!animate) return;
     demoOutput.classList.remove('is-running');
     void demoOutput.offsetWidth;
@@ -158,19 +191,41 @@
       };
       windowElement.style.width = `${windowRect.width}px`;
       windowElement.style.height = `${windowRect.height}px`;
+      windowElement.style.willChange = 'left, top';
+      // The studio window is centred with left:50% plus translateX(-50%). The
+      // offsets below come from the post-transform rect, so the centring shift
+      // has to go or the window jumps half its width on the first drag.
+      windowElement.style.transform = 'none';
+      // The bounds only depend on the window and desktop size, so measure once
+      // here instead of re-reading offsetWidth on every pointer event.
+      drag.maxLeft = desktop.clientWidth - windowElement.offsetWidth - 8;
+      drag.maxTop = desktop.clientHeight - windowElement.offsetHeight - 72;
       focusWindow(windowElement);
       handle.setPointerCapture(event.pointerId);
     });
     handle.addEventListener('pointermove', (event) => {
       if (!drag) return;
-      const maxLeft = desktop.clientWidth - drag.windowElement.offsetWidth - 8;
-      const maxTop = desktop.clientHeight - drag.windowElement.offsetHeight - 72;
-      drag.windowElement.style.left = `${Math.max(8, Math.min(maxLeft, drag.left + event.clientX - drag.startX))}px`;
-      drag.windowElement.style.top = `${Math.max(8, Math.min(maxTop, drag.top + event.clientY - drag.startY))}px`;
-      drag.windowElement.style.right = 'auto';
-      drag.windowElement.style.bottom = 'auto';
+      // Pointer events can outpace the display, so coalesce into one write per
+      // frame rather than forcing a layout per event.
+      drag.pendingX = event.clientX;
+      drag.pendingY = event.clientY;
+      if (drag.frame) return;
+      drag.frame = requestAnimationFrame(() => {
+        drag.frame = 0;
+        if (!drag) return;
+        const element = drag.windowElement;
+        element.style.left = `${Math.max(8, Math.min(drag.maxLeft, drag.left + drag.pendingX - drag.startX))}px`;
+        element.style.top = `${Math.max(8, Math.min(drag.maxTop, drag.top + drag.pendingY - drag.startY))}px`;
+        element.style.right = 'auto';
+        element.style.bottom = 'auto';
+      });
     });
-    const endDrag = () => { drag = null; };
+    const endDrag = () => {
+      if (!drag) return;
+      if (drag.frame) cancelAnimationFrame(drag.frame);
+      drag.windowElement.style.willChange = '';
+      drag = null;
+    };
     handle.addEventListener('pointerup', endDrag);
     handle.addEventListener('pointercancel', endDrag);
   });
