@@ -12,11 +12,11 @@ test('homepage leads with the benchmark lab and includes accessible navigation',
     readFile(join(root, 'dist', 'client', 'home-win11.js'), 'utf8'),
     readFile(join(root, 'dist', 'client', 'style.css'), 'utf8'),
   ]);
-  assert.match(html, /AutoHotkey v2 makes Windows/);
+  assert.match(html, /AutoHotkey v2 benchmark and automation lab/);
   assert.match(html, /<main id="main-content"/);
   assert.match(html, /aria-label="Main navigation"/);
   assert.match(html, /data-filter="benchmark"/);
-  assert.match(html, /#Requires AutoHotkey v2\.1/);
+  assert.match(html, /#Requires<\/span> AutoHotkey v2\.1/);
   assert.match(html, /data-win-desktop/);
   assert.match(html, /data-start-menu/);
   assert.match(html, /public\/windows11-dark-reference\.png/);
@@ -24,6 +24,15 @@ test('homepage leads with the benchmark lab and includes accessible navigation',
   assert.match(html, /data-ahk-feature="gui"/);
   assert.match(html, /public\/fluent-icons\/window_multiple_24_regular\.svg/);
   assert.match(html, /home-win11\.js/);
+  assert.match(html, /data-workbench-toolbar/);
+  assert.match(html, /data-automation-sidebar/);
+  assert.match(html, /data-script-editor/);
+  assert.match(html, /data-live-result/);
+  assert.match(html, /data-run-demo/);
+  assert.match(html, /clipboard-workflow\.ahk/);
+  assert.doesNotMatch(html, /AutoHotkey v2 makes Windows/);
+  assert.doesNotMatch(html, />Open leaderboard</);
+  assert.doesNotMatch(html, />How we test</);
   assert.match(desktopScript, /Hotstring/);
   assert.match(desktopScript, /A_Clipboard/);
   assert.match(desktopScript, /Loop Files/);
@@ -35,6 +44,8 @@ test('homepage leads with the benchmark lab and includes accessible navigation',
   assert.match(desktopScript, /requestAnimationFrame/);
   assert.match(desktopScript, /cancelAnimationFrame/);
   assert.match(desktopScript, /prefers-reduced-motion/);
+  assert.match(desktopScript, /selectDemo\('clipboard', false\)/);
+  assert.match(desktopScript, /\[data-run-demo\]/);
   assert.match(stylesheet, /--ease-out-spring:\s*cubic-bezier\(\.25,\s*1,\s*\.5,\s*1\)/);
   assert.match(stylesheet, /--elev-window:/);
   assert.match(stylesheet, /@keyframes streaming-word-fade/);

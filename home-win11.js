@@ -9,10 +9,14 @@
   const demoTitle = desktop.querySelector('[data-demo-title]');
   const demoDescription = desktop.querySelector('[data-demo-description]');
   const demoCode = desktop.querySelector('[data-demo-code]');
+  const demoFileNodes = [...desktop.querySelectorAll('[data-demo-file], [data-window-file], [data-workbench-file]')];
+  const consoleMessage = desktop.querySelector('[data-console-message]');
+  const runButton = desktop.querySelector('[data-run-demo]');
   const startButton = desktop.querySelector('[data-start-button]');
   const startMenu = desktop.querySelector('[data-start-menu]');
   const windows = [...desktop.querySelectorAll('[data-window]')];
   let statusTimer;
+  let currentDemoName = 'clipboard';
 
   const demos = {
     windows: {
@@ -21,8 +25,8 @@
       title: 'Tile a workspace in one command.',
       description: 'AHK can find, focus, resize, and arrange native Windows applications around the way you work.',
       visualClass: 'demo-windows',
-      visual: '<div class="mini-window mini-one"><span></span><p>Research</p></div><div class="mini-window mini-two"><span></span><p>Editor</p></div><div class="mini-window mini-three"><span></span><p>Console</p></div>',
-      code: '<span>WinMove</span> 0, 0, A_ScreenWidth / 2, A_ScreenHeight, "A"'
+      visual: '<div class="workspace-zones"><div class="workspace-zone zone-primary"><b>Editor</b><small>50%</small></div><div class="workspace-zone"><b>Browser</b><small>25%</small></div><div class="workspace-zone"><b>Terminal</b><small>25%</small></div></div>',
+      code: '<span class="code-directive">#Requires</span> AutoHotkey v2.1\n\n<span class="code-function">TileWorkspace</span>() {\n    WinMove 0, 0, A_ScreenWidth / 2, A_ScreenHeight, \"A\"\n}'
     },
     text: {
       file: 'hotstrings.ahk',
@@ -31,7 +35,7 @@
       description: 'Hotstrings expand signatures, case notes, templates, or any repeated text inside almost any Windows application.',
       visualClass: 'demo-text',
       visual: '<div class="demo-text-editor"><header>New message</header><p>Thanks for your help.<br><br><mark>;sig → Best,<br>Justin</mark></p></div>',
-      code: '<span>Hotstring</span> (":*:;sig", ExpandSignature)'
+      code: '<span class="code-directive">#Requires</span> AutoHotkey v2.1\n\n<span class="code-function">ExpandSignature</span>(*) {\n    SendText \"Best,`nJustin\"\n}\n\nHotstring(\":*:;sig\", ExpandSignature)'
     },
     clipboard: {
       file: 'clipboard-workflow.ahk',
@@ -40,7 +44,7 @@
       description: 'Watch the clipboard, clean incoming text, keep useful snippets, and paste the right format into the active app.',
       visualClass: 'demo-clipboard',
       visual: '<div class="clipboard-list"><div class="clipboard-item"><span>Raw meeting notes</span><b>captured</b></div><div class="clipboard-item is-picked"><span>Clean Markdown</span><b>selected</b></div><div class="clipboard-item"><span>Plain-text summary</span><b>ready</b></div></div>',
-      code: '<span>A_Clipboard</span> := CleanMarkdown(A_Clipboard)'
+      code: '<span class="code-directive">#Requires</span> AutoHotkey v2.1\n\n<span class="code-function">CleanMarkdown</span>(text) {\n    text := RegExReplace(text, \"\\R{3,}\", \"`n`n\")\n    return Trim(text)\n}\n\n<span class="code-variable">A_Clipboard</span> := CleanMarkdown(A_Clipboard)'
     },
     files: {
       file: 'download-sorter.ahk',
@@ -49,7 +53,7 @@
       description: 'AHK can watch directories, rename batches, move files by type, and launch the next step in a desktop workflow.',
       visualClass: 'demo-files',
       visual: '<div class="file-sorter"><div class="file-item"><span>report.pdf</span><b>Documents →</b></div><div class="file-item"><span>capture.png</span><b>Images →</b></div><div class="file-item"><span>results.csv</span><b>Data →</b></div></div>',
-      code: '<span>Loop Files</span> Downloads "\\*.*" { SortDownload(A_LoopFileFullPath) }'
+      code: '<span class="code-directive">#Requires</span> AutoHotkey v2.1\n\nLoop Files Downloads \"\\*.*\" {\n    <span class="code-function">SortDownload</span>(A_LoopFileFullPath)\n}'
     },
     gui: {
       file: 'release-builder.ahk',
@@ -58,7 +62,7 @@
       description: 'Create native tools with inputs, buttons, menus, events, and resizable layouts—without leaving AutoHotkey v2.',
       visualClass: 'demo-gui',
       visual: '<div class="gui-preview"><header><span>Release builder</span><span>×</span></header><label>Project name<i></i></label><label>Output folder<i></i></label><footer><button type="button">Build release</button></footer></div>',
-      code: '<span>app</span> := Gui("+Resize", "Release builder")'
+      code: '<span class="code-directive">#Requires</span> AutoHotkey v2.1\n\n<span class="code-variable">app</span> := Gui(\"+Resize\", \"Release builder\")\napp.AddEdit(\"w320\", \"Project name\")\napp.AddButton(\"Default\", \"Build release\")\napp.Show()'
     }
   };
 
@@ -97,6 +101,7 @@
   function selectDemo(name, animate = true) {
     const demo = demos[name];
     if (!demo || !demoOutput) return;
+    currentDemoName = name;
     desktop.querySelectorAll('[data-ahk-demo]').forEach((button) => {
       button.classList.toggle('is-active', button.dataset.ahkDemo === name && button.classList.contains('automation-button'));
     });
@@ -105,7 +110,7 @@
       button.classList.toggle('is-active', active);
       button.setAttribute('aria-pressed', String(active));
     });
-    demoOutput.querySelector('.demo-titlebar span').lastChild.textContent = demo.file;
+    demoFileNodes.forEach((node) => { node.textContent = demo.file; });
     demoVisual.className = `demo-visual ${demo.visualClass}`;
     demoVisual.innerHTML = demo.visual;
     demoLabel.textContent = demo.label;
@@ -118,12 +123,16 @@
     void demoOutput.offsetWidth;
     demoOutput.classList.add('is-running');
     demoStatus.textContent = 'running';
+    if (consoleMessage) consoleMessage.textContent = `Running ${demo.file}…`;
     clearTimeout(statusTimer);
     statusTimer = setTimeout(() => {
       demoStatus.textContent = 'complete';
+      if (consoleMessage) consoleMessage.textContent = `Completed · ${demo.file}`;
       demoOutput.classList.remove('is-running');
     }, 720);
   }
+
+  runButton?.addEventListener('click', () => selectDemo(currentDemoName));
 
   function focusWindow(windowElement) {
     if (!windowElement) return;
@@ -251,7 +260,7 @@
     });
   }
 
-  selectDemo('windows', false);
+  selectDemo('clipboard', false);
   updateClock();
   setInterval(updateClock, 30000);
 })();
