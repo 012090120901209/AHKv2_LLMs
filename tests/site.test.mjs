@@ -43,6 +43,10 @@ test('homepage leads with the benchmark lab and includes accessible navigation',
   assert.match(desktopScript, /function streamWords/);
   assert.match(desktopScript, /requestAnimationFrame/);
   assert.match(desktopScript, /cancelAnimationFrame/);
+  assert.match(desktopScript, /function resetDraggedWindows/);
+  assert.match(desktopScript, /\['left', 'top', 'right', 'bottom', 'width', 'height', 'transform', 'will-change'\]/);
+  assert.match(desktopScript, /removeProperty\(property\)/);
+  assert.match(desktopScript, /desktopLayout\.addEventListener\('change'/);
   assert.match(desktopScript, /prefers-reduced-motion/);
   assert.match(desktopScript, /selectDemo\('clipboard', false\)/);
   assert.match(desktopScript, /\[data-run-demo\]/);
