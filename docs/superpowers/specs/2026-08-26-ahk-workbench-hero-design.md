@@ -1,50 +1,51 @@
-# AHK Workbench Hero Design
+# Native AHK Utility Hero Design
 
 ## Goal
 
-Make the open pseudo-desktop window read immediately as an operational
-AutoHotkey application, not a second marketing website nested inside the
-landing page.
+Make the pseudo-desktop tell one immediate story: this is a useful native
+Windows utility built with AutoHotkey v2.
 
 ## Approved Direction
 
-The outer page owns all promotional copy and navigation. The simulated app
-contains only product UI:
+The open window is a Clipboard Formatter by default. It uses recognizable
+native-utility controls: text input, transform actions, formatted output, and a
+status bar. AutoHotkey appears only as subtle provenance in the title/status
+area.
 
-- a Windows title bar identifying `AHK Automation Lab`
-- a compact workspace toolbar with interpreter state and a Run action
-- a left automation sidebar
-- a script editor
-- a live-result pane
-- a compact execution console
-
-The initial state is `clipboard-workflow.ahk`. This avoids showing miniature
-windows on first load. Window Control remains selectable, but its result uses
-abstract workspace zones rather than nested title-bar windows.
+The simulated window does not contain a development environment, internal
+navigation, source editor, marketing headline, or promotional links.
 
 ## Interaction
 
-The five existing feature cards and the new in-app sidebar call the same
-`selectDemo(name)` function. Selecting a demo updates the filename, editor,
-result, description, active state, and execution status. The Run button reruns
-the selected demo without changing selection.
+The five existing feature cards below the desktop are the only primary demo
+selector. They replace the complete native utility shown in the window:
+
+- Clipboard Formatter
+- Text Expander
+- Downloads Organizer
+- Workspace Layout
+- Release Builder
+
+The Start menu shortcuts retain the same behavior. Actions inside each mock
+utility update its status text so controls feel responsive without introducing
+a second navigation system.
 
 All existing desktop interactions—drag, maximize, close/reopen, Start menu,
 mobile layout, and reduced-motion behavior—remain intact.
 
 ## Responsive Behavior
 
-At desktop widths the app uses three functional columns: automation sidebar,
-editor, and result. At narrower widths the editor and result stack; on mobile
-the in-app sidebar becomes a compact horizontal control row and the simulated
-desktop remains free of horizontal page overflow.
+At desktop widths the utility is a focused, medium-size window with wallpaper
+visible around it. On mobile it uses the available pseudo-desktop width and its
+form rows stack without causing horizontal page overflow.
 
 ## Verification
 
-- The generated homepage contains no marketing headline or promotional links
-  inside `.win-studio`.
-- The initial app state is Clipboard Workflows.
-- Sidebar and Run controls are present and accessible.
+- The generated homepage contains no workbench toolbar, internal automation
+  sidebar, script editor, or developer Run control.
+- The initial title is Clipboard Formatter.
+- Five outer feature cards and five Start menu shortcuts still switch demos.
+- The Workspace Layout utility uses abstract zones, not nested windows.
 - Existing JavaScript parses and all site tests pass.
-- Manual desktop and mobile interaction checks cover all five demos, rerun,
+- Manual desktop and mobile checks cover all five demos, native utility actions,
   window controls, drag, and reduced motion.
