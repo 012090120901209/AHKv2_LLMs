@@ -56,6 +56,7 @@ test('homepage leads with the benchmark lab and includes accessible navigation',
   assert.match(stylesheet, /@keyframes win-open/);
   assert.match(stylesheet, /@keyframes demo-scan\s*\{[^}]*transform:/s);
   assert.doesNotMatch(stylesheet, /@keyframes demo-scan\s*\{[^}]*left:/s);
+  assert.match(stylesheet, /\.workbench-editor pre code\s*\{[^}]*font:\s*inherit/s);
   assert.doesNotMatch(stylesheet, /transition:\s*all\b/);
   assert.doesNotMatch(html, /Codex is building|codex-preview/);
   new vm.Script(desktopScript);
