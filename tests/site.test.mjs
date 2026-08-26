@@ -7,9 +7,10 @@ import vm from 'node:vm';
 const root = process.cwd();
 
 test('homepage leads with the benchmark lab and includes accessible navigation', async () => {
-  const [html, desktopScript] = await Promise.all([
+  const [html, desktopScript, stylesheet] = await Promise.all([
     readFile(join(root, 'dist', 'client', 'index.html'), 'utf8'),
     readFile(join(root, 'dist', 'client', 'home-win11.js'), 'utf8'),
+    readFile(join(root, 'dist', 'client', 'style.css'), 'utf8'),
   ]);
   assert.match(html, /AutoHotkey v2 makes Windows/);
   assert.match(html, /<main id="main-content"/);
@@ -30,6 +31,17 @@ test('homepage leads with the benchmark lab and includes accessible navigation',
   assert.match(desktopScript, /data-window-action/);
   assert.match(desktopScript, /data-ahk-feature/);
   assert.match(desktopScript, /scrollIntoView/);
+  assert.match(desktopScript, /function streamWords/);
+  assert.match(desktopScript, /requestAnimationFrame/);
+  assert.match(desktopScript, /cancelAnimationFrame/);
+  assert.match(desktopScript, /prefers-reduced-motion/);
+  assert.match(stylesheet, /--ease-out-spring:\s*cubic-bezier\(\.25,\s*1,\s*\.5,\s*1\)/);
+  assert.match(stylesheet, /--elev-window:/);
+  assert.match(stylesheet, /@keyframes streaming-word-fade/);
+  assert.match(stylesheet, /@keyframes win-open/);
+  assert.match(stylesheet, /@keyframes demo-scan\s*\{[^}]*transform:/s);
+  assert.doesNotMatch(stylesheet, /@keyframes demo-scan\s*\{[^}]*left:/s);
+  assert.doesNotMatch(stylesheet, /transition:\s*all\b/);
   assert.doesNotMatch(html, /Codex is building|codex-preview/);
   new vm.Script(desktopScript);
 
