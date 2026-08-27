@@ -2,21 +2,42 @@
   const desktop = document.querySelector('[data-win-desktop]');
   if (!desktop) return;
 
-  const demoOutput = desktop.querySelector('[data-demo-output]');
-  const utilityContent = desktop.querySelector('[data-utility-content]');
-  const utilityStatus = desktop.querySelector('[data-utility-status]');
-  const utilityHeading = desktop.querySelector('[data-utility-heading]');
-  const utilityDescription = desktop.querySelector('[data-utility-description]');
-  const utilityState = desktop.querySelector('.utility-state');
-  const utilityIcon = desktop.querySelector('.utility-app-icon img');
-  const appTitle = desktop.querySelector('[data-app-title]');
-  const demoFileNodes = [...desktop.querySelectorAll('[data-window-file]')];
+  const searchHome = desktop.querySelector('[data-search-home]');
+  const searchForm = desktop.querySelector('[data-search-form]');
+  const searchInput = desktop.querySelector('[data-search-input]');
+  const searchStatus = desktop.querySelector('[data-search-status]');
+  const exampleButton = desktop.querySelector('[data-search-example]');
   const startButton = desktop.querySelector('[data-start-button]');
   const startMenu = desktop.querySelector('[data-start-menu]');
   const windows = [...desktop.querySelectorAll('[data-window]')];
   const desktopLayout = window.matchMedia('(max-width: 1180px)');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let statusTimer;
   let currentDemoName = 'clipboard';
+
+  const searches = {
+    windows: {
+      query: 'How can I tile my workspace with AutoHotkey?',
+      ready: 'Window control query ready.'
+    },
+    text: {
+      query: 'How do I create text shortcuts with AutoHotkey?',
+      ready: 'Text expansion query ready.'
+    },
+    clipboard: {
+      query: 'How can I clean clipboard text with AutoHotkey?',
+      ready: 'Clipboard workflow query ready.'
+    },
+    files: {
+      query: 'How can I organize Downloads with AutoHotkey?',
+      ready: 'File automation query ready.'
+    },
+    gui: {
+      query: 'How do I build a Windows app with AutoHotkey?',
+      ready: 'Desktop app query ready.'
+    }
+  };
+  const searchOrder = ['clipboard', 'windows', 'text', 'files', 'gui'];
 
   // Dragging writes inline geometry so the window can follow the pointer. Those
   // values outrank responsive CSS, so discard them when crossing into the
@@ -31,114 +52,54 @@
 
   desktopLayout.addEventListener('change', resetDraggedWindows);
 
-  const demos = {
-    windows: {
-      file: 'window-layout.ahk',
-      appTitle: 'Workspace Layout',
-      description: 'AHK can find, focus, resize, and arrange native Windows applications around the way you work.',
-      state: '3 windows detected',
-      icon: 'public/fluent-icons/window_multiple_24_regular.svg',
-      status: 'Ready · workspace detected',
-      content: `<div class="layout-utility">
-        <div class="utility-control-row"><span>Layout preset</span><div class="preset-pills"><button class="is-selected" type="button" data-utility-action="Focus layout selected">Focus</button><button type="button" data-utility-action="Research layout selected">Research</button><button type="button" data-utility-action="Meeting layout selected">Meeting</button></div></div>
-        <div class="workspace-monitor" aria-label="Monitor layout preview"><div class="monitor-zone zone-editor"><b>Editor</b><small>50%</small></div><div class="monitor-zone"><b>Browser</b><small>25%</small></div><div class="monitor-zone"><b>Terminal</b><small>25%</small></div></div>
-        <div class="utility-action-row"><button class="is-primary" type="button" data-utility-action="Layout applied to 3 windows">Apply layout</button><button type="button" data-utility-action="Window positions restored">Restore</button></div>
-      </div>`
-    },
-    text: {
-      file: 'hotstrings.ahk',
-      appTitle: 'Text Expander',
-      description: 'Hotstrings expand signatures, case notes, templates, or any repeated text inside almost any Windows application.',
-      state: '3 shortcuts active',
-      icon: 'public/fluent-icons/text_case_title_24_regular.svg',
-      status: 'Ready · listening for shortcuts',
-      content: `<div class="text-utility">
-        <div class="utility-list-heading"><span>Shortcut</span><span>Expansion</span></div>
-        <div class="expansion-row"><kbd>;sig</kbd><span>Best,<br>Justin</span><i>Active</i></div>
-        <div class="expansion-row"><kbd>;date</kbd><span>Wednesday, August 26</span><i>Active</i></div>
-        <div class="expansion-row"><kbd>;case</kbd><span>Case note template</span><i>Active</i></div>
-        <div class="utility-action-row"><button class="is-primary" type="button" data-utility-action="New shortcut added">Add shortcut</button><button type="button" data-utility-action="Shortcuts paused">Pause all</button></div>
-      </div>`
-    },
-    clipboard: {
-      file: 'clipboard-workflow.ahk',
-      appTitle: 'Clipboard Formatter',
-      description: 'Watch the clipboard, clean incoming text, keep useful snippets, and paste the right format into the active app.',
-      state: 'Watching clipboard',
-      icon: 'public/fluent-icons/clipboard_24_regular.svg',
-      status: 'Ready · clipboard listener active',
-      content: `<div class="clipboard-utility">
-        <label class="utility-label">Clipboard text <span>342 characters</span></label>
-        <textarea class="utility-textarea" readonly>Meeting notes
-
-We reviewed the release checklist and assigned the remaining tasks.
-
-Next review: Thursday at 10:00 AM.</textarea>
-        <div class="utility-action-row" aria-label="Text transformations"><button class="is-primary" type="button" data-utility-action="Markdown cleaned">Clean Markdown</button><button type="button" data-utility-action="Converted to title case">Title Case</button><button type="button" data-utility-action="Last change undone">Undo</button></div>
-        <section class="utility-result-card" aria-label="Formatted result"><header><span>Formatted output</span><small>Plain text</small></header><p><strong>Meeting notes</strong><br>We reviewed the release checklist and assigned the remaining tasks.<br><br>Next review: Thursday at 10:00 AM.</p></section>
-      </div>`
-    },
-    files: {
-      file: 'download-sorter.ahk',
-      appTitle: 'Downloads Organizer',
-      description: 'AHK can watch directories, rename batches, move files by type, and launch the next step in a desktop workflow.',
-      state: '3 files ready',
-      icon: 'public/fluent-icons/folder_24_regular.svg',
-      status: 'Ready · Downloads folder monitored',
-      content: `<div class="files-utility">
-        <div class="utility-list-heading file-columns"><span>File</span><span>Destination</span></div>
-        <div class="native-file-row"><span><i class="file-type">PDF</i><b>quarterly-report.pdf</b><small>2.4 MB</small></span><em>Documents</em></div>
-        <div class="native-file-row"><span><i class="file-type image">IMG</i><b>desktop-capture.png</b><small>1.1 MB</small></span><em>Pictures</em></div>
-        <div class="native-file-row"><span><i class="file-type data">CSV</i><b>benchmark-results.csv</b><small>86 KB</small></span><em>Data</em></div>
-        <div class="utility-action-row"><button class="is-primary" type="button" data-utility-action="3 files organized">Organize 3 files</button><button type="button" data-utility-action="Folder opened">Open folder</button></div>
-      </div>`
-    },
-    gui: {
-      file: 'release-builder.ahk',
-      appTitle: 'Release Builder',
-      description: 'Create native tools with inputs, buttons, menus, events, and resizable layouts—without leaving AutoHotkey v2.',
-      state: 'Project configured',
-      icon: 'public/fluent-icons/window_dev_tools_24_regular.svg',
-      status: 'Ready · output folder available',
-      content: `<form class="release-utility">
-        <label class="native-field">Project name<input value="AHK Clipboard Tools" readonly></label>
-        <label class="native-field">Entry script<input value="src\\ClipboardTools.ahk" readonly></label>
-        <label class="native-field wide">Output folder<span class="input-with-action"><input value="dist\\ClipboardTools.exe" readonly><button type="button" data-utility-action="Output folder selected">Browse…</button></span></label>
-        <label class="native-check wide"><input type="checkbox" checked> Include version metadata</label>
-        <div class="utility-action-row wide"><button class="is-primary" type="button" data-utility-action="Release built successfully">Build release</button><button type="button" data-utility-action="Build settings saved">Save settings</button></div>
-      </form>`
-    }
-  };
-
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  function setSearchStatus(message, restoreAfter = 0) {
+    clearTimeout(statusTimer);
+    searchStatus.textContent = message;
+    if (!restoreAfter) return;
+    statusTimer = setTimeout(() => {
+      searchStatus.textContent = searches[currentDemoName].ready;
+    }, restoreAfter);
+  }
 
   function selectDemo(name, animate = true) {
-    const demo = demos[name];
-    if (!demo || !demoOutput) return;
+    const search = searches[name];
+    if (!search) return;
     currentDemoName = name;
+    searchInput.value = search.query;
     document.querySelectorAll('[data-ahk-feature]').forEach((button) => {
       const active = button.dataset.ahkFeature === name;
       button.classList.toggle('is-active', active);
       button.setAttribute('aria-pressed', String(active));
     });
-    demoFileNodes.forEach((node) => { node.textContent = demo.file; });
-    appTitle.textContent = demo.appTitle;
-    utilityHeading.textContent = demo.appTitle;
-    utilityDescription.textContent = demo.description;
-    utilityState.textContent = demo.state;
-    utilityIcon.src = demo.icon;
-    utilityContent.innerHTML = demo.content;
-    desktop.querySelector('[data-window="studio"]').setAttribute('aria-label', demo.appTitle);
-    utilityStatus.textContent = demo.status;
-    if (!animate) return;
-    demoOutput.classList.remove('is-running');
-    void demoOutput.offsetWidth;
-    demoOutput.classList.add('is-running');
-    clearTimeout(statusTimer);
-    statusTimer = setTimeout(() => {
-      demoOutput.classList.remove('is-running');
-    }, 520);
+    setSearchStatus(search.ready);
+    if (!animate || reduceMotion.matches) return;
+    searchHome.classList.remove('is-updating');
+    void searchHome.offsetWidth;
+    searchHome.classList.add('is-updating');
+    setTimeout(() => searchHome.classList.remove('is-updating'), 260);
   }
+
+  searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const query = searchInput.value.trim();
+    if (!query) {
+      setSearchStatus('Enter an AutoHotkey question first.');
+      searchInput.focus();
+      return;
+    }
+    setSearchStatus(`Searching locally for “${query}”…`);
+    statusTimer = setTimeout(() => {
+      searchStatus.textContent = 'That workflow can be built with AutoHotkey v2.1.';
+    }, reduceMotion.matches ? 0 : 620);
+  });
+
+  exampleButton.addEventListener('click', () => {
+    const currentIndex = searchOrder.indexOf(currentDemoName);
+    const nextName = searchOrder[(currentIndex + 1) % searchOrder.length];
+    selectDemo(nextName);
+    setSearchStatus('Example query loaded. Press Search AutoHotkey to continue.');
+    searchInput.focus();
+  });
 
   function focusWindow(windowElement) {
     if (!windowElement) return;
@@ -163,7 +124,6 @@ Next review: Thursday at 10:00 AM.</textarea>
     const demoButton = event.target.closest('[data-ahk-demo]');
     const openButton = event.target.closest('[data-open-window]');
     const actionButton = event.target.closest('[data-window-action]');
-    const utilityAction = event.target.closest('[data-utility-action]');
 
     if (event.target.closest('[data-start-button]')) {
       toggleStart();
@@ -172,17 +132,6 @@ Next review: Thursday at 10:00 AM.</textarea>
     if (demoButton) selectDemo(demoButton.dataset.ahkDemo);
     if (openButton) openWindow(openButton.dataset.openWindow);
     if (demoButton || openButton) toggleStart(false);
-    if (utilityAction) {
-      utilityStatus.textContent = utilityAction.dataset.utilityAction;
-      demoOutput.classList.remove('is-running');
-      void demoOutput.offsetWidth;
-      demoOutput.classList.add('is-running');
-      clearTimeout(statusTimer);
-      statusTimer = setTimeout(() => {
-        utilityStatus.textContent = demos[currentDemoName].status;
-        demoOutput.classList.remove('is-running');
-      }, 1100);
-    }
 
     if (actionButton) {
       const windowElement = actionButton.closest('[data-window]');
@@ -219,12 +168,7 @@ Next review: Thursday at 10:00 AM.</textarea>
       windowElement.style.width = `${windowRect.width}px`;
       windowElement.style.height = `${windowRect.height}px`;
       windowElement.style.willChange = 'left, top';
-      // The studio window is centred with left:50% plus translateX(-50%). The
-      // offsets below come from the post-transform rect, so the centring shift
-      // has to go or the window jumps half its width on the first drag.
       windowElement.style.transform = 'none';
-      // The bounds only depend on the window and desktop size, so measure once
-      // here instead of re-reading offsetWidth on every pointer event.
       drag.maxLeft = desktop.clientWidth - windowElement.offsetWidth - 8;
       drag.maxTop = desktop.clientHeight - windowElement.offsetHeight - 72;
       focusWindow(windowElement);
@@ -232,8 +176,6 @@ Next review: Thursday at 10:00 AM.</textarea>
     });
     handle.addEventListener('pointermove', (event) => {
       if (!drag) return;
-      // Pointer events can outpace the display, so coalesce into one write per
-      // frame rather than forcing a layout per event.
       drag.pendingX = event.clientX;
       drag.pendingY = event.clientY;
       if (drag.frame) return;
@@ -262,7 +204,7 @@ Next review: Thursday at 10:00 AM.</textarea>
       selectDemo(button.dataset.ahkFeature);
       openWindow('studio');
       desktop.scrollIntoView({
-        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        behavior: reduceMotion.matches ? 'auto' : 'smooth',
         block: 'start'
       });
     });

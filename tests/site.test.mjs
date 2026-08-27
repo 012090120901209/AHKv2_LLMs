@@ -23,11 +23,15 @@ test('homepage leads with the benchmark lab and includes accessible navigation',
   assert.match(html, /data-ahk-feature="gui"/);
   assert.match(html, /public\/fluent-icons\/window_multiple_24_regular\.svg/);
   assert.match(html, /home-win11\.js/);
-  assert.match(html, /data-utility-content/);
-  assert.match(html, /data-app-title/);
-  assert.match(html, /data-utility-status/);
-  assert.match(html, /Clipboard Formatter/);
-  assert.match(html, /clipboard-workflow\.ahk/);
+  assert.match(html, /data-search-home/);
+  assert.match(html, /data-search-input/);
+  assert.match(html, /data-search-status/);
+  assert.match(html, /Search AutoHotkey/);
+  assert.match(html, /Show me an example/);
+  assert.match(html, /class="search-wordmark"/);
+  assert.doesNotMatch(html + desktopScript, /\bGoogle\b/);
+  assert.doesNotMatch(html, /data-utility-content/);
+  assert.doesNotMatch(html, /data-utility-status/);
   assert.doesNotMatch(html, /data-workbench-toolbar/);
   assert.doesNotMatch(html, /data-automation-sidebar/);
   assert.doesNotMatch(html, /data-script-editor/);
@@ -35,14 +39,21 @@ test('homepage leads with the benchmark lab and includes accessible navigation',
   assert.doesNotMatch(html, /AutoHotkey v2 makes Windows/);
   assert.doesNotMatch(html, />Open leaderboard</);
   assert.doesNotMatch(html, />How we test</);
-  for (const utility of ['Clipboard Formatter', 'Text Expander', 'Downloads Organizer', 'Workspace Layout', 'Release Builder']) {
-    assert.match(desktopScript, new RegExp(utility));
+  for (const query of [
+    'tile my workspace with AutoHotkey',
+    'create text shortcuts with AutoHotkey',
+    'clean clipboard text with AutoHotkey',
+    'organize Downloads with AutoHotkey',
+    'build a Windows app with AutoHotkey',
+  ]) {
+    assert.match(desktopScript, new RegExp(query));
   }
   assert.match(desktopScript, /data-drag-handle/);
   assert.match(desktopScript, /data-window-action/);
   assert.match(desktopScript, /data-ahk-feature/);
   assert.match(desktopScript, /scrollIntoView/);
-  assert.match(desktopScript, /\[data-utility-action\]/);
+  assert.match(desktopScript, /\[data-search-form\]/);
+  assert.match(desktopScript, /\[data-search-example\]/);
   assert.match(desktopScript, /requestAnimationFrame/);
   assert.match(desktopScript, /cancelAnimationFrame/);
   assert.match(desktopScript, /function resetDraggedWindows/);
@@ -54,9 +65,7 @@ test('homepage leads with the benchmark lab and includes accessible navigation',
   assert.match(stylesheet, /--ease-out-spring:\s*cubic-bezier\(\.25,\s*1,\s*\.5,\s*1\)/);
   assert.match(stylesheet, /--elev-window:/);
   assert.match(stylesheet, /@keyframes win-open/);
-  assert.match(stylesheet, /@keyframes demo-scan\s*\{[^}]*transform:/s);
-  assert.doesNotMatch(stylesheet, /@keyframes demo-scan\s*\{[^}]*left:/s);
-  assert.match(stylesheet, /\.utility-shell/);
+  assert.match(stylesheet, /\.search-homepage/);
   assert.doesNotMatch(stylesheet, /transition:\s*all\b/);
   assert.doesNotMatch(html, /Codex is building|codex-preview/);
   new vm.Script(desktopScript);
