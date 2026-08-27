@@ -22,6 +22,7 @@ test('homepage leads with the benchmark lab and includes accessible navigation',
   assert.match(html, /data-ahk-feature="windows"/);
   assert.match(html, /data-ahk-feature="gui"/);
   assert.match(html, /public\/fluent-icons\/window_multiple_24_regular\.svg/);
+  assert.equal((html.match(/public\/fluent-icons\/browser_24_regular\.svg/g) || []).length, 2);
   assert.match(html, /home-win11\.js/);
   assert.match(html, /data-search-home/);
   assert.match(html, /data-search-input/);

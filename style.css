@@ -1458,6 +1458,8 @@ body > * { min-width: 0; }
 }
 .win-title { min-width: 0; display: flex; align-items: center; gap: 9px; color: #d7d7d7; font-size: 11px; }
 .win-title img { width: 20px; height: 20px; border-radius: 5px; }
+.win-title img.browser-app-icon,
+.task-app img.browser-app-icon { border-radius: 50%; filter: none; opacity: 1; }
 .win-title small { color: #707070; font: 500 9px/1 var(--font-mono); }
 .board-app-icon { width: 20px; height: 20px; display: grid; place-items: center; border-radius: 5px; color: #fff; background: #5B9FEF; }
 .win-controls { align-self: stretch; display: flex; }
