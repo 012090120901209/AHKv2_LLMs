@@ -48,9 +48,9 @@
       <div class="win11-wallpaper" aria-hidden="true"><img class="win11-wallpaper-image" src="public/windows11-dark-reference.png" alt=""></div>
       <div class="desktop-status"><span><i aria-hidden="true"></i>AHK v2.1 interpreter online</span><time data-desktop-date></time></div>
 
-      <section class="win-window win-studio win-showcase is-focused" data-window="studio" aria-label="Clipboard Formatter">
+      <section class="win-window win-studio win-showcase is-focused" data-window="studio" aria-label="AutoHotkey Search">
         <div class="win-titlebar" data-drag-handle>
-          <div class="win-title"><img src="logo.svg" alt=""><span data-app-title>Clipboard Formatter</span><small><span data-window-file>clipboard-workflow.ahk</span> · AHK v2.1</small></div>
+          <div class="win-title"><img src="logo.svg" alt=""><span>AutoHotkey Search</span><small>New tab</small></div>
           <div class="win-controls" aria-label="Window controls">
             <button type="button" data-window-action="minimize" aria-label="Minimize"><img src="public/fluent-icons/subtract_16_regular.svg" alt=""></button>
             <button type="button" data-window-action="maximize" aria-label="Maximize"><img src="public/fluent-icons/square_16_regular.svg" alt=""></button>
@@ -58,40 +58,27 @@
           </div>
         </div>
         <div class="studio-body">
-          <div class="utility-shell" data-demo-output aria-live="polite">
-            <header class="utility-heading">
-              <span class="utility-app-icon"><img src="public/fluent-icons/clipboard_24_regular.svg" alt=""></span>
-              <div>
-                <h2 data-utility-heading>Clipboard Formatter</h2>
-                <p data-utility-description>Clean and reshape copied text without leaving your current app.</p>
-            </div>
-              <span class="utility-state">Watching clipboard</span>
-            </header>
-
-            <div class="utility-content" data-utility-content>
-              <div class="clipboard-utility">
-                <label class="utility-label" for="clipboard-input">Clipboard text <span>342 characters</span></label>
-                <textarea id="clipboard-input" class="utility-textarea" readonly>Meeting notes
-
-We reviewed the release checklist and assigned the remaining tasks.
-
-Next review: Thursday at 10:00 AM.</textarea>
-                <div class="utility-action-row" aria-label="Text transformations">
-                  <button class="is-primary" type="button" data-utility-action="Markdown cleaned">Clean Markdown</button>
-                  <button type="button" data-utility-action="Converted to title case">Title Case</button>
-                  <button type="button" data-utility-action="Last change undone">Undo</button>
-                </div>
-                <section class="utility-result-card" aria-label="Formatted result">
-                  <header><span>Formatted output</span><small>Plain text</small></header>
-                  <p><strong>Meeting notes</strong><br>We reviewed the release checklist and assigned the remaining tasks.<br><br>Next review: Thursday at 10:00 AM.</p>
-                </section>
+          <div class="search-homepage" data-search-home>
+            <main class="search-home-main">
+              <div class="search-wordmark" aria-label="AutoHotkey">
+                <span>A</span><span>u</span><span>t</span><span>o</span><span>H</span><span>o</span><span>t</span><span>k</span><span>e</span><span>y</span>
               </div>
-            </div>
-
-            <footer class="utility-statusbar">
-              <span class="utility-ahk-badge"><i aria-hidden="true"></i>AHK v2.1</span>
-              <span data-window-file>clipboard-workflow.ahk</span>
-              <strong data-utility-status>Ready · clipboard listener active</strong>
+              <form class="search-form" data-search-form>
+                <label class="search-field">
+                  <span class="search-magnifier" aria-hidden="true"></span>
+                  <input type="search" value="How can I clean clipboard text with AutoHotkey?" aria-label="Search AutoHotkey" data-search-input>
+                  <span class="search-spark" aria-hidden="true">✦</span>
+                </label>
+                <div class="search-actions">
+                  <button type="submit">Search AutoHotkey</button>
+                  <button type="button" data-search-example>Show me an example</button>
+                </div>
+              </form>
+              <p class="search-status" aria-live="polite" data-search-status>Try a capability below to change the search.</p>
+            </main>
+            <footer class="search-footer">
+              <span>Powered by AutoHotkey v2.1</span>
+              <span>Local demo · no search data is sent</span>
             </footer>
           </div>
         </div>
@@ -136,7 +123,7 @@ Next review: Thursday at 10:00 AM.</textarea>
         <div class="taskbar-center">
           <button type="button" class="start-button" data-start-button aria-label="Open Start menu" aria-expanded="false"><img src="public/fluent-icons/apps_24_filled.svg" alt=""></button>
           <button type="button" class="task-search" data-open-window="studio"><img src="public/fluent-icons/search_24_regular.svg" alt="">Search AHK v2</button>
-          <button type="button" class="task-app is-running" data-open-window="studio" aria-label="Open AHK Studio"><img src="logo.svg" alt=""></button>
+          <button type="button" class="task-app is-running" data-open-window="studio" aria-label="Open AutoHotkey Search"><img src="logo.svg" alt=""></button>
           <button type="button" class="task-app is-running" data-open-window="board" aria-label="Open benchmark monitor"><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></button>
           <a class="task-app" href="prompts.html" aria-label="Open prompt library"><img src="public/fluent-icons/code_24_regular.svg" alt=""></a>
         </div>
@@ -147,9 +134,9 @@ Next review: Thursday at 10:00 AM.</textarea>
     <section class="ahk-feature-dock" aria-labelledby="feature-dock-title">
       <div class="feature-dock-heading"><span>Five ways to bend Windows to your workflow</span><h2 id="feature-dock-title">See the power of AutoHotkey v2</h2><p>Choose a capability. The Windows app above will reopen and run the matching demonstration.</p></div>
       <div class="ahk-feature-buttons">
-        <button type="button" class="ahk-feature-button is-active" data-ahk-feature="windows" aria-pressed="true"><span><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></span><b>Window control</b><small>Find, focus, tile, resize</small><code>WinMove()</code></button>
+        <button type="button" class="ahk-feature-button" data-ahk-feature="windows" aria-pressed="false"><span><img src="public/fluent-icons/window_multiple_24_regular.svg" alt=""></span><b>Window control</b><small>Find, focus, tile, resize</small><code>WinMove()</code></button>
         <button type="button" class="ahk-feature-button" data-ahk-feature="text" aria-pressed="false"><span><img src="public/fluent-icons/text_case_title_24_regular.svg" alt=""></span><b>Text expansion</b><small>Write templates instantly</small><code>Hotstring()</code></button>
-        <button type="button" class="ahk-feature-button" data-ahk-feature="clipboard" aria-pressed="false"><span><img src="public/fluent-icons/clipboard_24_regular.svg" alt=""></span><b>Clipboard workflows</b><small>Capture, clean, transform</small><code>A_Clipboard</code></button>
+        <button type="button" class="ahk-feature-button is-active" data-ahk-feature="clipboard" aria-pressed="true"><span><img src="public/fluent-icons/clipboard_24_regular.svg" alt=""></span><b>Clipboard workflows</b><small>Capture, clean, transform</small><code>A_Clipboard</code></button>
         <button type="button" class="ahk-feature-button" data-ahk-feature="files" aria-pressed="false"><span><img src="public/fluent-icons/folder_24_regular.svg" alt=""></span><b>File automation</b><small>Sort, rename, monitor</small><code>Loop Files</code></button>
         <button type="button" class="ahk-feature-button" data-ahk-feature="gui" aria-pressed="false"><span><img src="public/fluent-icons/window_dev_tools_24_regular.svg" alt=""></span><b>Desktop apps</b><small>Build native Windows tools</small><code>Gui()</code></button>
       </div>
