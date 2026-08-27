@@ -2,95 +2,104 @@
   const desktop = document.querySelector('[data-win-desktop]');
   if (!desktop) return;
 
-  const demoOutput = desktop.querySelector('[data-demo-output]');
-  const demoVisual = desktop.querySelector('[data-demo-visual]');
-  const demoStatus = desktop.querySelector('[data-demo-status]');
-  const demoLabel = desktop.querySelector('[data-demo-label]');
-  const demoTitle = desktop.querySelector('[data-demo-title]');
-  const demoDescription = desktop.querySelector('[data-demo-description]');
-  const demoCode = desktop.querySelector('[data-demo-code]');
+  const searchHome = desktop.querySelector('[data-search-home]');
+  const searchForm = desktop.querySelector('[data-search-form]');
+  const searchInput = desktop.querySelector('[data-search-input]');
+  const searchStatus = desktop.querySelector('[data-search-status]');
+  const exampleButton = desktop.querySelector('[data-search-example]');
   const startButton = desktop.querySelector('[data-start-button]');
   const startMenu = desktop.querySelector('[data-start-menu]');
   const windows = [...desktop.querySelectorAll('[data-window]')];
+  const desktopLayout = window.matchMedia('(max-width: 1180px)');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let statusTimer;
+  let currentDemoName = 'clipboard';
 
-  const demos = {
+  const searches = {
     windows: {
-      file: 'window-layout.ahk',
-      label: 'WINDOW CONTROL',
-      title: 'Tile a workspace in one command.',
-      description: 'AHK can find, focus, resize, and arrange native Windows applications around the way you work.',
-      visualClass: 'demo-windows',
-      visual: '<div class="mini-window mini-one"><span></span><p>Research</p></div><div class="mini-window mini-two"><span></span><p>Editor</p></div><div class="mini-window mini-three"><span></span><p>Console</p></div>',
-      code: '<span>WinMove</span> 0, 0, A_ScreenWidth / 2, A_ScreenHeight, "A"'
+      query: 'How can I tile my workspace with AutoHotkey?',
+      ready: 'Window control query ready.'
     },
     text: {
-      file: 'hotstrings.ahk',
-      label: 'TEXT EXPANSION',
-      title: 'Turn a short trigger into finished writing.',
-      description: 'Hotstrings expand signatures, case notes, templates, or any repeated text inside almost any Windows application.',
-      visualClass: 'demo-text',
-      visual: '<div class="demo-text-editor"><header>New message</header><p>Thanks for your help.<br><br><mark>;sig → Best,<br>Justin</mark></p></div>',
-      code: '<span>Hotstring</span> (":*:;sig", ExpandSignature)'
+      query: 'How do I create text shortcuts with AutoHotkey?',
+      ready: 'Text expansion query ready.'
     },
     clipboard: {
-      file: 'clipboard-workflow.ahk',
-      label: 'CLIPBOARD WORKFLOWS',
-      title: 'Transform and reuse everything you copy.',
-      description: 'Watch the clipboard, clean incoming text, keep useful snippets, and paste the right format into the active app.',
-      visualClass: 'demo-clipboard',
-      visual: '<div class="clipboard-list"><div class="clipboard-item"><span>Raw meeting notes</span><b>captured</b></div><div class="clipboard-item is-picked"><span>Clean Markdown</span><b>selected</b></div><div class="clipboard-item"><span>Plain-text summary</span><b>ready</b></div></div>',
-      code: '<span>A_Clipboard</span> := CleanMarkdown(A_Clipboard)'
+      query: 'How can I clean clipboard text with AutoHotkey?',
+      ready: 'Clipboard workflow query ready.'
     },
     files: {
-      file: 'download-sorter.ahk',
-      label: 'FILE AUTOMATION',
-      title: 'Sort a messy folder while you keep working.',
-      description: 'AHK can watch directories, rename batches, move files by type, and launch the next step in a desktop workflow.',
-      visualClass: 'demo-files',
-      visual: '<div class="file-sorter"><div class="file-item"><span>report.pdf</span><b>Documents →</b></div><div class="file-item"><span>capture.png</span><b>Images →</b></div><div class="file-item"><span>results.csv</span><b>Data →</b></div></div>',
-      code: '<span>Loop Files</span> Downloads "\\*.*" { SortDownload(A_LoopFileFullPath) }'
+      query: 'How can I organize Downloads with AutoHotkey?',
+      ready: 'File automation query ready.'
     },
     gui: {
-      file: 'release-builder.ahk',
-      label: 'CUSTOM DESKTOP APPS',
-      title: 'Build a real Windows interface in AHK.',
-      description: 'Create native tools with inputs, buttons, menus, events, and resizable layouts—without leaving AutoHotkey v2.',
-      visualClass: 'demo-gui',
-      visual: '<div class="gui-preview"><header><span>Release builder</span><span>×</span></header><label>Project name<i></i></label><label>Output folder<i></i></label><footer><button type="button">Build release</button></footer></div>',
-      code: '<span>app</span> := Gui("+Resize", "Release builder")'
+      query: 'How do I build a Windows app with AutoHotkey?',
+      ready: 'Desktop app query ready.'
     }
   };
+  const searchOrder = ['clipboard', 'windows', 'text', 'files', 'gui'];
+
+  // Dragging writes inline geometry so the window can follow the pointer. Those
+  // values outrank responsive CSS, so discard them when crossing into the
+  // tablet/mobile layout or the desktop position can leave the app clipped.
+  function resetDraggedWindows(event) {
+    if (!event.matches) return;
+    windows.forEach((windowElement) => {
+      ['left', 'top', 'right', 'bottom', 'width', 'height', 'transform', 'will-change']
+        .forEach((property) => windowElement.style.removeProperty(property));
+    });
+  }
+
+  desktopLayout.addEventListener('change', resetDraggedWindows);
+
+  function setSearchStatus(message, restoreAfter = 0) {
+    clearTimeout(statusTimer);
+    searchStatus.textContent = message;
+    if (!restoreAfter) return;
+    statusTimer = setTimeout(() => {
+      searchStatus.textContent = searches[currentDemoName].ready;
+    }, restoreAfter);
+  }
 
   function selectDemo(name, animate = true) {
-    const demo = demos[name];
-    if (!demo || !demoOutput) return;
-    desktop.querySelectorAll('[data-ahk-demo]').forEach((button) => {
-      button.classList.toggle('is-active', button.dataset.ahkDemo === name && button.classList.contains('automation-button'));
-    });
+    const search = searches[name];
+    if (!search) return;
+    currentDemoName = name;
+    searchInput.value = search.query;
     document.querySelectorAll('[data-ahk-feature]').forEach((button) => {
       const active = button.dataset.ahkFeature === name;
       button.classList.toggle('is-active', active);
       button.setAttribute('aria-pressed', String(active));
     });
-    demoOutput.querySelector('.demo-titlebar span').lastChild.textContent = demo.file;
-    demoVisual.className = `demo-visual ${demo.visualClass}`;
-    demoVisual.innerHTML = demo.visual;
-    demoLabel.textContent = demo.label;
-    demoTitle.textContent = demo.title;
-    demoDescription.textContent = demo.description;
-    demoCode.innerHTML = `<code>${demo.code}</code>`;
-    if (!animate) return;
-    demoOutput.classList.remove('is-running');
-    void demoOutput.offsetWidth;
-    demoOutput.classList.add('is-running');
-    demoStatus.textContent = 'running';
-    clearTimeout(statusTimer);
-    statusTimer = setTimeout(() => {
-      demoStatus.textContent = 'complete';
-      demoOutput.classList.remove('is-running');
-    }, 720);
+    setSearchStatus(search.ready);
+    if (!animate || reduceMotion.matches) return;
+    searchHome.classList.remove('is-updating');
+    void searchHome.offsetWidth;
+    searchHome.classList.add('is-updating');
+    setTimeout(() => searchHome.classList.remove('is-updating'), 260);
   }
+
+  searchForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const query = searchInput.value.trim();
+    if (!query) {
+      setSearchStatus('Enter an AutoHotkey question first.');
+      searchInput.focus();
+      return;
+    }
+    setSearchStatus(`Searching locally for “${query}”…`);
+    statusTimer = setTimeout(() => {
+      searchStatus.textContent = 'That workflow can be built with AutoHotkey v2.1.';
+    }, reduceMotion.matches ? 0 : 620);
+  });
+
+  exampleButton.addEventListener('click', () => {
+    const currentIndex = searchOrder.indexOf(currentDemoName);
+    const nextName = searchOrder[(currentIndex + 1) % searchOrder.length];
+    selectDemo(nextName);
+    setSearchStatus('Example query loaded. Press Search AutoHotkey to continue.');
+    searchInput.focus();
+  });
 
   function focusWindow(windowElement) {
     if (!windowElement) return;
@@ -131,6 +140,8 @@
         windowElement.classList.toggle('is-maximized');
         focusWindow(windowElement);
       } else {
+        const reopenControl = desktop.querySelector(`.task-app[data-open-window="${windowElement.dataset.window}"]`);
+        reopenControl?.focus();
         windowElement.classList.add('is-hidden');
         windowElement.setAttribute('aria-hidden', 'true');
       }
@@ -158,19 +169,34 @@
       };
       windowElement.style.width = `${windowRect.width}px`;
       windowElement.style.height = `${windowRect.height}px`;
+      windowElement.style.willChange = 'left, top';
+      windowElement.style.transform = 'none';
+      drag.maxLeft = desktop.clientWidth - windowElement.offsetWidth - 8;
+      drag.maxTop = desktop.clientHeight - windowElement.offsetHeight - 72;
       focusWindow(windowElement);
       handle.setPointerCapture(event.pointerId);
     });
     handle.addEventListener('pointermove', (event) => {
       if (!drag) return;
-      const maxLeft = desktop.clientWidth - drag.windowElement.offsetWidth - 8;
-      const maxTop = desktop.clientHeight - drag.windowElement.offsetHeight - 72;
-      drag.windowElement.style.left = `${Math.max(8, Math.min(maxLeft, drag.left + event.clientX - drag.startX))}px`;
-      drag.windowElement.style.top = `${Math.max(8, Math.min(maxTop, drag.top + event.clientY - drag.startY))}px`;
-      drag.windowElement.style.right = 'auto';
-      drag.windowElement.style.bottom = 'auto';
+      drag.pendingX = event.clientX;
+      drag.pendingY = event.clientY;
+      if (drag.frame) return;
+      drag.frame = requestAnimationFrame(() => {
+        drag.frame = 0;
+        if (!drag) return;
+        const element = drag.windowElement;
+        element.style.left = `${Math.max(8, Math.min(drag.maxLeft, drag.left + drag.pendingX - drag.startX))}px`;
+        element.style.top = `${Math.max(8, Math.min(drag.maxTop, drag.top + drag.pendingY - drag.startY))}px`;
+        element.style.right = 'auto';
+        element.style.bottom = 'auto';
+      });
     });
-    const endDrag = () => { drag = null; };
+    const endDrag = () => {
+      if (!drag) return;
+      if (drag.frame) cancelAnimationFrame(drag.frame);
+      drag.windowElement.style.willChange = '';
+      drag = null;
+    };
     handle.addEventListener('pointerup', endDrag);
     handle.addEventListener('pointercancel', endDrag);
   });
@@ -180,7 +206,7 @@
       selectDemo(button.dataset.ahkFeature);
       openWindow('studio');
       desktop.scrollIntoView({
-        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        behavior: reduceMotion.matches ? 'auto' : 'smooth',
         block: 'start'
       });
     });
@@ -196,7 +222,7 @@
     });
   }
 
-  selectDemo('windows', false);
+  selectDemo('clipboard', false);
   updateClock();
   setInterval(updateClock, 30000);
 })();

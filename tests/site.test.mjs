@@ -7,29 +7,69 @@ import vm from 'node:vm';
 const root = process.cwd();
 
 test('homepage leads with the benchmark lab and includes accessible navigation', async () => {
-  const [html, desktopScript] = await Promise.all([
+  const [html, desktopScript, stylesheet] = await Promise.all([
     readFile(join(root, 'dist', 'client', 'index.html'), 'utf8'),
     readFile(join(root, 'dist', 'client', 'home-win11.js'), 'utf8'),
+    readFile(join(root, 'dist', 'client', 'style.css'), 'utf8'),
   ]);
-  assert.match(html, /AutoHotkey v2 makes Windows/);
+  assert.match(html, /AutoHotkey v2 benchmark and automation lab/);
   assert.match(html, /<main id="main-content"/);
   assert.match(html, /aria-label="Main navigation"/);
   assert.match(html, /data-filter="benchmark"/);
-  assert.match(html, /#Requires AutoHotkey v2\.1/);
   assert.match(html, /data-win-desktop/);
   assert.match(html, /data-start-menu/);
   assert.match(html, /public\/windows11-dark-reference\.png/);
   assert.match(html, /data-ahk-feature="windows"/);
   assert.match(html, /data-ahk-feature="gui"/);
   assert.match(html, /public\/fluent-icons\/window_multiple_24_regular\.svg/);
+  assert.equal((html.match(/public\/fluent-icons\/browser_24_regular\.svg/g) || []).length, 2);
   assert.match(html, /home-win11\.js/);
-  assert.match(desktopScript, /Hotstring/);
-  assert.match(desktopScript, /A_Clipboard/);
-  assert.match(desktopScript, /Loop Files/);
+  assert.match(html, /data-search-home/);
+  assert.match(html, /data-search-input/);
+  assert.match(html, /data-search-status/);
+  assert.match(html, /Search AutoHotkey/);
+  assert.match(html, /Show me an example/);
+  assert.match(html, /class="search-wordmark"/);
+  assert.doesNotMatch(html + desktopScript, /\bGoogle\b/);
+  assert.doesNotMatch(html, /data-utility-content/);
+  assert.doesNotMatch(html, /data-utility-status/);
+  assert.doesNotMatch(html, /data-workbench-toolbar/);
+  assert.doesNotMatch(html, /data-automation-sidebar/);
+  assert.doesNotMatch(html, /data-script-editor/);
+  assert.doesNotMatch(html, /data-run-demo/);
+  assert.doesNotMatch(html, /AutoHotkey v2 makes Windows/);
+  assert.doesNotMatch(html, />Open leaderboard</);
+  assert.doesNotMatch(html, />How we test</);
+  for (const query of [
+    'tile my workspace with AutoHotkey',
+    'create text shortcuts with AutoHotkey',
+    'clean clipboard text with AutoHotkey',
+    'organize Downloads with AutoHotkey',
+    'build a Windows app with AutoHotkey',
+  ]) {
+    assert.match(desktopScript, new RegExp(query));
+  }
   assert.match(desktopScript, /data-drag-handle/);
   assert.match(desktopScript, /data-window-action/);
+  assert.match(desktopScript, /reopenControl\?\.focus\(\)/);
   assert.match(desktopScript, /data-ahk-feature/);
   assert.match(desktopScript, /scrollIntoView/);
+  assert.match(desktopScript, /\[data-search-form\]/);
+  assert.match(desktopScript, /\[data-search-example\]/);
+  assert.match(desktopScript, /requestAnimationFrame/);
+  assert.match(desktopScript, /cancelAnimationFrame/);
+  assert.match(desktopScript, /function resetDraggedWindows/);
+  assert.match(desktopScript, /\['left', 'top', 'right', 'bottom', 'width', 'height', 'transform', 'will-change'\]/);
+  assert.match(desktopScript, /removeProperty\(property\)/);
+  assert.match(desktopScript, /desktopLayout\.addEventListener\('change'/);
+  assert.match(desktopScript, /prefers-reduced-motion/);
+  assert.match(desktopScript, /selectDemo\('clipboard', false\)/);
+  assert.match(stylesheet, /--ease-out-spring:\s*cubic-bezier\(\.25,\s*1,\s*\.5,\s*1\)/);
+  assert.match(stylesheet, /--elev-window:/);
+  assert.match(stylesheet, /@keyframes win-open/);
+  assert.match(stylesheet, /\.search-homepage/);
+  assert.match(stylesheet, /\.win-showcase \.studio-body\s*\{[^}]*height:\s*calc\(100% - 42px\)/s);
+  assert.doesNotMatch(stylesheet, /transition:\s*all\b/);
   assert.doesNotMatch(html, /Codex is building|codex-preview/);
   new vm.Script(desktopScript);
 
