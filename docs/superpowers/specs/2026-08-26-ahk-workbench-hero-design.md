@@ -1,51 +1,51 @@
-# Native AHK Utility Hero Design
+# AutoHotkey Search Homepage Hero Design
 
 ## Goal
 
-Make the pseudo-desktop tell one immediate story: this is a useful native
-Windows utility built with AutoHotkey v2.
+Make the pseudo-desktop instantly legible by using the familiar visual grammar
+of a minimal search-engine homepage.
 
 ## Approved Direction
 
-The open window is a Clipboard Formatter by default. It uses recognizable
-native-utility controls: text input, transform actions, formatted output, and a
-status bar. AutoHotkey appears only as subtle provenance in the title/status
-area.
+The open window contains a light search homepage with:
 
-The simulated window does not contain a development environment, internal
-navigation, source editor, marketing headline, or promotional links.
+- a multicolor `AutoHotkey` wordmark
+- one large rounded search field
+- `Search AutoHotkey` and `Show me an example` buttons
+- a short search-status line
+- a quiet footer identifying AutoHotkey v2.1
+
+The layout borrows the recognizable structure of a search homepage without
+using Google's name or wordmark.
 
 ## Interaction
 
-The five existing feature cards below the desktop are the only primary demo
-selector. They replace the complete native utility shown in the window:
+The five existing feature cards remain the primary selector. Selecting one
+populates the search field with a corresponding natural-language query. Start
+menu shortcuts do the same and reopen the search window.
 
-- Clipboard Formatter
-- Text Expander
-- Downloads Organizer
-- Workspace Layout
-- Release Builder
-
-The Start menu shortcuts retain the same behavior. Actions inside each mock
-utility update its status text so controls feel responsive without introducing
-a second navigation system.
+Submitting the search updates only the small status line. It does not navigate
+or transform into a results page, keeping the hero visually equivalent to a
+search homepage.
 
 All existing desktop interactions—drag, maximize, close/reopen, Start menu,
 mobile layout, and reduced-motion behavior—remain intact.
 
 ## Responsive Behavior
 
-At desktop widths the utility is a focused, medium-size window with wallpaper
-visible around it. On mobile it uses the available pseudo-desktop width and its
-form rows stack without causing horizontal page overflow.
+At desktop widths the search window is wide and shallow with ample white space
+and wallpaper visible around it. On mobile it uses the available width, scales
+the wordmark and search field, and causes no horizontal page overflow.
 
 ## Verification
 
-- The generated homepage contains no workbench toolbar, internal automation
-  sidebar, script editor, or developer Run control.
-- The initial title is Clipboard Formatter.
-- Five outer feature cards and five Start menu shortcuts still switch demos.
-- The Workspace Layout utility uses abstract zones, not nested windows.
+- The generated homepage contains `data-search-home`, `data-search-input`, and
+  `data-search-status`.
+- The wordmark says AutoHotkey, never Google.
+- The initial query concerns clipboard formatting.
+- Five outer feature cards and five Start menu shortcuts populate distinct
+  queries.
+- No workbench or native-utility controls remain.
 - Existing JavaScript parses and all site tests pass.
-- Manual desktop and mobile checks cover all five demos, native utility actions,
-  window controls, drag, and reduced motion.
+- Manual checks cover search submit, both buttons, five selectors, window
+  controls, drag, mobile, and reduced motion.
