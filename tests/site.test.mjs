@@ -50,6 +50,7 @@ test('homepage leads with the benchmark lab and includes accessible navigation',
   }
   assert.match(desktopScript, /data-drag-handle/);
   assert.match(desktopScript, /data-window-action/);
+  assert.match(desktopScript, /reopenControl\?\.focus\(\)/);
   assert.match(desktopScript, /data-ahk-feature/);
   assert.match(desktopScript, /scrollIntoView/);
   assert.match(desktopScript, /\[data-search-form\]/);

@@ -140,6 +140,8 @@
         windowElement.classList.toggle('is-maximized');
         focusWindow(windowElement);
       } else {
+        const reopenControl = desktop.querySelector(`.task-app[data-open-window="${windowElement.dataset.window}"]`);
+        reopenControl?.focus();
         windowElement.classList.add('is-hidden');
         windowElement.setAttribute('aria-hidden', 'true');
       }
