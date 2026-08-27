@@ -67,6 +67,7 @@ test('homepage leads with the benchmark lab and includes accessible navigation',
   assert.match(stylesheet, /--elev-window:/);
   assert.match(stylesheet, /@keyframes win-open/);
   assert.match(stylesheet, /\.search-homepage/);
+  assert.match(stylesheet, /\.win-showcase \.studio-body\s*\{[^}]*height:\s*calc\(100% - 42px\)/s);
   assert.doesNotMatch(stylesheet, /transition:\s*all\b/);
   assert.doesNotMatch(html, /Codex is building|codex-preview/);
   new vm.Script(desktopScript);

@@ -1691,6 +1691,7 @@ body > * { min-width: 0; }
   transform: translateX(-50%);
 }
 .win-titlebar { min-height: 42px; padding-left: 12px; background: rgba(40,40,43,.9); }
+.win-showcase .studio-body { height: calc(100% - 42px); }
 .win-title { font-size: 12px; }
 .win-title small { font-size: 10px; }
 .win-controls button { width: 46px; border-radius: 0; }
