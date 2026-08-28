@@ -45,3 +45,6 @@ dist/
 _sass/vendors
 assets/js/dist
 .claude/
+
+# Local helper carrying an absolute path
+icon-ref/extract.ps1
