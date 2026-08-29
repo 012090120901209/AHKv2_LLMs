@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-08-29T05:27:54.866Z",
-  "totalScripts": 464,
+  "lastUpdated": "2026-08-29T12:13:04.765Z",
+  "totalScripts": 466,
   "categories": [
     "GUI",
     "Hotkeys",
@@ -3239,13 +3239,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-02-26T03:11:26Z",
-      "lastModified": "2026-03-29T10:49:42Z",
+      "lastModified": "2026-08-29T09:21:15Z",
       "source": "github",
       "url": "https://github.com/JsonBorn98/AHKeyMap",
-      "stars": 1,
+      "stars": 3,
       "forks": 0,
       "owner": "JsonBorn98",
-      "code": "```cpp\n; ============================================\n; Repository: JsonBorn98/AHKeyMap\n; ============================================\n; URL: https://github.com/JsonBorn98/AHKeyMap\n; Stars: 1 | Forks: 0\n; Last Updated: 3/29/2026\n; License: MIT License\n;\n; Description:\n; AHKeyMap is a mouse/keyboard key mapping tool based on AutoHotkey v2. It supports parallel multi-configuration activation and process-scoped control, making it ideal for building your own custom shortcut workflows.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/JsonBorn98/AHKeyMap.git\n;\n; Option 2: Download ZIP\n;   https://github.com/JsonBorn98/AHKeyMap/archive/refs/heads/master.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <AHKeyMap>\n\n; Example initialization\nclass AhkeymapExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"AHKeyMap loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AhkeymapExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: JsonBorn98/AHKeyMap\n; ============================================\n; URL: https://github.com/JsonBorn98/AHKeyMap\n; Stars: 3 | Forks: 0\n; Last Updated: 8/29/2026\n; License: MIT License\n;\n; Description:\n; AHKeyMap is a mouse/keyboard key mapping tool based on AutoHotkey v2. It supports parallel multi-configuration activation and process-scoped control, making it ideal for building your own custom shortcut workflows.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/JsonBorn98/AHKeyMap.git\n;\n; Option 2: Download ZIP\n;   https://github.com/JsonBorn98/AHKeyMap/archive/refs/heads/master.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <AHKeyMap>\n\n; Example initialization\nclass AhkeymapExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"AHKeyMap loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AhkeymapExample()\n```"
     },
     {
       "id": "github-1167805458",
@@ -7204,13 +7204,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-06-24T08:03:03Z",
-      "lastModified": "2026-07-18T10:10:05Z",
+      "lastModified": "2026-08-29T07:14:27Z",
       "source": "github",
       "url": "https://github.com/von110187/MediaCtrl",
       "stars": 0,
       "forks": 0,
       "owner": "von110187",
-      "code": "```cpp\n; ============================================\n; Repository: von110187/MediaCtrl\n; ============================================\n; URL: https://github.com/von110187/MediaCtrl\n; Stars: 0 | Forks: 0\n; Last Updated: 7/18/2026\n; License: Not specified\n;\n; Description:\n; Windows automation for media playback — auto-fullscreen video sites, Spotify silent-outro skipping, bass EQ toggling, and hotkeys. AHK v2 + Chrome extension + Node bridge.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/von110187/MediaCtrl.git\n;\n; Option 2: Download ZIP\n;   https://github.com/von110187/MediaCtrl/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <MediaCtrl>\n\n; Example initialization\nclass MediactrlExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"MediaCtrl loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := MediactrlExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: von110187/MediaCtrl\n; ============================================\n; URL: https://github.com/von110187/MediaCtrl\n; Stars: 0 | Forks: 0\n; Last Updated: 8/29/2026\n; License: Not specified\n;\n; Description:\n; Windows automation for media playback — auto-fullscreen video sites, Spotify silent-outro skipping, bass EQ toggling, and hotkeys. AHK v2 + Chrome extension + Node bridge.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/von110187/MediaCtrl.git\n;\n; Option 2: Download ZIP\n;   https://github.com/von110187/MediaCtrl/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <MediaCtrl>\n\n; Example initialization\nclass MediactrlExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"MediaCtrl loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := MediactrlExample()\n```"
     },
     {
       "id": "github-825062151",
@@ -8698,7 +8698,7 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-08-29T01:39:28Z",
-      "lastModified": "2026-08-29T05:24:58Z",
+      "lastModified": "2026-08-29T07:51:17Z",
       "source": "github",
       "url": "https://github.com/runr4bbit/ForgePilot",
       "stars": 0,
@@ -8767,13 +8767,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-07-27T11:54:29Z",
-      "lastModified": "2026-08-29T03:11:01Z",
+      "lastModified": "2026-08-29T11:00:35Z",
       "source": "github",
       "url": "https://github.com/AmitTzah/ahkllm",
-      "stars": 3,
+      "stars": 4,
       "forks": 1,
       "owner": "AmitTzah",
-      "code": "```cpp\n; ============================================\n; Repository: AmitTzah/ahkllm\n; ============================================\n; URL: https://github.com/AmitTzah/ahkllm\n; Stars: 3 | Forks: 1\n; Last Updated: 8/29/2026\n; License: GNU General Public License v3.0\n;\n; Description:\n; AhkLLM — Windows-native AI assistant built on AutoHotkey v2\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/AmitTzah/ahkllm.git\n;\n; Option 2: Download ZIP\n;   https://github.com/AmitTzah/ahkllm/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <ahkllm>\n\n; Example initialization\nclass AhkllmExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"ahkllm loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AhkllmExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: AmitTzah/ahkllm\n; ============================================\n; URL: https://github.com/AmitTzah/ahkllm\n; Stars: 4 | Forks: 1\n; Last Updated: 8/29/2026\n; License: GNU General Public License v3.0\n;\n; Description:\n; AhkLLM — Windows-native AI assistant built on AutoHotkey v2\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/AmitTzah/ahkllm.git\n;\n; Option 2: Download ZIP\n;   https://github.com/AmitTzah/ahkllm/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <ahkllm>\n\n; Example initialization\nclass AhkllmExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"ahkllm loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AhkllmExample()\n```"
     },
     {
       "id": "github-1349893672",
@@ -9387,6 +9387,44 @@
       "forks": 0,
       "owner": "illiros",
       "code": "```cpp\n; ============================================\n; Repository: illiros/summoner-key-rebinder\n; ============================================\n; URL: https://github.com/illiros/summoner-key-rebinder\n; Stars: 0 | Forks: 0\n; Last Updated: 8/19/2026\n; License: Other\n;\n; Description:\n; Adds key and mouse rebinding to Summoner (2000), which shipped without any. Includes optional one-press chain attacks. Standalone AutoHotkey v2 utility.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/illiros/summoner-key-rebinder.git\n;\n; Option 2: Download ZIP\n;   https://github.com/illiros/summoner-key-rebinder/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <summoner-key-rebinder>\n\n; Example initialization\nclass SummonerKeyRebinderExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"summoner-key-rebinder loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := SummonerKeyRebinderExample()\n```"
+    },
+    {
+      "id": "github-1350540171",
+      "title": "PalWorldRenamer",
+      "category": "GitHub Repository",
+      "description": "Palworld World Renamer built in AutoHotkey v2.0.19+",
+      "tags": [
+        "github",
+        "repository"
+      ],
+      "difficulty": "varies",
+      "dateAdded": "2026-08-29T11:47:47Z",
+      "lastModified": "2026-08-29T11:49:51Z",
+      "source": "github",
+      "url": "https://github.com/WoahItsJeebus/PalWorldRenamer",
+      "stars": 0,
+      "forks": 0,
+      "owner": "WoahItsJeebus",
+      "code": "```cpp\n; ============================================\n; Repository: WoahItsJeebus/PalWorldRenamer\n; ============================================\n; URL: https://github.com/WoahItsJeebus/PalWorldRenamer\n; Stars: 0 | Forks: 0\n; Last Updated: 8/29/2026\n; License: GNU General Public License v3.0\n;\n; Description:\n; Palworld World Renamer built in AutoHotkey v2.0.19+\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/WoahItsJeebus/PalWorldRenamer.git\n;\n; Option 2: Download ZIP\n;   https://github.com/WoahItsJeebus/PalWorldRenamer/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <PalWorldRenamer>\n\n; Example initialization\nclass PalworldrenamerExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"PalWorldRenamer loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := PalworldrenamerExample()\n```"
+    },
+    {
+      "id": "github-1350451848",
+      "title": "KeyRemap",
+      "category": "GitHub Repository",
+      "description": "极简 Windows 按键映射工具（AutoHotkey v2）：键位映射 / 托盘驻留 / 开机自启 / INI 配置持久化",
+      "tags": [
+        "github",
+        "repository"
+      ],
+      "difficulty": "varies",
+      "dateAdded": "2026-08-29T09:30:25Z",
+      "lastModified": "2026-08-29T10:19:30Z",
+      "source": "github",
+      "url": "https://github.com/Zhalslar/KeyRemap",
+      "stars": 0,
+      "forks": 0,
+      "owner": "Zhalslar",
+      "code": "```cpp\n; ============================================\n; Repository: Zhalslar/KeyRemap\n; ============================================\n; URL: https://github.com/Zhalslar/KeyRemap\n; Stars: 0 | Forks: 0\n; Last Updated: 8/29/2026\n; License: MIT License\n;\n; Description:\n; 极简 Windows 按键映射工具（AutoHotkey v2）：键位映射 / 托盘驻留 / 开机自启 / INI 配置持久化\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/Zhalslar/KeyRemap.git\n;\n; Option 2: Download ZIP\n;   https://github.com/Zhalslar/KeyRemap/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <KeyRemap>\n\n; Example initialization\nclass KeyremapExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"KeyRemap loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := KeyremapExample()\n```"
     }
   ]
 }
