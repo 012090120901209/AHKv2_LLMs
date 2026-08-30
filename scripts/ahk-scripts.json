@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-08-30T03:24:49.939Z",
+  "lastUpdated": "2026-08-30T11:09:45.573Z",
   "totalScripts": 467,
   "categories": [
     "GUI",
@@ -7295,20 +7295,20 @@
       "id": "github-1281987126",
       "title": "Primary_Win_D",
       "category": "GitHub Repository",
-      "description": "一个用于多显示器环境的 AutoHotkey v2 脚本：按下 Win + D 时，只最小化主显示器上的普通应用窗口，再次按下时���复这些窗口。",
+      "description": "一个用于多显示器环境的 AutoHotkey v2 脚本：按下 Win + D 时，只最小化主显示器上的普通应用窗口，再次按下时恢复这些窗口。",
       "tags": [
         "github",
         "repository"
       ],
       "difficulty": "varies",
       "dateAdded": "2026-06-27T07:01:48Z",
-      "lastModified": "2026-06-28T12:37:47Z",
+      "lastModified": "2026-08-30T09:01:03Z",
       "source": "github",
       "url": "https://github.com/dogdreamson555/Primary_Win_D",
       "stars": 2,
       "forks": 0,
       "owner": "dogdreamson555",
-      "code": "```cpp\n; ============================================\n; Repository: dogdreamson555/Primary_Win_D\n; ============================================\n; URL: https://github.com/dogdreamson555/Primary_Win_D\n; Stars: 2 | Forks: 0\n; Last Updated: 6/28/2026\n; License: MIT License\n;\n; Description:\n; 一个用于多显示器环境的 AutoHotkey v2 脚本：按下 Win + D 时，只最小化主显示器上的普通应用窗口，再次按下时���复这些窗口。\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/dogdreamson555/Primary_Win_D.git\n;\n; Option 2: Download ZIP\n;   https://github.com/dogdreamson555/Primary_Win_D/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <Primary_Win_D>\n\n; Example initialization\nclass PrimaryWinDExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"Primary_Win_D loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := PrimaryWinDExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: dogdreamson555/Primary_Win_D\n; ============================================\n; URL: https://github.com/dogdreamson555/Primary_Win_D\n; Stars: 2 | Forks: 0\n; Last Updated: 8/30/2026\n; License: MIT License\n;\n; Description:\n; 一个用于多显示器环境的 AutoHotkey v2 脚本：按下 Win + D 时，只最小化主显示器上的普通应用窗口，再次按下时恢复这些窗口。\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/dogdreamson555/Primary_Win_D.git\n;\n; Option 2: Download ZIP\n;   https://github.com/dogdreamson555/Primary_Win_D/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <Primary_Win_D>\n\n; Example initialization\nclass PrimaryWinDExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"Primary_Win_D loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := PrimaryWinDExample()\n```"
     },
     {
       "id": "github-1283313188",
@@ -8767,7 +8767,7 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-07-27T11:54:29Z",
-      "lastModified": "2026-08-30T01:19:41Z",
+      "lastModified": "2026-08-30T10:58:27Z",
       "source": "github",
       "url": "https://github.com/AmitTzah/ahkllm",
       "stars": 7,
@@ -9443,13 +9443,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2025-03-15T14:59:59Z",
-      "lastModified": "2026-08-30T03:24:06Z",
+      "lastModified": "2026-08-30T09:16:39Z",
       "source": "github",
       "url": "https://github.com/bceenaeiklmr/GpGFX",
-      "stars": 35,
+      "stars": 36,
       "forks": 3,
       "owner": "bceenaeiklmr",
-      "code": "```cpp\n; ============================================\n; Repository: bceenaeiklmr/GpGFX\n; ============================================\n; URL: https://github.com/bceenaeiklmr/GpGFX\n; Stars: 35 | Forks: 3\n; Last Updated: 8/30/2026\n; License: MIT License\n;\n; Description:\n; GDI+ graphics library for AutoHotkey v2 to create beautiful 2D graphics or render animations.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/bceenaeiklmr/GpGFX.git\n;\n; Option 2: Download ZIP\n;   https://github.com/bceenaeiklmr/GpGFX/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <GpGFX>\n\n; Example initialization\nclass GpgfxExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"GpGFX loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := GpgfxExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: bceenaeiklmr/GpGFX\n; ============================================\n; URL: https://github.com/bceenaeiklmr/GpGFX\n; Stars: 36 | Forks: 3\n; Last Updated: 8/30/2026\n; License: MIT License\n;\n; Description:\n; GDI+ graphics library for AutoHotkey v2 to create beautiful 2D graphics or render animations.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/bceenaeiklmr/GpGFX.git\n;\n; Option 2: Download ZIP\n;   https://github.com/bceenaeiklmr/GpGFX/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <GpGFX>\n\n; Example initialization\nclass GpgfxExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"GpGFX loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := GpgfxExample()\n```"
     }
   ]
 }
