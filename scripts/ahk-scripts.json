@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-08-31T00:27:51.390Z",
+  "lastUpdated": "2026-08-31T12:35:11.353Z",
   "totalScripts": 468,
   "categories": [
     "GUI",
@@ -8025,13 +8025,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-07-20T10:16:10Z",
-      "lastModified": "2026-08-26T09:39:24Z",
+      "lastModified": "2026-08-31T08:58:32Z",
       "source": "github",
       "url": "https://github.com/qlxsply/juju",
       "stars": 0,
       "forks": 0,
       "owner": "qlxsply",
-      "code": "```cpp\n; ============================================\n; Repository: qlxsply/juju\n; ============================================\n; URL: https://github.com/qlxsply/juju\n; Stars: 0 | Forks: 0\n; Last Updated: 8/26/2026\n; License: MIT License\n;\n; Description:\n; 基于AutoHotkey v2实现的Windows脚本工具\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/qlxsply/juju.git\n;\n; Option 2: Download ZIP\n;   https://github.com/qlxsply/juju/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <juju>\n\n; Example initialization\nclass JujuExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"juju loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := JujuExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: qlxsply/juju\n; ============================================\n; URL: https://github.com/qlxsply/juju\n; Stars: 0 | Forks: 0\n; Last Updated: 8/31/2026\n; License: MIT License\n;\n; Description:\n; 基于AutoHotkey v2实现的Windows脚本工具\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/qlxsply/juju.git\n;\n; Option 2: Download ZIP\n;   https://github.com/qlxsply/juju/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <juju>\n\n; Example initialization\nclass JujuExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"juju loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := JujuExample()\n```"
     },
     {
       "id": "github-1195655207",
@@ -8425,20 +8425,24 @@
       "id": "github-1314640985",
       "title": "typebox-ahk",
       "category": "GitHub Repository",
-      "description": "AutoHotkey v2 overlay for prepared text auto-typing on Windows",
+      "description": "AutoHotkey v2 text snippet overlay for Windows",
       "tags": [
         "github",
-        "repository"
+        "repository",
+        "autohotkey",
+        "overlay",
+        "productivity",
+        "windows"
       ],
       "difficulty": "varies",
       "dateAdded": "2026-07-28T06:46:59Z",
-      "lastModified": "2026-07-28T06:47:28Z",
+      "lastModified": "2026-08-31T04:02:36Z",
       "source": "github",
-      "url": "https://github.com/xvdosha-alt/typebox-ahk",
+      "url": "https://github.com/xvDoshik/typebox-ahk",
       "stars": 0,
       "forks": 0,
-      "owner": "xvdosha-alt",
-      "code": "```cpp\n; ============================================\n; Repository: xvdosha-alt/typebox-ahk\n; ============================================\n; URL: https://github.com/xvdosha-alt/typebox-ahk\n; Stars: 0 | Forks: 0\n; Last Updated: 7/28/2026\n; License: MIT License\n;\n; Description:\n; AutoHotkey v2 overlay for prepared text auto-typing on Windows\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/xvdosha-alt/typebox-ahk.git\n;\n; Option 2: Download ZIP\n;   https://github.com/xvdosha-alt/typebox-ahk/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <typebox-ahk>\n\n; Example initialization\nclass TypeboxAhkExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"typebox-ahk loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := TypeboxAhkExample()\n```"
+      "owner": "xvDoshik",
+      "code": "```cpp\n; ============================================\n; Repository: xvDoshik/typebox-ahk\n; ============================================\n; URL: https://github.com/xvDoshik/typebox-ahk\n; Stars: 0 | Forks: 0\n; Last Updated: 8/31/2026\n; License: MIT License\n;\n; Description:\n; AutoHotkey v2 text snippet overlay for Windows\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/xvDoshik/typebox-ahk.git\n;\n; Option 2: Download ZIP\n;   https://github.com/xvDoshik/typebox-ahk/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <typebox-ahk>\n\n; Example initialization\nclass TypeboxAhkExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"typebox-ahk loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := TypeboxAhkExample()\n```"
     },
     {
       "id": "github-1316102746",
@@ -8767,13 +8771,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-07-27T11:54:29Z",
-      "lastModified": "2026-08-30T22:54:29Z",
+      "lastModified": "2026-08-31T10:56:08Z",
       "source": "github",
       "url": "https://github.com/AmitTzah/ahkllm",
       "stars": 10,
       "forks": 1,
       "owner": "AmitTzah",
-      "code": "```cpp\n; ============================================\n; Repository: AmitTzah/ahkllm\n; ============================================\n; URL: https://github.com/AmitTzah/ahkllm\n; Stars: 10 | Forks: 1\n; Last Updated: 8/30/2026\n; License: GNU General Public License v3.0\n;\n; Description:\n; AhkLLM — Windows-native AI assistant built on AutoHotkey v2\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/AmitTzah/ahkllm.git\n;\n; Option 2: Download ZIP\n;   https://github.com/AmitTzah/ahkllm/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <ahkllm>\n\n; Example initialization\nclass AhkllmExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"ahkllm loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AhkllmExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: AmitTzah/ahkllm\n; ============================================\n; URL: https://github.com/AmitTzah/ahkllm\n; Stars: 10 | Forks: 1\n; Last Updated: 8/31/2026\n; License: GNU General Public License v3.0\n;\n; Description:\n; AhkLLM — Windows-native AI assistant built on AutoHotkey v2\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/AmitTzah/ahkllm.git\n;\n; Option 2: Download ZIP\n;   https://github.com/AmitTzah/ahkllm/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <ahkllm>\n\n; Example initialization\nclass AhkllmExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"ahkllm loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AhkllmExample()\n```"
     },
     {
       "id": "github-1349893672",
@@ -8930,13 +8934,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-08-18T07:45:00Z",
-      "lastModified": "2026-08-27T05:52:01Z",
+      "lastModified": "2026-08-31T07:33:54Z",
       "source": "github",
       "url": "https://github.com/frivermen/solidworks-mouse-remapper",
       "stars": 0,
       "forks": 0,
       "owner": "frivermen",
-      "code": "```cpp\n; ============================================\n; Repository: frivermen/solidworks-mouse-remapper\n; ============================================\n; URL: https://github.com/frivermen/solidworks-mouse-remapper\n; Stars: 0 | Forks: 0\n; Last Updated: 8/27/2026\n; License: Not specified\n;\n; Description:\n; Customize mouse zoom/pan/rotate(via AutoHotkey v2)\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/frivermen/solidworks-mouse-remapper.git\n;\n; Option 2: Download ZIP\n;   https://github.com/frivermen/solidworks-mouse-remapper/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <solidworks-mouse-remapper>\n\n; Example initialization\nclass SolidworksMouseRemapperExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"solidworks-mouse-remapper loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := SolidworksMouseRemapperExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: frivermen/solidworks-mouse-remapper\n; ============================================\n; URL: https://github.com/frivermen/solidworks-mouse-remapper\n; Stars: 0 | Forks: 0\n; Last Updated: 8/31/2026\n; License: Not specified\n;\n; Description:\n; Customize mouse zoom/pan/rotate(via AutoHotkey v2)\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/frivermen/solidworks-mouse-remapper.git\n;\n; Option 2: Download ZIP\n;   https://github.com/frivermen/solidworks-mouse-remapper/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <solidworks-mouse-remapper>\n\n; Example initialization\nclass SolidworksMouseRemapperExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"solidworks-mouse-remapper loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := SolidworksMouseRemapperExample()\n```"
     },
     {
       "id": "github-1340713104",
@@ -9443,13 +9447,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2025-03-15T14:59:59Z",
-      "lastModified": "2026-08-30T23:04:24Z",
+      "lastModified": "2026-08-31T02:05:10Z",
       "source": "github",
       "url": "https://github.com/bceenaeiklmr/GpGFX",
-      "stars": 38,
+      "stars": 39,
       "forks": 3,
       "owner": "bceenaeiklmr",
-      "code": "```cpp\n; ============================================\n; Repository: bceenaeiklmr/GpGFX\n; ============================================\n; URL: https://github.com/bceenaeiklmr/GpGFX\n; Stars: 38 | Forks: 3\n; Last Updated: 8/30/2026\n; License: MIT License\n;\n; Description:\n; GDI+ graphics library for AutoHotkey v2 to create beautiful 2D graphics or render animations.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/bceenaeiklmr/GpGFX.git\n;\n; Option 2: Download ZIP\n;   https://github.com/bceenaeiklmr/GpGFX/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <GpGFX>\n\n; Example initialization\nclass GpgfxExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"GpGFX loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := GpgfxExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: bceenaeiklmr/GpGFX\n; ============================================\n; URL: https://github.com/bceenaeiklmr/GpGFX\n; Stars: 39 | Forks: 3\n; Last Updated: 8/31/2026\n; License: MIT License\n;\n; Description:\n; GDI+ graphics library for AutoHotkey v2 to create beautiful 2D graphics or render animations.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/bceenaeiklmr/GpGFX.git\n;\n; Option 2: Download ZIP\n;   https://github.com/bceenaeiklmr/GpGFX/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <GpGFX>\n\n; Example initialization\nclass GpgfxExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"GpGFX loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := GpgfxExample()\n```"
     },
     {
       "id": "github-1329907901",
