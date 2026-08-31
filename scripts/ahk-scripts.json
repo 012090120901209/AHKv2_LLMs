@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-08-31T12:35:11.353Z",
-  "totalScripts": 468,
+  "lastUpdated": "2026-08-31T22:22:20.869Z",
+  "totalScripts": 470,
   "categories": [
     "GUI",
     "Hotkeys",
@@ -9447,7 +9447,7 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2025-03-15T14:59:59Z",
-      "lastModified": "2026-08-31T02:05:10Z",
+      "lastModified": "2026-08-31T21:10:04Z",
       "source": "github",
       "url": "https://github.com/bceenaeiklmr/GpGFX",
       "stars": 39,
@@ -9479,6 +9479,44 @@
       "forks": 0,
       "owner": "Vermillion203",
       "code": "```cpp\n; ============================================\n; Repository: Vermillion203/ahk-game-scripts\n; ============================================\n; URL: https://github.com/Vermillion203/ahk-game-scripts\n; Stars: 0 | Forks: 0\n; Last Updated: 8/30/2026\n; License: MIT License\n;\n; Description:\n; AutoHotkey v2 scripts that fix small annoyances in and around games. Keep a game running while you tab away, center any window, search vendor inventories. Each script is a single file with its own docs.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/Vermillion203/ahk-game-scripts.git\n;\n; Option 2: Download ZIP\n;   https://github.com/Vermillion203/ahk-game-scripts/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <ahk-game-scripts>\n\n; Example initialization\nclass AhkGameScriptsExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"ahk-game-scripts loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AhkGameScriptsExample()\n```"
+    },
+    {
+      "id": "github-1352643720",
+      "title": "dvorak-qwerty-shortcuts-ahk-v2",
+      "category": "GitHub Repository",
+      "description": "AutoHotkey v2 script for Dvorak typing with familiar QWERTY Ctrl, Alt, and Win shortcuts on Windows. No Windows Dvorak layout required.",
+      "tags": [
+        "github",
+        "repository"
+      ],
+      "difficulty": "varies",
+      "dateAdded": "2026-08-31T16:46:38Z",
+      "lastModified": "2026-08-31T17:14:58Z",
+      "source": "github",
+      "url": "https://github.com/radkesvat/dvorak-qwerty-shortcuts-ahk-v2",
+      "stars": 1,
+      "forks": 0,
+      "owner": "radkesvat",
+      "code": "```cpp\n; ============================================\n; Repository: radkesvat/dvorak-qwerty-shortcuts-ahk-v2\n; ============================================\n; URL: https://github.com/radkesvat/dvorak-qwerty-shortcuts-ahk-v2\n; Stars: 1 | Forks: 0\n; Last Updated: 8/31/2026\n; License: MIT License\n;\n; Description:\n; AutoHotkey v2 script for Dvorak typing with familiar QWERTY Ctrl, Alt, and Win shortcuts on Windows. No Windows Dvorak layout required.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/radkesvat/dvorak-qwerty-shortcuts-ahk-v2.git\n;\n; Option 2: Download ZIP\n;   https://github.com/radkesvat/dvorak-qwerty-shortcuts-ahk-v2/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <dvorak-qwerty-shortcuts-ahk-v2>\n\n; Example initialization\nclass DvorakQwertyShortcutsAhkV2Example {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"dvorak-qwerty-shortcuts-ahk-v2 loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := DvorakQwertyShortcutsAhkV2Example()\n```"
+    },
+    {
+      "id": "github-1352506734",
+      "title": "KeyChain",
+      "category": "GitHub Repository",
+      "description": "KeyChain is a lightweight, background Windows macro application built with AutoHotkey v2. It enables you to organize key combinations and automated actions into customizable execution groups with non-blocking live updates, user-friendly hotkey parsing, and dynamic command sequences.",
+      "tags": [
+        "github",
+        "repository"
+      ],
+      "difficulty": "varies",
+      "dateAdded": "2026-08-31T14:27:22Z",
+      "lastModified": "2026-08-31T15:25:20Z",
+      "source": "github",
+      "url": "https://github.com/vrushabhranpariya/KeyChain",
+      "stars": 0,
+      "forks": 0,
+      "owner": "vrushabhranpariya",
+      "code": "```cpp\n; ============================================\n; Repository: vrushabhranpariya/KeyChain\n; ============================================\n; URL: https://github.com/vrushabhranpariya/KeyChain\n; Stars: 0 | Forks: 0\n; Last Updated: 8/31/2026\n; License: Not specified\n;\n; Description:\n; KeyChain is a lightweight, background Windows macro application built with AutoHotkey v2. It enables you to organize key combinations and automated actions into customizable execution groups with non-blocking live updates, user-friendly hotkey parsing, and dynamic command sequences.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/vrushabhranpariya/KeyChain.git\n;\n; Option 2: Download ZIP\n;   https://github.com/vrushabhranpariya/KeyChain/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <KeyChain>\n\n; Example initialization\nclass KeychainExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"KeyChain loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := KeychainExample()\n```"
     }
   ]
 }
