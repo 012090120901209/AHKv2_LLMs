@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-08-31T22:22:20.869Z",
+  "lastUpdated": "2026-09-01T00:29:30.005Z",
   "totalScripts": 470,
   "categories": [
     "GUI",
@@ -9100,13 +9100,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-08-02T04:37:36Z",
-      "lastModified": "2026-08-24T01:29:03Z",
+      "lastModified": "2026-09-01T00:07:33Z",
       "source": "github",
       "url": "https://github.com/Chill-Try/CatAteMyMouse",
       "stars": 1,
       "forks": 0,
       "owner": "Chill-Try",
-      "code": "```cpp\n; ============================================\n; Repository: Chill-Try/CatAteMyMouse\n; ============================================\n; URL: https://github.com/Chill-Try/CatAteMyMouse\n; Stars: 1 | Forks: 0\n; Last Updated: 8/24/2026\n; License: Not specified\n;\n; Description:\n; AutoHotkey v2 scripts for window switching and transparency\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/Chill-Try/CatAteMyMouse.git\n;\n; Option 2: Download ZIP\n;   https://github.com/Chill-Try/CatAteMyMouse/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <CatAteMyMouse>\n\n; Example initialization\nclass CatatemymouseExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"CatAteMyMouse loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := CatatemymouseExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: Chill-Try/CatAteMyMouse\n; ============================================\n; URL: https://github.com/Chill-Try/CatAteMyMouse\n; Stars: 1 | Forks: 0\n; Last Updated: 9/1/2026\n; License: Not specified\n;\n; Description:\n; AutoHotkey v2 scripts for window switching and transparency\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/Chill-Try/CatAteMyMouse.git\n;\n; Option 2: Download ZIP\n;   https://github.com/Chill-Try/CatAteMyMouse/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <CatAteMyMouse>\n\n; Example initialization\nclass CatatemymouseExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"CatAteMyMouse loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := CatatemymouseExample()\n```"
     },
     {
       "id": "github-1344065877",
