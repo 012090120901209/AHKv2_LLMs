@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-09-01T06:16:26.106Z",
-  "totalScripts": 470,
+  "lastUpdated": "2026-09-01T12:13:49.383Z",
+  "totalScripts": 471,
   "categories": [
     "GUI",
     "Hotkeys",
@@ -6683,13 +6683,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-06-11T10:32:30Z",
-      "lastModified": "2026-08-28T04:56:50Z",
+      "lastModified": "2026-09-01T06:36:14Z",
       "source": "github",
       "url": "https://github.com/Vedette1/MCF.ahk",
       "stars": 4,
       "forks": 0,
       "owner": "Vedette1",
-      "code": "```cpp\n; ============================================\n; Repository: Vedette1/MCF.ahk\n; ============================================\n; URL: https://github.com/Vedette1/MCF.ahk\n; Stars: 4 | Forks: 0\n; Last Updated: 8/28/2026\n; License: MIT License\n;\n; Description:\n; MCF In-Memory COFF Linker for AutoHotkey v2\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/Vedette1/MCF.ahk.git\n;\n; Option 2: Download ZIP\n;   https://github.com/Vedette1/MCF.ahk/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <MCF.ahk>\n\n; Example initialization\nclass Mcf.ahkExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"MCF.ahk loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := Mcf.ahkExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: Vedette1/MCF.ahk\n; ============================================\n; URL: https://github.com/Vedette1/MCF.ahk\n; Stars: 4 | Forks: 0\n; Last Updated: 9/1/2026\n; License: MIT License\n;\n; Description:\n; MCF In-Memory COFF Linker for AutoHotkey v2\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/Vedette1/MCF.ahk.git\n;\n; Option 2: Download ZIP\n;   https://github.com/Vedette1/MCF.ahk/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <MCF.ahk>\n\n; Example initialization\nclass Mcf.ahkExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"MCF.ahk loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := Mcf.ahkExample()\n```"
     },
     {
       "id": "github-1266742477",
@@ -8771,13 +8771,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-07-27T11:54:29Z",
-      "lastModified": "2026-08-31T10:56:08Z",
+      "lastModified": "2026-09-01T12:00:55Z",
       "source": "github",
       "url": "https://github.com/AmitTzah/ahkllm",
       "stars": 10,
       "forks": 1,
       "owner": "AmitTzah",
-      "code": "```cpp\n; ============================================\n; Repository: AmitTzah/ahkllm\n; ============================================\n; URL: https://github.com/AmitTzah/ahkllm\n; Stars: 10 | Forks: 1\n; Last Updated: 8/31/2026\n; License: GNU General Public License v3.0\n;\n; Description:\n; AhkLLM — Windows-native AI assistant built on AutoHotkey v2\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/AmitTzah/ahkllm.git\n;\n; Option 2: Download ZIP\n;   https://github.com/AmitTzah/ahkllm/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <ahkllm>\n\n; Example initialization\nclass AhkllmExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"ahkllm loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AhkllmExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: AmitTzah/ahkllm\n; ============================================\n; URL: https://github.com/AmitTzah/ahkllm\n; Stars: 10 | Forks: 1\n; Last Updated: 9/1/2026\n; License: GNU General Public License v3.0\n;\n; Description:\n; AhkLLM — Windows-native AI assistant built on AutoHotkey v2\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/AmitTzah/ahkllm.git\n;\n; Option 2: Download ZIP\n;   https://github.com/AmitTzah/ahkllm/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <ahkllm>\n\n; Example initialization\nclass AhkllmExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"ahkllm loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AhkllmExample()\n```"
     },
     {
       "id": "github-1349893672",
@@ -9517,6 +9517,25 @@
       "forks": 0,
       "owner": "vrushabhranpariya",
       "code": "```cpp\n; ============================================\n; Repository: vrushabhranpariya/KeyChain\n; ============================================\n; URL: https://github.com/vrushabhranpariya/KeyChain\n; Stars: 0 | Forks: 0\n; Last Updated: 8/31/2026\n; License: Not specified\n;\n; Description:\n; KeyChain is a lightweight, background Windows macro application built with AutoHotkey v2. It enables you to organize key combinations and automated actions into customizable execution groups with non-blocking live updates, user-friendly hotkey parsing, and dynamic command sequences.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/vrushabhranpariya/KeyChain.git\n;\n; Option 2: Download ZIP\n;   https://github.com/vrushabhranpariya/KeyChain/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <KeyChain>\n\n; Example initialization\nclass KeychainExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"KeyChain loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := KeychainExample()\n```"
+    },
+    {
+      "id": "github-1353376200",
+      "title": "LangFix",
+      "category": "GitHub Repository",
+      "description": "Hebrew/English keyboard fixes for Windows: fix text typed in the wrong layout without selecting it, and un-reverse Hebrew copied out of a console. AutoHotkey v2.",
+      "tags": [
+        "github",
+        "repository"
+      ],
+      "difficulty": "varies",
+      "dateAdded": "2026-09-01T09:23:49Z",
+      "lastModified": "2026-09-01T10:00:09Z",
+      "source": "github",
+      "url": "https://github.com/yairsa/LangFix",
+      "stars": 0,
+      "forks": 0,
+      "owner": "yairsa",
+      "code": "```cpp\n; ============================================\n; Repository: yairsa/LangFix\n; ============================================\n; URL: https://github.com/yairsa/LangFix\n; Stars: 0 | Forks: 0\n; Last Updated: 9/1/2026\n; License: Other\n;\n; Description:\n; Hebrew/English keyboard fixes for Windows: fix text typed in the wrong layout without selecting it, and un-reverse Hebrew copied out of a console. AutoHotkey v2.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/yairsa/LangFix.git\n;\n; Option 2: Download ZIP\n;   https://github.com/yairsa/LangFix/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <LangFix>\n\n; Example initialization\nclass LangfixExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"LangFix loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := LangfixExample()\n```"
     }
   ]
 }
