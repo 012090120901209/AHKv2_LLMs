@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-09-01T12:13:49.383Z",
-  "totalScripts": 471,
+  "lastUpdated": "2026-09-01T18:11:26.958Z",
+  "totalScripts": 472,
   "categories": [
     "GUI",
     "Hotkeys",
@@ -3239,13 +3239,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-02-26T03:11:26Z",
-      "lastModified": "2026-08-29T09:21:15Z",
+      "lastModified": "2026-09-01T18:08:04Z",
       "source": "github",
       "url": "https://github.com/JsonBorn98/AHKeyMap",
       "stars": 3,
       "forks": 0,
       "owner": "JsonBorn98",
-      "code": "```cpp\n; ============================================\n; Repository: JsonBorn98/AHKeyMap\n; ============================================\n; URL: https://github.com/JsonBorn98/AHKeyMap\n; Stars: 3 | Forks: 0\n; Last Updated: 8/29/2026\n; License: MIT License\n;\n; Description:\n; AHKeyMap is a mouse/keyboard key mapping tool based on AutoHotkey v2. It supports parallel multi-configuration activation and process-scoped control, making it ideal for building your own custom shortcut workflows.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/JsonBorn98/AHKeyMap.git\n;\n; Option 2: Download ZIP\n;   https://github.com/JsonBorn98/AHKeyMap/archive/refs/heads/master.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <AHKeyMap>\n\n; Example initialization\nclass AhkeymapExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"AHKeyMap loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AhkeymapExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: JsonBorn98/AHKeyMap\n; ============================================\n; URL: https://github.com/JsonBorn98/AHKeyMap\n; Stars: 3 | Forks: 0\n; Last Updated: 9/1/2026\n; License: MIT License\n;\n; Description:\n; AHKeyMap is a mouse/keyboard key mapping tool based on AutoHotkey v2. It supports parallel multi-configuration activation and process-scoped control, making it ideal for building your own custom shortcut workflows.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/JsonBorn98/AHKeyMap.git\n;\n; Option 2: Download ZIP\n;   https://github.com/JsonBorn98/AHKeyMap/archive/refs/heads/master.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <AHKeyMap>\n\n; Example initialization\nclass AhkeymapExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"AHKeyMap loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AhkeymapExample()\n```"
     },
     {
       "id": "github-1167805458",
@@ -8771,13 +8771,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-07-27T11:54:29Z",
-      "lastModified": "2026-09-01T12:00:55Z",
+      "lastModified": "2026-09-01T17:42:17Z",
       "source": "github",
       "url": "https://github.com/AmitTzah/ahkllm",
-      "stars": 10,
+      "stars": 12,
       "forks": 1,
       "owner": "AmitTzah",
-      "code": "```cpp\n; ============================================\n; Repository: AmitTzah/ahkllm\n; ============================================\n; URL: https://github.com/AmitTzah/ahkllm\n; Stars: 10 | Forks: 1\n; Last Updated: 9/1/2026\n; License: GNU General Public License v3.0\n;\n; Description:\n; AhkLLM — Windows-native AI assistant built on AutoHotkey v2\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/AmitTzah/ahkllm.git\n;\n; Option 2: Download ZIP\n;   https://github.com/AmitTzah/ahkllm/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <ahkllm>\n\n; Example initialization\nclass AhkllmExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"ahkllm loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AhkllmExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: AmitTzah/ahkllm\n; ============================================\n; URL: https://github.com/AmitTzah/ahkllm\n; Stars: 12 | Forks: 1\n; Last Updated: 9/1/2026\n; License: GNU General Public License v3.0\n;\n; Description:\n; AhkLLM — Windows-native AI assistant built on AutoHotkey v2\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/AmitTzah/ahkllm.git\n;\n; Option 2: Download ZIP\n;   https://github.com/AmitTzah/ahkllm/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <ahkllm>\n\n; Example initialization\nclass AhkllmExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"ahkllm loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AhkllmExample()\n```"
     },
     {
       "id": "github-1349893672",
@@ -9157,13 +9157,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-08-07T19:09:22Z",
-      "lastModified": "2026-08-23T12:09:01Z",
+      "lastModified": "2026-09-01T17:49:42Z",
       "source": "github",
       "url": "https://github.com/defZalken/UGG_Macro",
       "stars": 0,
       "forks": 0,
       "owner": "defZalken",
-      "code": "```cpp\n; ============================================\n; Repository: defZalken/UGG_Macro\n; ============================================\n; URL: https://github.com/defZalken/UGG_Macro\n; Stars: 0 | Forks: 0\n; Last Updated: 8/23/2026\n; License: Not specified\n;\n; Description:\n; AutoHotkey v2 macro for Ultimate Gym Game on ROBLOX by SPEARHEADS. Made with AutoHotkey v2 utilizing screen-reading to lift with stamina-driven reps, auto-eating, and stat reports to Discord.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/defZalken/UGG_Macro.git\n;\n; Option 2: Download ZIP\n;   https://github.com/defZalken/UGG_Macro/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <UGG_Macro>\n\n; Example initialization\nclass UggMacroExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"UGG_Macro loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := UggMacroExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: defZalken/UGG_Macro\n; ============================================\n; URL: https://github.com/defZalken/UGG_Macro\n; Stars: 0 | Forks: 0\n; Last Updated: 9/1/2026\n; License: Not specified\n;\n; Description:\n; AutoHotkey v2 macro for Ultimate Gym Game on ROBLOX by SPEARHEADS. Made with AutoHotkey v2 utilizing screen-reading to lift with stamina-driven reps, auto-eating, and stat reports to Discord.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/defZalken/UGG_Macro.git\n;\n; Option 2: Download ZIP\n;   https://github.com/defZalken/UGG_Macro/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <UGG_Macro>\n\n; Example initialization\nclass UggMacroExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"UGG_Macro loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := UggMacroExample()\n```"
     },
     {
       "id": "github-1343536657",
@@ -9530,6 +9530,25 @@
       "difficulty": "varies",
       "dateAdded": "2026-09-01T09:23:49Z",
       "lastModified": "2026-09-01T10:00:09Z",
+      "source": "github",
+      "url": "https://github.com/yairsa/LangFix",
+      "stars": 0,
+      "forks": 0,
+      "owner": "yairsa",
+      "code": "```cpp\n; ============================================\n; Repository: yairsa/LangFix\n; ============================================\n; URL: https://github.com/yairsa/LangFix\n; Stars: 0 | Forks: 0\n; Last Updated: 9/1/2026\n; License: Other\n;\n; Description:\n; Hebrew/English keyboard fixes for Windows: fix text typed in the wrong layout without selecting it, and un-reverse Hebrew copied out of a console. AutoHotkey v2.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/yairsa/LangFix.git\n;\n; Option 2: Download ZIP\n;   https://github.com/yairsa/LangFix/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <LangFix>\n\n; Example initialization\nclass LangfixExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"LangFix loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := LangfixExample()\n```"
+    },
+    {
+      "id": "github-1353599503",
+      "title": "LangFix",
+      "category": "GitHub Repository",
+      "description": "Hebrew/English keyboard fixes for Windows: fix text typed in the wrong layout without selecting it, and un-reverse Hebrew copied out of a console. AutoHotkey v2.",
+      "tags": [
+        "github",
+        "repository"
+      ],
+      "difficulty": "varies",
+      "dateAdded": "2026-09-01T13:23:25Z",
+      "lastModified": "2026-09-01T13:37:00Z",
       "source": "github",
       "url": "https://github.com/yairsa/LangFix",
       "stars": 0,
