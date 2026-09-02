@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-09-02T06:20:16.724Z",
-  "totalScripts": 472,
+  "lastUpdated": "2026-09-02T12:13:56.525Z",
+  "totalScripts": 473,
   "categories": [
     "GUI",
     "Hotkeys",
@@ -8771,7 +8771,7 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-07-27T11:54:29Z",
-      "lastModified": "2026-09-02T04:27:37Z",
+      "lastModified": "2026-09-02T12:06:11Z",
       "source": "github",
       "url": "https://github.com/AmitTzah/ahkllm",
       "stars": 14,
@@ -9555,6 +9555,25 @@
       "forks": 0,
       "owner": "yairsa",
       "code": "```cpp\n; ============================================\n; Repository: yairsa/LangFix\n; ============================================\n; URL: https://github.com/yairsa/LangFix\n; Stars: 0 | Forks: 0\n; Last Updated: 9/1/2026\n; License: Other\n;\n; Description:\n; Hebrew/English keyboard fixes for Windows: fix text typed in the wrong layout without selecting it, and un-reverse Hebrew copied out of a console. AutoHotkey v2.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/yairsa/LangFix.git\n;\n; Option 2: Download ZIP\n;   https://github.com/yairsa/LangFix/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <LangFix>\n\n; Example initialization\nclass LangfixExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"LangFix loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := LangfixExample()\n```"
+    },
+    {
+      "id": "github-1354651552",
+      "title": "taskbar-edge-unhide",
+      "category": "GitHub Repository",
+      "description": "Reveal a fully hidden Windows taskbar at the monitor bottom edge with AutoHotkey v2 and Windhawk.",
+      "tags": [
+        "github",
+        "repository"
+      ],
+      "difficulty": "varies",
+      "dateAdded": "2026-09-02T10:55:03Z",
+      "lastModified": "2026-09-02T11:30:12Z",
+      "source": "github",
+      "url": "https://github.com/new2xin/taskbar-edge-unhide",
+      "stars": 0,
+      "forks": 0,
+      "owner": "new2xin",
+      "code": "```cpp\n; ============================================\n; Repository: new2xin/taskbar-edge-unhide\n; ============================================\n; URL: https://github.com/new2xin/taskbar-edge-unhide\n; Stars: 0 | Forks: 0\n; Last Updated: 9/2/2026\n; License: MIT License\n;\n; Description:\n; Reveal a fully hidden Windows taskbar at the monitor bottom edge with AutoHotkey v2 and Windhawk.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/new2xin/taskbar-edge-unhide.git\n;\n; Option 2: Download ZIP\n;   https://github.com/new2xin/taskbar-edge-unhide/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <taskbar-edge-unhide>\n\n; Example initialization\nclass TaskbarEdgeUnhideExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"taskbar-edge-unhide loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := TaskbarEdgeUnhideExample()\n```"
     }
   ]
 }
