@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-09-04T06:15:21.106Z",
+  "lastUpdated": "2026-09-04T12:13:29.841Z",
   "totalScripts": 480,
   "categories": [
     "GUI",
@@ -8388,13 +8388,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-07-27T07:26:40Z",
-      "lastModified": "2026-08-26T08:10:26Z",
+      "lastModified": "2026-09-04T11:56:04Z",
       "source": "github",
       "url": "https://github.com/Pastinakel/DocBot",
       "stars": 0,
       "forks": 0,
       "owner": "Pastinakel",
-      "code": "```cpp\n; ============================================\n; Repository: Pastinakel/DocBot\n; ============================================\n; URL: https://github.com/Pastinakel/DocBot\n; Stars: 0 | Forks: 0\n; Last Updated: 8/26/2026\n; License: Other\n;\n; Description:\n; DocBot is een AutoHotkey v2-hulpmiddel voor medewerkers met twee hoofdfuncties: (a) tekstvervanging via hotstrings, en (b) bellen via de interne IP-telefonie van het bedrijf, inclusief automatische detectie van telefoonnummers op het klembord. Alles draait via één GUI met sidebar-navigatie en een tray-icoon.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/Pastinakel/DocBot.git\n;\n; Option 2: Download ZIP\n;   https://github.com/Pastinakel/DocBot/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <DocBot>\n\n; Example initialization\nclass DocbotExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"DocBot loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := DocbotExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: Pastinakel/DocBot\n; ============================================\n; URL: https://github.com/Pastinakel/DocBot\n; Stars: 0 | Forks: 0\n; Last Updated: 9/4/2026\n; License: Other\n;\n; Description:\n; DocBot is een AutoHotkey v2-hulpmiddel voor medewerkers met twee hoofdfuncties: (a) tekstvervanging via hotstrings, en (b) bellen via de interne IP-telefonie van het bedrijf, inclusief automatische detectie van telefoonnummers op het klembord. Alles draait via één GUI met sidebar-navigatie en een tray-icoon.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/Pastinakel/DocBot.git\n;\n; Option 2: Download ZIP\n;   https://github.com/Pastinakel/DocBot/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <DocBot>\n\n; Example initialization\nclass DocbotExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"DocBot loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := DocbotExample()\n```"
     },
     {
       "id": "github-1314312994",
@@ -9643,7 +9643,7 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2025-07-12T05:53:31Z",
-      "lastModified": "2026-09-04T02:37:58Z",
+      "lastModified": "2026-09-04T07:35:48Z",
       "source": "github",
       "url": "https://github.com/MrGingerManBread/OS-Power-State-Scheduler",
       "stars": 0,
