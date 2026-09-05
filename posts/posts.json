@@ -1,5 +1,23 @@
 [
  {
+  "slug": "gpt-6-ahk-eval",
+  "title": "OpenAI GPT-6 Astra: The First Perfect AHK-Eval, and the Bug It Refused to Fix",
+  "preview_title": "GPT-6 Astra Runs the Table on AHK-Eval and AHK-Contract",
+  "date": "2026-09-05",
+  "description": "OpenAI's GPT-6 Astra is the first model to post a perfect cold arm on AHK-Eval — 36/36 tasks, 181/181 hidden cases, at default reasoning effort with a 138-token median completion — and it repeats the feat at xhigh effort for three times the money and nothing else. It also clears AHK-Contract 24/24, the suite's first perfect class-contract run, and fixes 28 of 30 AHK-Repair items. The two it misses are the same task, broken the same way: asked to make the smallest change to someone else's code, it preserves a string comparison that AHK v2 throws on — the exact idiom it sidesteps when writing from scratch.",
+  "preview": "36/36, 24/24, 28/30 — a $1.33 sweep, and one repair item that shows where 'smallest change' stops being the right instruction.",
+  "tags": [
+   "LLMs",
+   "Benchmark",
+   "AHK-Eval",
+   "AHK-Contract",
+   "AHK-Repair",
+   "GPT-6",
+   "OpenAI"
+  ],
+  "path": "posts/gpt-6-ahk-eval.md"
+ },
+ {
   "slug": "ahk-harness-graph",
   "title": "The Grading Graph: One Rule, Four Tiers, and 47 Scripts That Quietly Did Nothing",
   "preview_title": "The Harness Graph — and the Silent Bug It Found in 47 Scripts",
