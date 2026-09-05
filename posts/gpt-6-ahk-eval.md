@@ -6,6 +6,8 @@ The headline: **36/36 on AHK-Eval, 181 of 181 hidden cases.** No cold arm had do
 
 <div class="bm-wrap"><table class="bm-heat"><thead><tr><th>#</th><th style="text-align:left">Entry</th><th>tasks</th><th>cases</th><th>parse fails</th><th>median tokens</th><th>sweep cost</th></tr></thead><tbody><tr><td class="h-rank">1</td><td class="h-name"><strong>GPT-6 Astra</strong></td><td class="h-blue"><strong>36/36</strong></td><td class="h-dim"><strong>181/181</strong></td><td class="h-emer"><strong>0</strong></td><td class="h-dim">138</td><td class="h-dim">$0.21</td></tr><tr><td class="h-rank">2</td><td class="h-name"><strong>GPT-6 Astra (xhigh)</strong></td><td class="h-blue"><strong>36/36</strong></td><td class="h-dim"><strong>181/181</strong></td><td class="h-emer"><strong>0</strong></td><td class="h-dim">447</td><td class="h-dim">$0.60</td></tr><tr><td class="h-rank">3</td><td class="h-name">GPT-5.6 Sol Pro</td><td class="h-blue">35/36</td><td class="h-dim">177/181</td><td class="h-emer">0</td><td class="h-dim">1,330</td><td class="h-dim">$2.39</td></tr><tr><td class="h-rank">4</td><td class="h-name">GPT-5.5</td><td class="h-blue">35/36</td><td class="h-dim">176/181</td><td class="h-emer">0</td><td class="h-dim">—</td><td class="h-dim">—</td></tr><tr><td class="h-rank">5</td><td class="h-name">GPT-5.6 Sol</td><td class="h-blue">34/36</td><td class="h-dim">176/181</td><td class="h-emer">0</td><td class="h-dim">359</td><td class="h-dim">$0.48</td></tr><tr><td class="h-rank">6</td><td class="h-name">GPT-5.6 Luna Pro</td><td class="h-blue">34/36</td><td class="h-dim">175/181</td><td class="h-emer">0</td><td class="h-dim">2,557</td><td class="h-dim">$0.81</td></tr><tr><td class="h-rank">7</td><td class="h-name">Claude Fable 5</td><td class="h-blue">34/36</td><td class="h-dim">172/181</td><td class="h-emer">0</td><td class="h-dim">—</td><td class="h-dim">—</td></tr></tbody></table></div>
 
+<img src="posts/img/bench/sweep-three-suites.svg" alt="Grouped columns: AHK-Eval, AHK-Repair and AHK-Contract tasks solved for Grok 4.6, Gemini 3.7 Flash, DeepSeek V4 Pro 0813, Ox Alpha and GPT-6 Astra" style="max-width:100%;border:1px solid #303030;border-radius:8px;background:#141414">
+
 Two methodology notes, because this run differs from the GPT-5.6 sweep in ways that matter. Astra was called **directly on OpenAI's API** rather than through OpenRouter, on the `flex` service tier. And as a reasoning model on the first-party endpoint it rejects `temperature`, so where every earlier arm ran at 0.2, this one ran at the model's default sampling. The prompt, the extractor, the interpreter and the hidden cases are byte-identical.
 
 ## Almost No Thinking
@@ -34,13 +36,13 @@ AE_NaturalSort_Compare(a, b, *) {
 
 ## AHK-Contract: 24 for 24
 
-The class-contract suite is where cold arms have been losing ground on objects: construction protocol, meta-function routing, `this`-binding across callback hops, exact error-class contracts, and the alpha.30 typed-property surface. The previous best was Kimi K3's 23/24. **Astra solves all twenty-four — 173 of 173 hidden cases** — at a 176-token median and $0.21 for the sweep.
+The class-contract suite is where cold arms have been losing ground on objects: construction protocol, meta-function routing, `this`-binding across callback hops, exact error-class contracts, and the alpha.30 typed-property surface. [Gemini 3.7 Flash](post.html?slug=gemini-3-7-flash-sweep) posted the suite's first clean sheet on August 13. **Astra matches it — all twenty-four, 173 of 173 hidden cases** — at a 176-token median and $0.21 for the sweep, so the suite now has two perfect runs and neither is a frontier-priced model at flex rates.
 
 The run's only hiccup was the harness's, not the model's: a WSL interop timeout during grading briefly registered `AC_Registry` as a parse failure. A regrade cleared it. The same glitch struck `AE_DayOfWeek` on the first Eval pass. Both submissions were correct all along; a parse-fail whose error text begins with `<3>WSL` is infrastructure and should be regraded before it is reported.
 
 ## AHK-Repair: 28 of 30, and the Two That Got Away
 
-Handed thirty broken submissions from other models — each with the original task card and one line of observed failure, under instructions to make the *smallest change* that fixes it — Astra repairs **28**, against the published best of 18 fixed out of 28 attempted. Average minimality on the fixes is 0.835, so it stayed surgical rather than rewriting.
+Handed thirty broken submissions from other models — each with the original task card and one line of observed failure, under instructions to make the *smallest change* that fixes it — Astra repairs **28**, tying Gemini 3.7 Flash's record and edging it on hidden cases, 145 to 143. Average minimality on the fixes is 0.835, so it stayed surgical rather than rewriting.
 
 The two misses are the same task, `AE_GroupByFirstLetter`, in two different models' handwriting, and they fail identically: 2 of 5 hidden cases, passing only the inputs with a single letter group. The bug is the one this blog keeps finding. AHK v2's relational operators are numeric-only; `"c" > "d"` throws.
 
@@ -65,6 +67,6 @@ No sort at all. Walk the alphabet, emit the groups that exist. The model knows t
 
 ## What the Money Says
 
-$1.33 for the whole three-suite sweep — $0.21 for Eval, $0.21 for Contract, $0.31 for Repair, $0.60 for the xhigh rerun that changed nothing. At flex pricing Astra's perfect Eval arm cost a tenth of Sol Pro's 35/36. At list price it would still have been under half. The [cost-efficiency frontier](leaderboard.html) now ends at a perfect score.
+$1.33 for the whole three-suite sweep — $0.21 for Eval, $0.21 for Contract, $0.31 for Repair, $0.60 for the xhigh rerun that changed nothing. At flex pricing Astra's perfect Eval arm cost a tenth of Sol Pro's 35/36. At list price it would still have been under half. The [cost-efficiency frontier](leaderboard.html) now ends at a perfect score. The chart above puts the three suites side by side with the four models from the August sweep.
 
 *Disclosure: Claude Fable 5.1 generated these entries by calling OpenAI's API and wrote this post. Every number comes from the same pipeline that graded the other entries — parse validation against the v2.1-alpha.30+Console fork, headless execution, and hidden test cases the model never saw.*

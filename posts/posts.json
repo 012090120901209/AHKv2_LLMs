@@ -4,7 +4,7 @@
   "title": "OpenAI GPT-6 Astra: The First Perfect AHK-Eval, and the Bug It Refused to Fix",
   "preview_title": "GPT-6 Astra Runs the Table on AHK-Eval and AHK-Contract",
   "date": "2026-09-05",
-  "description": "OpenAI's GPT-6 Astra is the first model to post a perfect cold arm on AHK-Eval — 36/36 tasks, 181/181 hidden cases, at default reasoning effort with a 138-token median completion — and it repeats the feat at xhigh effort for three times the money and nothing else. It also clears AHK-Contract 24/24, the suite's first perfect class-contract run, and fixes 28 of 30 AHK-Repair items. The two it misses are the same task, broken the same way: asked to make the smallest change to someone else's code, it preserves a string comparison that AHK v2 throws on — the exact idiom it sidesteps when writing from scratch.",
+  "description": "OpenAI's GPT-6 Astra is the first model to post a perfect cold arm on AHK-Eval — 36/36 tasks, 181/181 hidden cases, at default reasoning effort with a 138-token median completion — and it repeats the feat at xhigh effort for three times the money and nothing else. It also clears AHK-Contract 24/24, matching Gemini 3.7 Flash's clean sheet, and fixes 28 of 30 AHK-Repair items, tying the repair record on a suite the median entry fixes twelve of. The two it misses are the same task, broken the same way: asked to make the smallest change to someone else's code, it preserves a string comparison that AHK v2 throws on — the exact idiom it sidesteps when writing from scratch.",
   "preview": "36/36, 24/24, 28/30 — a $1.33 sweep, and one repair item that shows where 'smallest change' stops being the right instruction.",
   "tags": [
    "LLMs",
@@ -16,6 +16,78 @@
    "OpenAI"
   ],
   "path": "posts/gpt-6-ahk-eval.md"
+ },
+ {
+  "slug": "ox-alpha-sweep",
+  "title": "Ox Alpha: The Syntax Is Perfect, the Standard Library Is Invented",
+  "preview_title": "Ox Alpha Writes Clean AHK v2 Against a Library That Doesn't Exist",
+  "date": "2026-08-21",
+  "description": "A cloaked, free stealth model on OpenRouter runs all three suites: 33/36 on AHK-Eval, 19/30 on AHK-Repair, 19/24 on AHK-Contract, with 59 of 60 eval and contract submissions parsing clean. Almost nothing it got wrong was a reasoning error. It reaches for Array.Sort, Array.Join and .Length() — the JavaScript standard library — and escapes quotes C#-style. Five repair calls that hit the 16k output cap all failed, one of them 509 seconds of invisible deliberation that left the original bug in place and bolted on a MsgBox.",
+  "preview": "59 of 60 parse clean, and the misses concentrate into four namable lookups rather than capability gaps.",
+  "tags": [
+   "LLMs",
+   "Benchmark",
+   "AHK-Eval",
+   "AHK-Repair",
+   "AHK-Contract",
+   "Ox Alpha",
+   "Stealth"
+  ],
+  "path": "posts/ox-alpha-sweep.md"
+ },
+ {
+  "slug": "grok-4-6-sweep",
+  "title": "Grok 4.6: Third on Everything, and a Share of the Eval Record",
+  "preview_title": "Grok 4.6 Takes Third on All Three Suites",
+  "date": "2026-08-13",
+  "description": "xAI's Grok 4.6 ran all three suites with ninety clean returns and zero parse failures on eval and repair: 35/36 on AHK-Eval — the joint-highest cold score at the time — 22/30 on AHK-Repair with the tightest minimality in its bracket, and 22/24 on AHK-Contract. The one eval miss is AE_NaturalSort, a structurally correct comparator that compares digit runs as strings. The contract parse failure is the round's most sophisticated mistake: the alpha.30 Struct keyword with the right types on one comma-separated line.",
+  "preview": "No suite it wins, none where it leaves the top three — and one integer comparison from a perfect board.",
+  "tags": [
+   "LLMs",
+   "Benchmark",
+   "AHK-Eval",
+   "AHK-Repair",
+   "AHK-Contract",
+   "Grok 4.6",
+   "xAI"
+  ],
+  "path": "posts/grok-4-6-sweep.md"
+ },
+ {
+  "slug": "gemini-3-7-flash-sweep",
+  "title": "Gemini 3.7 Flash: The Repair Board Gets a New Ceiling",
+  "preview_title": "Gemini 3.7 Flash Fixes 28 of 30 for 27 Cents",
+  "date": "2026-08-13",
+  "description": "Google's Gemini 3.7 Flash runs ninety calls for $0.27 at about four seconds each and takes rank 1 on AHK-Repair (28/30, five items clear of the previous best) and rank 1 on AHK-Contract with the suite's first perfect 24/24, while landing 33/36 on AHK-Eval with no zero-case tasks. Median completions around a thousand tokens and zero cap hits make it directly comparable to every historical arm.",
+  "preview": "Rank 1 on repair, the first perfect contract sheet, and a bill of twenty-seven cents.",
+  "tags": [
+   "LLMs",
+   "Benchmark",
+   "AHK-Eval",
+   "AHK-Repair",
+   "AHK-Contract",
+   "Gemini 3.7 Flash",
+   "Google"
+  ],
+  "path": "posts/gemini-3-7-flash-sweep.md"
+ },
+ {
+  "slug": "deepseek-v4-pro-0813-sweep",
+  "title": "DeepSeek V4 Pro 0813: A Flawless Mid-Tier and a Reasoning Budget That Runs Out",
+  "preview_title": "DeepSeek V4 Pro 0813 Sweeps Easy and Mid, Then Reasons Past Its Budget",
+  "date": "2026-08-13",
+  "description": "The GA checkpoint of DeepSeek V4 Pro, 2.7× cheaper than its predecessor, solves every easy and every mid task on AHK-Eval and then loses half the hard tier: 30/36, +8 over the undated model. On AHK-Repair (14/30) and AHK-Contract (20/24) it is a heavy reasoner that runs out of room — a 15,312-token median against a 16,000 cap, two calls that produced no code at all, and a harness fallback that wrote the reasoning transcript into an .ahk file.",
+  "preview": "12/12 easy, 12/12 mid, 6/12 hard — and half the repair suite bound by its own reasoning budget.",
+  "tags": [
+   "LLMs",
+   "Benchmark",
+   "AHK-Eval",
+   "AHK-Repair",
+   "AHK-Contract",
+   "DeepSeek",
+   "V4 Pro"
+  ],
+  "path": "posts/deepseek-v4-pro-0813-sweep.md"
  },
  {
   "slug": "ahk-harness-graph",

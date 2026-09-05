@@ -120,6 +120,33 @@
    "rank": 4
   },
   {
+   "stem": "Grok_4-6",
+   "display": "Grok 4.6",
+   "provider": "xAI",
+   "solved": 35,
+   "cases": 176,
+   "case_tot": 181,
+   "parse_fail": 0,
+   "rules": null,
+   "repair": null,
+   "cc": null,
+   "cats": {
+    "algorithms": 5,
+    "data": 6,
+    "datetime": 6,
+    "numbers": 6,
+    "regex": 6,
+    "strings": 6
+   },
+   "tiers": {
+    "easy": 12,
+    "hard": 11,
+    "mid": 12
+   },
+   "price_out": 6.0,
+   "rank": 5
+  },
+  {
    "stem": "GPT-5-6_Sol",
    "display": "GPT-5.6 Sol",
    "provider": "OpenAI",
@@ -144,7 +171,7 @@
     "mid": 12
    },
    "price_out": 30.0,
-   "rank": 5
+   "rank": 6
   },
   {
    "stem": "GPT-5-6_Luna_Pro",
@@ -171,7 +198,7 @@
     "mid": 11
    },
    "price_out": 6.0,
-   "rank": 6
+   "rank": 7
   },
   {
    "stem": "Claude_Fable_5",
@@ -198,7 +225,7 @@
     "mid": 11
    },
    "price_out": 50.0,
-   "rank": 7
+   "rank": 8
   },
   {
    "stem": "Kimi_K3",
@@ -225,7 +252,34 @@
     "mid": 11
    },
    "price_out": 15.0,
-   "rank": 8
+   "rank": 9
+  },
+  {
+   "stem": "Gemini_3-7_Flash",
+   "display": "Gemini 3.7 Flash",
+   "provider": "Google",
+   "solved": 33,
+   "cases": 173,
+   "case_tot": 181,
+   "parse_fail": 0,
+   "rules": null,
+   "repair": null,
+   "cc": null,
+   "cats": {
+    "algorithms": 5,
+    "data": 4,
+    "datetime": 6,
+    "numbers": 6,
+    "regex": 6,
+    "strings": 6
+   },
+   "tiers": {
+    "easy": 12,
+    "hard": 10,
+    "mid": 11
+   },
+   "price_out": 1.875,
+   "rank": 10
   },
   {
    "stem": "GPT-5-6_Luna",
@@ -252,7 +306,34 @@
     "mid": 11
    },
    "price_out": 6.0,
-   "rank": 9
+   "rank": 11
+  },
+  {
+   "stem": "Ox_Alpha",
+   "display": "Ox Alpha",
+   "provider": "Stealth",
+   "solved": 33,
+   "cases": 167,
+   "case_tot": 181,
+   "parse_fail": 0,
+   "rules": null,
+   "repair": null,
+   "cc": null,
+   "cats": {
+    "algorithms": 5,
+    "data": 6,
+    "datetime": 5,
+    "numbers": 6,
+    "regex": 6,
+    "strings": 5
+   },
+   "tiers": {
+    "easy": 11,
+    "hard": 10,
+    "mid": 12
+   },
+   "price_out": 0,
+   "rank": 12
   },
   {
    "stem": "Gemini_3-6_Flash",
@@ -279,7 +360,7 @@
     "mid": 11
    },
    "price_out": 7.5,
-   "rank": 10
+   "rank": 13
   },
   {
    "stem": "GPT-5-6_Terra",
@@ -306,7 +387,7 @@
     "mid": 10
    },
    "price_out": 15.0,
-   "rank": 11
+   "rank": 14
   },
   {
    "stem": "Gemini_3-1_Pro",
@@ -333,7 +414,7 @@
     "mid": 11
    },
    "price_out": 12.0,
-   "rank": 12
+   "rank": 15
   },
   {
    "stem": "GPT-5-6_Terra_Pro",
@@ -360,7 +441,7 @@
     "mid": 12
    },
    "price_out": 15.0,
-   "rank": 13
+   "rank": 16
   },
   {
    "stem": "Grok_4-5",
@@ -387,7 +468,7 @@
     "mid": 10
    },
    "price_out": 6.0,
-   "rank": 14
+   "rank": 17
   },
   {
    "stem": "Kimi_K2-6",
@@ -414,7 +495,34 @@
     "mid": 11
    },
    "price_out": 4.0,
-   "rank": 15
+   "rank": 18
+  },
+  {
+   "stem": "DeepSeek_V4_Pro_0813",
+   "display": "DeepSeek V4 Pro 0813",
+   "provider": "DeepSeek",
+   "solved": 30,
+   "cases": 155,
+   "case_tot": 181,
+   "parse_fail": 1,
+   "rules": null,
+   "repair": null,
+   "cc": null,
+   "cats": {
+    "algorithms": 5,
+    "data": 4,
+    "datetime": 4,
+    "numbers": 6,
+    "regex": 5,
+    "strings": 6
+   },
+   "tiers": {
+    "easy": 12,
+    "hard": 6,
+    "mid": 12
+   },
+   "price_out": 0.87,
+   "rank": 19
   },
   {
    "stem": "Muse_Spark_1-1",
@@ -441,7 +549,7 @@
     "mid": 10
    },
    "price_out": 4.25,
-   "rank": 16
+   "rank": 20
   },
   {
    "stem": "Opus_4-8",
@@ -468,7 +576,7 @@
     "mid": 11
    },
    "price_out": 25.0,
-   "rank": 17
+   "rank": 21
   },
   {
    "stem": "Grok_4-3",
@@ -495,7 +603,7 @@
     "mid": 10
    },
    "price_out": 2.5,
-   "rank": 18
+   "rank": 22
   },
   {
    "stem": "Grok_Latest",
@@ -522,7 +630,7 @@
     "mid": 9
    },
    "price_out": 6.0,
-   "rank": 19
+   "rank": 23
   },
   {
    "stem": "Aion_3-0",
@@ -549,7 +657,7 @@
     "mid": 11
    },
    "price_out": 6.0,
-   "rank": 20
+   "rank": 24
   },
   {
    "stem": "MiniMax_M3",
@@ -576,7 +684,7 @@
     "mid": 9
    },
    "price_out": 1.2,
-   "rank": 21
+   "rank": 25
   },
   {
    "stem": "Sonnet_4-6",
@@ -603,7 +711,7 @@
     "mid": 9
    },
    "price_out": 15.0,
-   "rank": 22
+   "rank": 26
   },
   {
    "stem": "GLM-5",
@@ -630,7 +738,7 @@
     "mid": 7
    },
    "price_out": 1.92,
-   "rank": 23
+   "rank": 27
   },
   {
    "stem": "GLM-5-2",
@@ -657,7 +765,7 @@
     "mid": 7
    },
    "price_out": 3.0,
-   "rank": 24
+   "rank": 28
   },
   {
    "stem": "Aion_3-0_Mini",
@@ -684,7 +792,7 @@
     "mid": 7
    },
    "price_out": 1.4,
-   "rank": 25
+   "rank": 29
   },
   {
    "stem": "GPT-5-1",
@@ -711,7 +819,7 @@
     "mid": 9
    },
    "price_out": 10.0,
-   "rank": 26
+   "rank": 30
   },
   {
    "stem": "Inkling",
@@ -738,7 +846,7 @@
     "mid": 9
    },
    "price_out": 4.05,
-   "rank": 27
+   "rank": 31
   },
   {
    "stem": "Hy3_Free",
@@ -765,7 +873,7 @@
     "mid": 9
    },
    "price_out": 0,
-   "rank": 28
+   "rank": 32
   },
   {
    "stem": "DeepSeek_V4_Pro",
@@ -792,7 +900,7 @@
     "mid": 9
    },
    "price_out": 0.87,
-   "rank": 29
+   "rank": 33
   },
   {
    "stem": "Gemini_3-5_Flash_Lite",
@@ -819,7 +927,7 @@
     "mid": 8
    },
    "price_out": 2.5,
-   "rank": 30
+   "rank": 34
   },
   {
    "stem": "Auto_Router",
@@ -846,7 +954,7 @@
     "mid": 5
    },
    "price_out": null,
-   "rank": 31
+   "rank": 35
   },
   {
    "stem": "Hy3",
@@ -873,7 +981,7 @@
     "mid": 7
    },
    "price_out": 0.58,
-   "rank": 32
+   "rank": 36
   },
   {
    "stem": "LongCat_2-0",
@@ -900,7 +1008,7 @@
     "mid": 6
    },
    "price_out": 1.2,
-   "rank": 33
+   "rank": 37
   },
   {
    "stem": "Qwen3_Coder",
@@ -927,7 +1035,7 @@
     "mid": 5
    },
    "price_out": 1.8,
-   "rank": 34
+   "rank": 38
   },
   {
    "stem": "Mistral_Large_3",
@@ -954,7 +1062,7 @@
     "mid": 2
    },
    "price_out": 1.5,
-   "rank": 35
+   "rank": 39
   },
   {
    "stem": "Laguna_XS_2-1_Free",
@@ -981,7 +1089,7 @@
     "mid": 2
    },
    "price_out": 0,
-   "rank": 36
+   "rank": 40
   },
   {
    "stem": "Laguna_XS_2-1",
@@ -1008,7 +1116,7 @@
     "mid": 2
    },
    "price_out": 0.12,
-   "rank": 37
+   "rank": 41
   }
  ]
 }
