@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-09-05T00:23:37.820Z",
-  "totalScripts": 480,
+  "lastUpdated": "2026-09-05T06:13:40.597Z",
+  "totalScripts": 483,
   "categories": [
     "GUI",
     "Hotkeys",
@@ -9447,13 +9447,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2025-03-15T14:59:59Z",
-      "lastModified": "2026-09-04T18:47:16Z",
+      "lastModified": "2026-09-05T01:26:47Z",
       "source": "github",
       "url": "https://github.com/bceenaeiklmr/GpGFX",
-      "stars": 42,
+      "stars": 43,
       "forks": 4,
       "owner": "bceenaeiklmr",
-      "code": "```cpp\n; ============================================\n; Repository: bceenaeiklmr/GpGFX\n; ============================================\n; URL: https://github.com/bceenaeiklmr/GpGFX\n; Stars: 42 | Forks: 4\n; Last Updated: 9/4/2026\n; License: MIT License\n;\n; Description:\n; GDI+ graphics library for AutoHotkey v2 to create beautiful 2D graphics or render animations.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/bceenaeiklmr/GpGFX.git\n;\n; Option 2: Download ZIP\n;   https://github.com/bceenaeiklmr/GpGFX/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <GpGFX>\n\n; Example initialization\nclass GpgfxExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"GpGFX loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := GpgfxExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: bceenaeiklmr/GpGFX\n; ============================================\n; URL: https://github.com/bceenaeiklmr/GpGFX\n; Stars: 43 | Forks: 4\n; Last Updated: 9/5/2026\n; License: MIT License\n;\n; Description:\n; GDI+ graphics library for AutoHotkey v2 to create beautiful 2D graphics or render animations.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/bceenaeiklmr/GpGFX.git\n;\n; Option 2: Download ZIP\n;   https://github.com/bceenaeiklmr/GpGFX/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <GpGFX>\n\n; Example initialization\nclass GpgfxExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"GpGFX loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := GpgfxExample()\n```"
     },
     {
       "id": "github-1329907901",
@@ -9707,6 +9707,69 @@
       "forks": 0,
       "owner": "MrGingerManBread",
       "code": "```cpp\n; ============================================\n; Repository: MrGingerManBread/BLACKOUT\n; ============================================\n; URL: https://github.com/MrGingerManBread/BLACKOUT\n; Stars: 0 | Forks: 0\n; Last Updated: 9/4/2026\n; License: Not specified\n;\n; Description:\n; AutoHotkey v2 script that populates blackout guis for every display monitor detected by your OS\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/MrGingerManBread/BLACKOUT.git\n;\n; Option 2: Download ZIP\n;   https://github.com/MrGingerManBread/BLACKOUT/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <BLACKOUT>\n\n; Example initialization\nclass BlackoutExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"BLACKOUT loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := BlackoutExample()\n```"
+    },
+    {
+      "id": "github-1357868861",
+      "title": "so3d-ahk-macros",
+      "category": "GitHub Repository",
+      "description": "SO3D AutoHotkey v2 macros with AHI",
+      "tags": [
+        "github",
+        "repository"
+      ],
+      "difficulty": "varies",
+      "dateAdded": "2026-09-05T05:50:15Z",
+      "lastModified": "2026-09-05T06:01:58Z",
+      "source": "github",
+      "url": "https://github.com/ELee1002/so3d-ahk-macros",
+      "stars": 0,
+      "forks": 0,
+      "owner": "ELee1002",
+      "code": "```cpp\n; ============================================\n; Repository: ELee1002/so3d-ahk-macros\n; ============================================\n; URL: https://github.com/ELee1002/so3d-ahk-macros\n; Stars: 0 | Forks: 0\n; Last Updated: 9/5/2026\n; License: Not specified\n;\n; Description:\n; SO3D AutoHotkey v2 macros with AHI\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/ELee1002/so3d-ahk-macros.git\n;\n; Option 2: Download ZIP\n;   https://github.com/ELee1002/so3d-ahk-macros/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <so3d-ahk-macros>\n\n; Example initialization\nclass So3dAhkMacrosExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"so3d-ahk-macros loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := So3dAhkMacrosExample()\n```"
+    },
+    {
+      "id": "github-1357858301",
+      "title": "rdr2-rampage-ahk-scripts",
+      "category": "GitHub Repository",
+      "description": "AutoHotkey v2 scripts for RDR2 Rampage inventory automation, with setup and hotkey instructions.",
+      "tags": [
+        "github",
+        "repository"
+      ],
+      "difficulty": "varies",
+      "dateAdded": "2026-09-05T05:32:18Z",
+      "lastModified": "2026-09-05T05:32:46Z",
+      "source": "github",
+      "url": "https://github.com/hahayeit/rdr2-rampage-ahk-scripts",
+      "stars": 0,
+      "forks": 0,
+      "owner": "hahayeit",
+      "code": "```cpp\n; ============================================\n; Repository: hahayeit/rdr2-rampage-ahk-scripts\n; ============================================\n; URL: https://github.com/hahayeit/rdr2-rampage-ahk-scripts\n; Stars: 0 | Forks: 0\n; Last Updated: 9/5/2026\n; License: Not specified\n;\n; Description:\n; AutoHotkey v2 scripts for RDR2 Rampage inventory automation, with setup and hotkey instructions.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/hahayeit/rdr2-rampage-ahk-scripts.git\n;\n; Option 2: Download ZIP\n;   https://github.com/hahayeit/rdr2-rampage-ahk-scripts/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <rdr2-rampage-ahk-scripts>\n\n; Example initialization\nclass Rdr2RampageAhkScriptsExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"rdr2-rampage-ahk-scripts loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := Rdr2RampageAhkScriptsExample()\n```"
+    },
+    {
+      "id": "github-1357731338",
+      "title": "AltTab-Classic-AHK",
+      "category": "GitHub Repository",
+      "description": "A lightweight classic-style Alt+Tab window switcher for Windows, implemented in AutoHotkey v2.",
+      "tags": [
+        "github",
+        "repository",
+        "alt-tab",
+        "autohotkey",
+        "autohotkey-v2",
+        "productivity",
+        "window-switcher",
+        "windows"
+      ],
+      "difficulty": "varies",
+      "dateAdded": "2026-09-05T01:31:11Z",
+      "lastModified": "2026-09-05T03:55:56Z",
+      "source": "github",
+      "url": "https://github.com/p65536/AltTab-Classic-AHK",
+      "stars": 0,
+      "forks": 0,
+      "owner": "p65536",
+      "code": "```cpp\n; ============================================\n; Repository: p65536/AltTab-Classic-AHK\n; ============================================\n; URL: https://github.com/p65536/AltTab-Classic-AHK\n; Stars: 0 | Forks: 0\n; Last Updated: 9/5/2026\n; License: MIT License\n;\n; Description:\n; A lightweight classic-style Alt+Tab window switcher for Windows, implemented in AutoHotkey v2.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/p65536/AltTab-Classic-AHK.git\n;\n; Option 2: Download ZIP\n;   https://github.com/p65536/AltTab-Classic-AHK/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <AltTab-Classic-AHK>\n\n; Example initialization\nclass AlttabClassicAhkExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"AltTab-Classic-AHK loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AlttabClassicAhkExample()\n```"
     }
   ]
 }
