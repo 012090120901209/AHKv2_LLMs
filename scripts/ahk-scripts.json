@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-09-05T06:13:40.597Z",
-  "totalScripts": 483,
+  "lastUpdated": "2026-09-05T12:11:25.754Z",
+  "totalScripts": 484,
   "categories": [
     "GUI",
     "Hotkeys",
@@ -5938,13 +5938,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-05-22T21:59:54Z",
-      "lastModified": "2026-08-24T22:40:03Z",
+      "lastModified": "2026-09-05T09:06:01Z",
       "source": "github",
       "url": "https://github.com/KwangBeomPark/01_ClipOCR-Pro",
       "stars": 2,
       "forks": 0,
       "owner": "KwangBeomPark",
-      "code": "```cpp\n; ============================================\n; Repository: KwangBeomPark/01_ClipOCR-Pro\n; ============================================\n; URL: https://github.com/KwangBeomPark/01_ClipOCR-Pro\n; Stars: 2 | Forks: 0\n; Last Updated: 8/24/2026\n; License: MIT License\n;\n; Description:\n; Premium screen-clipping and offline native OCR automation suite built with AutoHotkey v2 and GDI+. Features real-time annotations, compact badge mode, and auto-browser translation fallbacks.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/KwangBeomPark/01_ClipOCR-Pro.git\n;\n; Option 2: Download ZIP\n;   https://github.com/KwangBeomPark/01_ClipOCR-Pro/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <01_ClipOCR-Pro>\n\n; Example initialization\nclass 01ClipocrProExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"01_ClipOCR-Pro loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := 01ClipocrProExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: KwangBeomPark/01_ClipOCR-Pro\n; ============================================\n; URL: https://github.com/KwangBeomPark/01_ClipOCR-Pro\n; Stars: 2 | Forks: 0\n; Last Updated: 9/5/2026\n; License: MIT License\n;\n; Description:\n; Premium screen-clipping and offline native OCR automation suite built with AutoHotkey v2 and GDI+. Features real-time annotations, compact badge mode, and auto-browser translation fallbacks.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/KwangBeomPark/01_ClipOCR-Pro.git\n;\n; Option 2: Download ZIP\n;   https://github.com/KwangBeomPark/01_ClipOCR-Pro/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <01_ClipOCR-Pro>\n\n; Example initialization\nclass 01ClipocrProExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"01_ClipOCR-Pro loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := 01ClipocrProExample()\n```"
     },
     {
       "id": "github-1247276932",
@@ -9447,13 +9447,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2025-03-15T14:59:59Z",
-      "lastModified": "2026-09-05T01:26:47Z",
+      "lastModified": "2026-09-05T11:01:40Z",
       "source": "github",
       "url": "https://github.com/bceenaeiklmr/GpGFX",
-      "stars": 43,
+      "stars": 44,
       "forks": 4,
       "owner": "bceenaeiklmr",
-      "code": "```cpp\n; ============================================\n; Repository: bceenaeiklmr/GpGFX\n; ============================================\n; URL: https://github.com/bceenaeiklmr/GpGFX\n; Stars: 43 | Forks: 4\n; Last Updated: 9/5/2026\n; License: MIT License\n;\n; Description:\n; GDI+ graphics library for AutoHotkey v2 to create beautiful 2D graphics or render animations.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/bceenaeiklmr/GpGFX.git\n;\n; Option 2: Download ZIP\n;   https://github.com/bceenaeiklmr/GpGFX/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <GpGFX>\n\n; Example initialization\nclass GpgfxExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"GpGFX loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := GpgfxExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: bceenaeiklmr/GpGFX\n; ============================================\n; URL: https://github.com/bceenaeiklmr/GpGFX\n; Stars: 44 | Forks: 4\n; Last Updated: 9/5/2026\n; License: MIT License\n;\n; Description:\n; GDI+ graphics library for AutoHotkey v2 to create beautiful 2D graphics or render animations.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/bceenaeiklmr/GpGFX.git\n;\n; Option 2: Download ZIP\n;   https://github.com/bceenaeiklmr/GpGFX/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <GpGFX>\n\n; Example initialization\nclass GpgfxExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"GpGFX loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := GpgfxExample()\n```"
     },
     {
       "id": "github-1329907901",
@@ -9719,7 +9719,7 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-09-05T05:50:15Z",
-      "lastModified": "2026-09-05T06:01:58Z",
+      "lastModified": "2026-09-05T10:31:43Z",
       "source": "github",
       "url": "https://github.com/ELee1002/so3d-ahk-macros",
       "stars": 0,
@@ -9770,6 +9770,25 @@
       "forks": 0,
       "owner": "p65536",
       "code": "```cpp\n; ============================================\n; Repository: p65536/AltTab-Classic-AHK\n; ============================================\n; URL: https://github.com/p65536/AltTab-Classic-AHK\n; Stars: 0 | Forks: 0\n; Last Updated: 9/5/2026\n; License: MIT License\n;\n; Description:\n; A lightweight classic-style Alt+Tab window switcher for Windows, implemented in AutoHotkey v2.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/p65536/AltTab-Classic-AHK.git\n;\n; Option 2: Download ZIP\n;   https://github.com/p65536/AltTab-Classic-AHK/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <AltTab-Classic-AHK>\n\n; Example initialization\nclass AlttabClassicAhkExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"AltTab-Classic-AHK loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AlttabClassicAhkExample()\n```"
+    },
+    {
+      "id": "github-1357976585",
+      "title": "selection-reader",
+      "category": "GitHub Repository",
+      "description": "Windows AutoHotkey v2 tool for selected-text reading, translation, OCR, vocabulary, and shadowing practice.",
+      "tags": [
+        "github",
+        "repository"
+      ],
+      "difficulty": "varies",
+      "dateAdded": "2026-09-05T08:22:10Z",
+      "lastModified": "2026-09-05T08:33:46Z",
+      "source": "github",
+      "url": "https://github.com/Regine88/selection-reader",
+      "stars": 0,
+      "forks": 0,
+      "owner": "Regine88",
+      "code": "```cpp\n; ============================================\n; Repository: Regine88/selection-reader\n; ============================================\n; URL: https://github.com/Regine88/selection-reader\n; Stars: 0 | Forks: 0\n; Last Updated: 9/5/2026\n; License: MIT License\n;\n; Description:\n; Windows AutoHotkey v2 tool for selected-text reading, translation, OCR, vocabulary, and shadowing practice.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/Regine88/selection-reader.git\n;\n; Option 2: Download ZIP\n;   https://github.com/Regine88/selection-reader/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <selection-reader>\n\n; Example initialization\nclass SelectionReaderExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"selection-reader loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := SelectionReaderExample()\n```"
     }
   ]
 }
