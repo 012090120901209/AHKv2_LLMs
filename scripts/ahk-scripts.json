@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-09-06T12:11:37.174Z",
-  "totalScripts": 490,
+  "lastUpdated": "2026-09-06T18:09:44.894Z",
+  "totalScripts": 492,
   "categories": [
     "GUI",
     "Hotkeys",
@@ -8282,13 +8282,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-07-26T10:59:14Z",
-      "lastModified": "2026-08-02T09:27:29Z",
+      "lastModified": "2026-09-06T15:54:40Z",
       "source": "github",
       "url": "https://github.com/sujaybokil/minwm",
       "stars": 0,
       "forks": 0,
       "owner": "sujaybokil",
-      "code": "```cpp\n; ============================================\n; Repository: sujaybokil/minwm\n; ============================================\n; URL: https://github.com/sujaybokil/minwm\n; Stars: 0 | Forks: 0\n; Last Updated: 8/2/2026\n; License: MIT License\n;\n; Description:\n; A work-in-progress tiling window manager for Windows, written in AutoHotkey v2\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/sujaybokil/minwm.git\n;\n; Option 2: Download ZIP\n;   https://github.com/sujaybokil/minwm/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <minwm>\n\n; Example initialization\nclass MinwmExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"minwm loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := MinwmExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: sujaybokil/minwm\n; ============================================\n; URL: https://github.com/sujaybokil/minwm\n; Stars: 0 | Forks: 0\n; Last Updated: 9/6/2026\n; License: MIT License\n;\n; Description:\n; A work-in-progress tiling window manager for Windows, written in AutoHotkey v2\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/sujaybokil/minwm.git\n;\n; Option 2: Download ZIP\n;   https://github.com/sujaybokil/minwm/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <minwm>\n\n; Example initialization\nclass MinwmExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"minwm loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := MinwmExample()\n```"
     },
     {
       "id": "github-1312419288",
@@ -8872,13 +8872,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-08-27T21:29:16Z",
-      "lastModified": "2026-08-27T22:31:53Z",
+      "lastModified": "2026-09-06T18:04:01Z",
       "source": "github",
       "url": "https://github.com/S-R-4/autohotkey-productivity-tools",
       "stars": 0,
       "forks": 0,
       "owner": "S-R-4",
-      "code": "```cpp\n; ============================================\n; Repository: S-R-4/autohotkey-productivity-tools\n; ============================================\n; URL: https://github.com/S-R-4/autohotkey-productivity-tools\n; Stars: 0 | Forks: 0\n; Last Updated: 8/27/2026\n; License: Not specified\n;\n; Description:\n; AutoHotkey v2 scripts for custom mouse controls, scrolling, shortcuts, and Windows productivity.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/S-R-4/autohotkey-productivity-tools.git\n;\n; Option 2: Download ZIP\n;   https://github.com/S-R-4/autohotkey-productivity-tools/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <autohotkey-productivity-tools>\n\n; Example initialization\nclass AutohotkeyProductivityToolsExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"autohotkey-productivity-tools loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AutohotkeyProductivityToolsExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: S-R-4/autohotkey-productivity-tools\n; ============================================\n; URL: https://github.com/S-R-4/autohotkey-productivity-tools\n; Stars: 0 | Forks: 0\n; Last Updated: 9/6/2026\n; License: Not specified\n;\n; Description:\n; AutoHotkey v2 scripts for custom mouse controls, scrolling, shortcuts, and Windows productivity.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/S-R-4/autohotkey-productivity-tools.git\n;\n; Option 2: Download ZIP\n;   https://github.com/S-R-4/autohotkey-productivity-tools/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <autohotkey-productivity-tools>\n\n; Example initialization\nclass AutohotkeyProductivityToolsExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"autohotkey-productivity-tools loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AutohotkeyProductivityToolsExample()\n```"
     },
     {
       "id": "github-1348566216",
@@ -9220,13 +9220,13 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2026-08-23T05:35:38Z",
-      "lastModified": "2026-08-23T05:39:26Z",
+      "lastModified": "2026-09-06T17:27:17Z",
       "source": "github",
       "url": "https://github.com/SeasonerSpeed/SnapTap",
       "stars": 0,
       "forks": 0,
       "owner": "SeasonerSpeed",
-      "code": "```cpp\n; ============================================\n; Repository: SeasonerSpeed/SnapTap\n; ============================================\n; URL: https://github.com/SeasonerSpeed/SnapTap\n; Stars: 0 | Forks: 0\n; Last Updated: 8/23/2026\n; License: Not specified\n;\n; Description:\n; Razer's SnapTap but this time for any keyboard using AutoHotKey V2!\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/SeasonerSpeed/SnapTap.git\n;\n; Option 2: Download ZIP\n;   https://github.com/SeasonerSpeed/SnapTap/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <SnapTap>\n\n; Example initialization\nclass SnaptapExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"SnapTap loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := SnaptapExample()\n```"
+      "code": "```cpp\n; ============================================\n; Repository: SeasonerSpeed/SnapTap\n; ============================================\n; URL: https://github.com/SeasonerSpeed/SnapTap\n; Stars: 0 | Forks: 0\n; Last Updated: 9/6/2026\n; License: Not specified\n;\n; Description:\n; Razer's SnapTap but this time for any keyboard using AutoHotKey V2!\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/SeasonerSpeed/SnapTap.git\n;\n; Option 2: Download ZIP\n;   https://github.com/SeasonerSpeed/SnapTap/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <SnapTap>\n\n; Example initialization\nclass SnaptapExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"SnapTap loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := SnaptapExample()\n```"
     },
     {
       "id": "github-1337119244",
@@ -9884,7 +9884,7 @@
       ],
       "difficulty": "varies",
       "dateAdded": "2025-01-02T09:58:00Z",
-      "lastModified": "2026-09-06T11:38:40Z",
+      "lastModified": "2026-09-06T13:49:41Z",
       "source": "github",
       "url": "https://github.com/emliberace/MIDIv2.ahk",
       "stars": 15,
@@ -9910,6 +9910,44 @@
       "forks": 0,
       "owner": "curbe454",
       "code": "```cpp\n; ============================================\n; Repository: curbe454/APLAutoHotKey\n; ============================================\n; URL: https://github.com/curbe454/APLAutoHotKey\n; Stars: 0 | Forks: 0\n; Last Updated: 9/6/2026\n; License: MIT License\n;\n; Description:\n; My AutoHotKey configuration for APL. Use AutoHotKey v2.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/curbe454/APLAutoHotKey.git\n;\n; Option 2: Download ZIP\n;   https://github.com/curbe454/APLAutoHotKey/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <APLAutoHotKey>\n\n; Example initialization\nclass AplautohotkeyExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"APLAutoHotKey loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := AplautohotkeyExample()\n```"
+    },
+    {
+      "id": "github-1359370142",
+      "title": "spacemouse-longpress",
+      "category": "GitHub Repository",
+      "description": "3DxWare and AutoHotkey v2 workflow for SpaceMouse short and long press CAD view buttons",
+      "tags": [
+        "github",
+        "repository"
+      ],
+      "difficulty": "varies",
+      "dateAdded": "2026-09-06T17:26:45Z",
+      "lastModified": "2026-09-06T17:29:03Z",
+      "source": "github",
+      "url": "https://github.com/Xitara-SoftWerX/spacemouse-longpress",
+      "stars": 0,
+      "forks": 0,
+      "owner": "Xitara-SoftWerX",
+      "code": "```cpp\n; ============================================\n; Repository: Xitara-SoftWerX/spacemouse-longpress\n; ============================================\n; URL: https://github.com/Xitara-SoftWerX/spacemouse-longpress\n; Stars: 0 | Forks: 0\n; Last Updated: 9/6/2026\n; License: Not specified\n;\n; Description:\n; 3DxWare and AutoHotkey v2 workflow for SpaceMouse short and long press CAD view buttons\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/Xitara-SoftWerX/spacemouse-longpress.git\n;\n; Option 2: Download ZIP\n;   https://github.com/Xitara-SoftWerX/spacemouse-longpress/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <spacemouse-longpress>\n\n; Example initialization\nclass SpacemouseLongpressExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"spacemouse-longpress loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := SpacemouseLongpressExample()\n```"
+    },
+    {
+      "id": "github-1359142990",
+      "title": "media-brightness-toggle",
+      "category": "GitHub Repository",
+      "description": "An AutoHotkey (v2) script that turns your keyboard's Media Play/Pause key into a toggle switch for your Volume Up/Down keys, which lets them control your display brightness instead of the volume when enabled.",
+      "tags": [
+        "github",
+        "repository"
+      ],
+      "difficulty": "varies",
+      "dateAdded": "2026-09-06T12:56:45Z",
+      "lastModified": "2026-09-06T17:12:34Z",
+      "source": "github",
+      "url": "https://github.com/larakkan/media-brightness-toggle",
+      "stars": 0,
+      "forks": 0,
+      "owner": "larakkan",
+      "code": "```cpp\n; ============================================\n; Repository: larakkan/media-brightness-toggle\n; ============================================\n; URL: https://github.com/larakkan/media-brightness-toggle\n; Stars: 0 | Forks: 0\n; Last Updated: 9/6/2026\n; License: MIT License\n;\n; Description:\n; An AutoHotkey (v2) script that turns your keyboard's Media Play/Pause key into a toggle switch for your Volume Up/Down keys, which lets them control your display brightness instead of the volume when enabled.\n;\n; ============================================\n; INSTALLATION\n; ============================================\n; Option 1: Clone the repository\n;   git clone https://github.com/larakkan/media-brightness-toggle.git\n;\n; Option 2: Download ZIP\n;   https://github.com/larakkan/media-brightness-toggle/archive/refs/heads/main.zip\n;\n; ============================================\n; USAGE EXAMPLE\n; ============================================\n#Requires AutoHotkey v2.0\n\n; Include the library (adjust path as needed)\n; #Include <media-brightness-toggle>\n\n; Example initialization\nclass MediaBrightnessToggleExample {\n    __New() {\n        ; Initialize the library\n        ; Refer to repository README for specific usage\n        MsgBox(\"media-brightness-toggle loaded successfully!\")\n    }\n}\n\n; Uncomment to run:\n; app := MediaBrightnessToggleExample()\n```"
     }
   ]
 }
