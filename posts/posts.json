@@ -4,7 +4,7 @@
   "title": "OpenAI GPT-6 Astra: The First Perfect AHK-Eval, and the Bug It Refused to Fix",
   "preview_title": "GPT-6 Astra Runs the Table on AHK-Eval and AHK-Contract",
   "date": "2026-09-05",
-  "description": "OpenAI's GPT-6 Astra is the first model to post a perfect cold arm on AHK-Eval — 36/36 tasks, 181/181 hidden cases, at default reasoning effort with a 138-token median completion — and it repeats the feat at xhigh effort for three times the money and nothing else. It also clears AHK-Contract 24/24, matching Gemini 3.7 Flash's clean sheet, and fixes 28 of 30 AHK-Repair items, tying the repair record on a suite the median entry fixes twelve of. The two it misses are the same task, broken the same way: asked to make the smallest change to someone else's code, it preserves a string comparison that AHK v2 throws on — the exact idiom it sidesteps when writing from scratch.",
+  "description": "OpenAI's GPT-6 Astra is the first model to post a perfect cold arm on AHK-Eval — 36/36 tasks, 181/181 hidden cases, at default reasoning effort with a 138-token median completion — and it repeats the feat at xhigh effort for three times the money and nothing else. It also clears AHK-Contract 24/24 with every hidden case passing, and fixes 28 of 30 AHK-Repair items with the highest hidden-case count the suite has recorded. The two it misses are the same task, broken the same way: asked to make the smallest change to someone else's code, it preserves a string comparison that AHK v2 throws on — the exact idiom it sidesteps when writing from scratch.",
   "preview": "36/36, 24/24, 28/30 — a $1.33 sweep, and one repair item that shows where 'smallest change' stops being the right instruction.",
   "tags": [
    "LLMs",

@@ -4,7 +4,7 @@
 
 <div class="bm-wrap"><table class="bm-heat"><thead><tr><th style="text-align:left">Suite</th><th>solved</th><th>cases</th><th>parse fails</th><th>rank</th></tr></thead><tbody><tr><td class="h-name">AHK-Eval</td><td class="h-blue">33/36</td><td class="h-blue">167/181</td><td class="h-emer">0</td><td class="h-blue">10/39</td></tr><tr><td class="h-name">AHK-Repair</td><td class="h-blue">19/30</td><td class="h-amber">105/151</td><td class="h-emer">0</td><td class="h-emer">4/20</td></tr><tr><td class="h-name">AHK-Contract</td><td class="h-amber">19/24</td><td class="h-amber">149/173</td><td class="h-dim">1</td><td class="h-amber">6/10</td></tr></tbody></table></div>
 
-<img src="posts/img/bench/sweep-three-suites.svg" alt="Grouped columns: AHK-Eval, AHK-Repair and AHK-Contract tasks solved for Grok 4.6, Gemini 3.7 Flash, DeepSeek V4 Pro 0813, Ox Alpha and GPT-6 Astra" style="max-width:100%;border:1px solid #303030;border-radius:8px;background:#141414">
+<img src="posts/img/bench/sweep-three-suites.svg" alt="Grouped columns: AHK-Eval, AHK-Repair and AHK-Contract tasks solved for Grok 4.6, Gemini 3.7 Flash, DeepSeek V4 Pro 0813 and Ox Alpha" style="max-width:100%;border:1px solid #303030;border-radius:8px;background:#141414">
 
 The placement is upper-middle and the failure profile is not. **Fifty-nine of sixty** eval and contract submissions parsed clean on the first try. Almost nothing this model got wrong was a reasoning error, a control-flow error, or an algorithm error. It got things wrong because it does not know what is in the AutoHotkey v2 standard library, and confidently writes the method a JavaScript programmer would expect to find.
 

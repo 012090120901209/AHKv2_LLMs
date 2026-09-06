@@ -6,7 +6,7 @@ It lands **15th of 37** on eval, **7th of 18** on repair, and **3rd of 8** on co
 
 <div class="bm-wrap"><table class="bm-heat"><thead><tr><th style="text-align:left">Suite</th><th>solved</th><th>cases</th><th>parse fails</th><th>rank</th></tr></thead><tbody><tr><td class="h-name">AHK-Eval</td><td class="h-blue">30/36</td><td class="h-dim">155/181</td><td class="h-dim">1</td><td class="h-dim">15/37</td></tr><tr><td class="h-name">AHK-Repair</td><td class="h-blue">14/30</td><td class="h-dim">77/151</td><td class="h-dim">2</td><td class="h-dim">7/18</td></tr><tr><td class="h-name">AHK-Contract</td><td class="h-blue">20/24</td><td class="h-dim">154/173</td><td class="h-dim">1</td><td class="h-dim">3/8</td></tr></tbody></table></div>
 
-<img src="posts/img/bench/sweep-three-suites.svg" alt="Grouped columns: AHK-Eval, AHK-Repair and AHK-Contract tasks solved for Grok 4.6, Gemini 3.7 Flash, DeepSeek V4 Pro 0813, Ox Alpha and GPT-6 Astra" style="max-width:100%;border:1px solid #303030;border-radius:8px;background:#141414">
+<img src="posts/img/bench/sweep-three-suites.svg" alt="Grouped columns: AHK-Eval, AHK-Repair and AHK-Contract tasks solved for Grok 4.6, Gemini 3.7 Flash, DeepSeek V4 Pro 0813 and Ox Alpha" style="max-width:100%;border:1px solid #303030;border-radius:8px;background:#141414">
 
 ## The Cliff
 

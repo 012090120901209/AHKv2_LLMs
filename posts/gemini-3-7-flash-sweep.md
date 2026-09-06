@@ -1,6 +1,6 @@
 # Gemini 3.7 Flash: The Repair Board Gets a New Ceiling
 
-*Editor's note, September 5: this was the first perfect AHK-Contract run. [GPT-6 Astra](post.html?slug=gpt-6-ahk-eval) matched the 24/24 and the 28/30 repair count three weeks later; Gemini 3.7 Flash remains the cheapest by a wide margin.*
+*Editor's note, September 5: this was the first perfect AHK-Contract run and the repair record when it ran. Both marks have since been equaled by [GPT-6 Astra](post.html?slug=gpt-6-ahk-eval).*
 
 Google's **Gemini 3.7 Flash** — $0.375/M in, $1.875/M out, 1M context, served through Vertex — ran all three suites on August 13: [AHK-Eval](post.html?slug=ahk-eval-benchmark) (36 cold one-shot functions, 181 hidden cases), [AHK-Repair](post.html?slug=ahk-repair-benchmark) (30 broken submissions to fix minimally), and [AHK-Contract](post.html?slug=ahk-contract-benchmark) (24 OOP class contracts). Ninety calls, ninety clean returns, zero API failures. Total spend: **$0.27**.
 
@@ -8,7 +8,7 @@ It takes **rank 1 on repair, rank 1 on contract with the board's first perfect s
 
 <div class="bm-wrap"><table class="bm-heat"><thead><tr><th style="text-align:left">Suite</th><th>solved</th><th>cases</th><th>parse fails</th><th>rank</th></tr></thead><tbody><tr><td class="h-name">AHK-Contract</td><td class="h-emer">24/24</td><td class="h-emer">173/173</td><td class="h-emer">0</td><td class="h-emer">1/8</td></tr><tr><td class="h-name">AHK-Repair</td><td class="h-emer">28/30</td><td class="h-blue">143/151</td><td class="h-dim">1</td><td class="h-emer">1/18</td></tr><tr><td class="h-name">AHK-Eval</td><td class="h-blue">33/36</td><td class="h-blue">173/181</td><td class="h-emer">0</td><td class="h-dim">7/37</td></tr></tbody></table></div>
 
-<img src="posts/img/bench/sweep-three-suites.svg" alt="Grouped columns: AHK-Eval, AHK-Repair and AHK-Contract tasks solved for Grok 4.6, Gemini 3.7 Flash, DeepSeek V4 Pro 0813, Ox Alpha and GPT-6 Astra" style="max-width:100%;border:1px solid #303030;border-radius:8px;background:#141414">
+<img src="posts/img/bench/sweep-three-suites.svg" alt="Grouped columns: AHK-Eval, AHK-Repair and AHK-Contract tasks solved for Grok 4.6, Gemini 3.7 Flash, DeepSeek V4 Pro 0813 and Ox Alpha" style="max-width:100%;border:1px solid #303030;border-radius:8px;background:#141414">
 
 ## Repair Wasn't Close
 
